@@ -12,16 +12,14 @@
     <link rel="stylesheet" crossorigin href="/assets/index-Dm8hSxO8.css">
   </head>
   <body>
-    <div id="root"></div>
     <script>
-      (function () {
-        var redirect = sessionStorage.redirect;
-        delete sessionStorage.redirect;
+      const redirect = sessionStorage.getItem("redirect");
 
-        if (redirect && redirect !== location.href) {
-          history.replaceState(null, null, redirect);
-        }
-      })();
+      if (redirect) {
+        sessionStorage.removeItem("redirect");
+        window.history.replaceState(null, "", redirect);
+      }
     </script>
+    <div id="root"></div>
   </body>
 </html>
