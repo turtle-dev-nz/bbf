@@ -1,25 +1,43 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./Navbar.css";
-import { useScrollPosition } from "../../hooks/useScrollPosition";
 import { useActiveSection } from "../../hooks/useActiveSection";
+import { useScrollPosition } from "../../hooks/useScrollPosition";
 
-interface NavLink {
+export interface NavbarLink {
   label: string;
   id: string;
 }
 
-const NAV_LINKS: NavLink[] = [
-  { label: "About", id: "about" },
-  { label: "Events", id: "events" },
-  { label: "Become a Partner", id: "become-a-partner" },
-  { label: "Contact", id: "contact" },
-];
+export interface NavbarAction {
+  label: string;
+  href: string;
+  variant?: "primary" | "ghost";
+}
 
-const SECTION_IDS = NAV_LINKS.map((l) => l.id);
+interface NavbarProps {
+  logoSrc: string;
+  logoAlt: string;
+  homeHref?: string;
+  ariaLabel?: string;
+  navLinks: NavbarLink[];
+  mobileMenuId?: string;
+  primaryAction?: NavbarAction;
+  secondaryAction?: NavbarAction;
+}
 
-export function Navbar() {
+export function Navbar({
+  logoSrc,
+  logoAlt,
+  homeHref = "#",
+  ariaLabel = "Primary navigation",
+  navLinks,
+  mobileMenuId = "mobile-navigation",
+  primaryAction,
+  secondaryAction,
+}: NavbarProps) {
+  const sectionIds = navLinks.map((link) => link.id);
   const scrollY = useScrollPosition();
-  const activeSection = useActiveSection(SECTION_IDS);
+  const activeSection = useActiveSection(sectionIds);
   const isScrolled = scrollY > 40;
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -30,7 +48,7 @@ export function Navbar() {
     };
   }, [menuOpen]);
 
-  const scrollTo = (id: string): void => {
+  const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     setMenuOpen(false);
   };
@@ -40,13 +58,13 @@ export function Navbar() {
       {menuOpen && <div className="navbar__backdrop" aria-hidden="true" onClick={() => setMenuOpen(false)} />}
       <header className={`navbar${isScrolled ? " navbar--scrolled" : ""}${menuOpen ? " navbar--menu-open" : ""}`}>
         <div className="container navbar__inner">
-          <a href="#about" className="navbar__logo" aria-label="Home" onClick={() => setMenuOpen(false)}>
-            <span className="navbar__logo-name">Big Brain Foundation</span>
+          <a href={homeHref} className="navbar__logo" aria-label="Home" onClick={() => setMenuOpen(false)}>
+            <img src={logoSrc} alt={logoAlt} className="navbar__logo-image" />
           </a>
 
-          <nav className="navbar__nav" aria-label="Primary navigation">
+          <nav className="navbar__nav" aria-label={ariaLabel}>
             <ul className="navbar__links">
-              {NAV_LINKS.map(({ label, id }) => (
+              {navLinks.map(({ label, id }) => (
                 <li key={id}>
                   <button
                     type="button"
@@ -60,13 +78,32 @@ export function Navbar() {
             </ul>
           </nav>
 
+          {(secondaryAction || primaryAction) && (
+            <div className="navbar__actions">
+              {secondaryAction && (
+                <a
+                  className={`navbar__cta${secondaryAction.variant === "ghost" ? " navbar__cta--ghost" : ""}`}
+                  href={secondaryAction.href}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {secondaryAction.label}
+                </a>
+              )}
+              {primaryAction && (
+                <a className="navbar__cta" href={primaryAction.href} onClick={() => setMenuOpen(false)}>
+                  {primaryAction.label}
+                </a>
+              )}
+            </div>
+          )}
+
           <button
             type="button"
             className={`navbar__hamburger${menuOpen ? " navbar__hamburger--open" : ""}`}
             onClick={() => setMenuOpen((open) => !open)}
             aria-label="Toggle navigation menu"
             aria-expanded={menuOpen}
-            aria-controls="mobile-navigation"
+            aria-controls={mobileMenuId}
           >
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
@@ -75,12 +112,30 @@ export function Navbar() {
         </div>
 
         <div
-          id="mobile-navigation"
+          id={mobileMenuId}
           className={`navbar__mobile-menu${menuOpen ? " navbar__mobile-menu--open" : ""}`}
           aria-hidden={!menuOpen}
         >
           <ul className="navbar__mobile-links">
-            {NAV_LINKS.map(({ label, id }) => (
+            {secondaryAction && (
+              <li>
+                <a className="navbar__mobile-cta" href={secondaryAction.href} onClick={() => setMenuOpen(false)}>
+                  {secondaryAction.label}
+                </a>
+              </li>
+            )}
+            {primaryAction && (
+              <li>
+                <a
+                  className="navbar__mobile-cta navbar__mobile-cta--primary"
+                  href={primaryAction.href}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {primaryAction.label}
+                </a>
+              </li>
+            )}
+            {navLinks.map(({ label, id }) => (
               <li key={id}>
                 <button
                   type="button"

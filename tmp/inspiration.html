@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Big Brain Foundation — Redesign Mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal-deep:#0B3F3C;
+    --teal-mid:#136B62;
+    --teal-bright:#1E8F7E;
+    --ochre:#D98E2B;
+    --ochre-light:#F2B857;
+    --ink:#12201E;
+    --paper:#F6F4EE;
+    --paper-dim:#EAE6DA;
+    --charcoal:#0D1614;
+    --line:rgba(18,32,30,0.12);
+    --line-dark:rgba(246,244,238,0.16);
+    --radius:6px;
+    --display: 'Oswald', sans-serif;
+    --body: 'Source Sans 3', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:var(--body);
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+  h1,h2,h3,h4{font-family:var(--display);text-transform:uppercase;letter-spacing:0.01em;margin:0;}
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--ochre);
+    font-weight:600;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
+  section{padding:72px 0;}
+  a:focus-visible, button:focus-visible{
+    outline:3px solid var(--ochre);
+    outline-offset:2px;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+
+  /* ---------- NAV ---------- */
+  header.site{
+    position:sticky; top:0; z-index:50;
+    background:var(--charcoal);
+    border-bottom:1px solid var(--line-dark);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 24px;
+    max-width:1180px; margin:0 auto;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    font-family:var(--display); color:#fff; font-size:1.05rem;
+    text-transform:uppercase; letter-spacing:0.03em;
+  }
+  .brand .mark{
+    width:30px;height:30px;border-radius:50%;
+    background:conic-gradient(var(--ochre),var(--teal-bright),var(--ochre));
+    flex-shrink:0;
+  }
+  .nav-links{display:flex; gap:26px; align-items:center;}
+  .nav-links a{
+    color:#DCE7E4; text-decoration:none; font-size:0.88rem; font-weight:600;
+    letter-spacing:0.02em;
+  }
+  .nav-links a:hover{color:#fff;}
+  .nav-cta{
+    display:flex; gap:10px;
+  }
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center;
+    font-family:var(--body); font-weight:700; font-size:0.88rem;
+    padding:11px 20px; border-radius:var(--radius);
+    text-decoration:none; border:1.5px solid transparent; cursor:pointer;
+    letter-spacing:0.01em;
+  }
+  .btn-primary{background:var(--ochre); color:var(--charcoal);}
+  .btn-primary:hover{background:var(--ochre-light);}
+  .btn-outline{border-color:rgba(255,255,255,0.4); color:#fff; background:transparent;}
+  .btn-outline:hover{border-color:#fff;}
+  .btn-ghost-dark{border-color:var(--ink); color:var(--ink); background:transparent;}
+  .btn-ghost-dark:hover{background:var(--ink); color:#fff;}
+  .menu-btn{display:none; background:none;border:none;color:#fff;font-size:1.4rem;cursor:pointer;}
+
+  @media (max-width:860px){
+    .nav-links{
+      position:absolute; top:100%; left:0; right:0;
+      background:var(--charcoal); flex-direction:column;
+      padding:18px 24px 26px; gap:16px; align-items:flex-start;
+      display:none; border-bottom:1px solid var(--line-dark);
+    }
+    .nav-links.open{display:flex;}
+    .menu-btn{display:block;}
+    .nav-cta{display:none;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:linear-gradient(180deg,var(--charcoal) 0%, var(--teal-deep) 100%);
+    color:#fff; padding:64px 0 40px;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.05fr 0.95fr; gap:48px; align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(2.1rem,4.4vw,3.4rem);
+    line-height:1.06; color:#fff; margin:14px 0 20px;
+  }
+  .hero h1 .accent{color:var(--ochre-light);}
+  .hero p.lede{
+    font-size:1.08rem; color:#D8E4E1; max-width:46ch; margin:0 0 28px;
+  }
+  .hero-ctas{display:flex; flex-wrap:wrap; gap:14px;}
+  .hero-ctas .btn{padding:14px 24px; font-size:0.95rem;}
+  .route-card{
+    background:rgba(255,255,255,0.04);
+    border:1px solid var(--line-dark);
+    border-radius:14px;
+    padding:22px;
+  }
+  .route-card svg{width:100%; height:auto; display:block;}
+  .route-caption{
+    display:flex; justify-content:space-between; margin-top:14px;
+    font-family:var(--mono); font-size:0.72rem; color:#B9C9C5; letter-spacing:0.05em;
+  }
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;}
+    .route-card{order:-1;}
+  }
+  .draw-path{
+    stroke-dasharray:900; stroke-dashoffset:900;
+    animation:draw 2.4s ease forwards 0.3s;
+  }
+  @keyframes draw{ to{stroke-dashoffset:0;} }
+
+  /* ---------- TRUSTED STRIP ---------- */
+  .trusted{
+    background:var(--charcoal); padding:26px 0;
+    border-top:1px solid var(--line-dark); border-bottom:1px solid var(--line-dark);
+  }
+  .trusted-row{display:flex; align-items:center; gap:28px; flex-wrap:wrap;}
+  .trusted-label{
+    font-family:var(--mono); font-size:0.72rem; color:#9FB3AF; letter-spacing:0.1em;
+    white-space:nowrap; text-transform:uppercase;
+  }
+  .logo-pills{display:flex; gap:14px; flex-wrap:wrap; flex:1;}
+  .logo-pill{
+    font-family:var(--display); text-transform:uppercase; letter-spacing:0.04em;
+    font-size:0.82rem; color:#EDEFEA;
+    border:1px solid var(--line-dark); border-radius:5px;
+    padding:9px 16px; opacity:0.9;
+  }
+
+  /* ---------- STAT STRIP ---------- */
+  .stats{
+    background:var(--paper-dim); border-bottom:1px solid var(--line);
+  }
+  .stat-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:10px; overflow:hidden;
+  }
+  .stat-cell{
+    background:var(--paper-dim); padding:26px 20px; text-align:center;
+  }
+  .stat-num{
+    font-family:var(--mono); font-weight:600; font-size:1.9rem; color:var(--teal-deep);
+    display:block;
+  }
+  .stat-label{
+    font-size:0.78rem; color:#4B5C58; margin-top:6px; text-transform:uppercase; letter-spacing:0.05em;
+  }
+  @media (max-width:700px){
+    .stat-grid{grid-template-columns:repeat(2,1fr);}
+  }
+
+  .progress-wrap{margin-top:34px;}
+  .progress-top{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:10px; flex-wrap:wrap; gap:8px;}
+  .progress-top .amt{font-family:var(--mono); font-size:1.1rem; font-weight:600; color:var(--teal-deep);}
+  .progress-track{
+    height:12px; border-radius:20px; background:#DDD7C6; overflow:hidden;
+    border:1px solid var(--line);
+  }
+  .progress-fill{
+    height:100%; width:62%; border-radius:20px;
+    background:linear-gradient(90deg,var(--teal-mid),var(--ochre));
+  }
+  .progress-note{font-size:0.78rem; color:#65746F; margin-top:8px;}
+
+  /* ---------- SECTION HEADERS ---------- */
+  .section-head{max-width:62ch; margin-bottom:40px;}
+  .section-head h2{font-size:clamp(1.5rem,2.6vw,2.15rem); margin:10px 0 14px; color:var(--ink);}
+  .section-head p{color:#3C4B47; font-size:1.02rem; margin:0;}
+  .section-head.on-dark h2{color:#fff;}
+  .section-head.on-dark p{color:#CBD9D5;}
+  .section-head.on-dark .eyebrow{color:var(--ochre-light);}
+
+  /* ---------- WHY PARTNER ---------- */
+  .why-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .why-card{
+    background:#fff; border:1px solid var(--line); border-radius:12px; padding:28px;
+  }
+  .why-card .num{font-family:var(--mono); color:var(--ochre); font-weight:600; font-size:0.85rem;}
+  .why-card h3{font-family:var(--body); text-transform:none; font-size:1.12rem; font-weight:700; margin:10px 0 8px;}
+  .why-card p{font-size:0.95rem; color:#414F4B; margin:0;}
+  @media (max-width:860px){ .why-grid{grid-template-columns:1fr;} }
+
+  /* ---------- TIERS ---------- */
+  .tiers-section{background:var(--teal-deep); color:#fff;}
+  .tier-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px; align-items:stretch;}
+  .tier-card{
+    background:rgba(255,255,255,0.05); border:1px solid var(--line-dark); border-radius:14px;
+    padding:30px 26px; display:flex; flex-direction:column;
+  }
+  .tier-card.featured{
+    background:#fff; color:var(--ink); border-color:transparent;
+    box-shadow:0 20px 40px rgba(0,0,0,0.25); transform:translateY(-8px);
+  }
+  .tier-eyebrow{font-family:var(--mono); font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--ochre-light);}
+  .tier-card.featured .tier-eyebrow{color:var(--ochre);}
+  .tier-name{font-family:var(--display); font-size:1.5rem; margin:8px 0 4px; text-transform:uppercase;}
+  .tier-sub{font-size:0.86rem; color:#C9D8D4; margin-bottom:18px;}
+  .tier-card.featured .tier-sub{color:#5C6B67;}
+  .tier-list{list-style:none; margin:0 0 24px; padding:0; flex:1;}
+  .tier-list li{
+    font-size:0.9rem; padding:8px 0; border-top:1px solid var(--line-dark);
+  }
+  .tier-card.featured .tier-list li{border-top:1px solid var(--line);}
+  .tier-list li:first-child{border-top:none;}
+  @media (max-width:900px){
+    .tier-grid{grid-template-columns:1fr;}
+    .tier-card.featured{transform:none;}
+  }
+
+  /* ---------- IMPACT ---------- */
+  .impact{background:var(--paper);}
+  .impact-grid{display:grid; grid-template-columns:1fr 1fr; gap:44px; align-items:center;}
+  .impact-quotes{display:grid; gap:16px;}
+  .impact-quote{
+    background:#fff; border-left:4px solid var(--ochre); border-radius:0 10px 10px 0;
+    padding:18px 22px;
+  }
+  .impact-quote p{margin:0; font-size:1.02rem; font-weight:600; color:var(--ink);}
+  .impact-quote span{font-size:0.8rem; color:#5C6B67; font-family:var(--mono);}
+  .impact-copy p{color:#3C4B47;}
+  @media (max-width:860px){ .impact-grid{grid-template-columns:1fr;} }
+
+  /* ---------- STORY TEASER ---------- */
+  .story{
+    background:var(--paper-dim);
+  }
+  .story-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:44px; align-items:center;}
+  .story-photo{
+    aspect-ratio:4/5; border-radius:14px;
+    background:linear-gradient(160deg,var(--teal-mid),var(--charcoal));
+    display:flex; align-items:flex-end; padding:20px; color:#DDE9E6; font-family:var(--mono); font-size:0.75rem;
+  }
+  @media (max-width:860px){ .story-grid{grid-template-columns:1fr;} .story-photo{order:-1; aspect-ratio:16/9;} }
+
+  /* ---------- CONTACT FORK ---------- */
+  .fork{background:var(--charcoal); color:#fff;}
+  .fork-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
+  .fork-card{
+    border:1px solid var(--line-dark); border-radius:14px; padding:34px;
+  }
+  .fork-card.donate{background:rgba(217,142,43,0.08);}
+  .fork-card.partner{background:rgba(30,143,126,0.12);}
+  .fork-card h3{font-size:1.3rem; margin:0 0 10px;}
+  .fork-card p{color:#C9D8D4; font-size:0.95rem; margin:0 0 20px;}
+  @media (max-width:760px){ .fork-grid{grid-template-columns:1fr;} }
+
+  footer.site{
+    background:var(--charcoal); color:#9FB3AF; padding:36px 0; font-size:0.85rem;
+    border-top:1px solid var(--line-dark);
+  }
+  .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; gap:16px;}
+  .foot-grid a{color:#DCE7E4; text-decoration:none;}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="nav">
+    <div class="brand"><span class="mark" aria-hidden="true"></span> Big Brain Foundation</div>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="#partner">Partner With Us</a>
+      <a href="#tiers">Sponsorship Tiers</a>
+      <a href="#story">Georgie's Story</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-outline" href="#partner">Partner With Us</a>
+      <a class="btn btn-primary" href="#donate">Donate Today</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">25 Days · 25 Ultramarathons · 1,300km · North Island, Aotearoa</span>
+      <h1>Every step south<br>funds a <span class="accent">National Brain Tumour Registry.</span></h1>
+      <p class="lede">In January 2027, Sam Saunt-Lord runs 25 consecutive ultramarathons down New Zealand's North Island — filmed for documentary, backed by leading Kiwi brands, and raising NZ$100k for brain cancer research.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#donate">Donate Today</a>
+        <a class="btn btn-outline" href="#partner">Become a Sponsor</a>
+      </div>
+    </div>
+    <div class="route-card">
+      <svg viewBox="0 0 360 420" role="img" aria-label="Illustrated route line showing the run down New Zealand's North Island, marked with 25 waypoints">
+        <path d="M 220 20 C 180 60, 260 90, 210 130 C 160 170, 240 200, 190 240 C 140 280, 210 300, 170 340 C 140 370, 190 390, 150 410"
+          fill="none" stroke="#D98E2B" stroke-width="3" class="draw-path"/>
+        <g fill="#F2B857">
+          <circle cx="220" cy="20" r="5"/><circle cx="204" cy="80" r="3.5"/><circle cx="210" cy="130" r="5"/>
+          <circle cx="185" cy="185" r="3.5"/><circle cx="190" cy="240" r="5"/><circle cx="165" cy="295" r="3.5"/>
+          <circle cx="170" cy="340" r="5"/><circle cx="150" cy="410" r="6"/>
+        </g>
+        <text x="230" y="24" fill="#DCE7E4" font-family="IBM Plex Mono" font-size="11">Day 1 · Northland</text>
+        <text x="120" y="415" fill="#DCE7E4" font-family="IBM Plex Mono" font-size="11">Day 25 · Wellington</text>
+      </svg>
+      <div class="route-caption">
+        <span>LIVE ROUTE (ILLUSTRATIVE)</span>
+        <span>JAN 2027</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trusted">
+  <div class="wrap trusted-row">
+    <span class="trusted-label">Already backed by</span>
+    <div class="logo-pills">
+      <span class="logo-pill">Volkswagen</span>
+      <span class="logo-pill">Mizuno</span>
+      <span class="logo-pill">Garmin</span>
+      <span class="logo-pill">Icebreaker</span>
+      <span class="logo-pill">Cactus Outdoor</span>
+      <span class="logo-pill">Shoe Clinic</span>
+    </div>
+  </div>
+</div>
+
+<section class="stats">
+  <div class="wrap">
+    <div class="stat-grid">
+      <div class="stat-cell"><span class="stat-num">25</span><span class="stat-label">Ultramarathons</span></div>
+      <div class="stat-cell"><span class="stat-num">1,300km</span><span class="stat-label">North Island route</span></div>
+      <div class="stat-cell"><span class="stat-num">25</span><span class="stat-label">Consecutive days</span></div>
+      <div class="stat-cell"><span class="stat-num">NZ$100k</span><span class="stat-label">Fundraising goal</span></div>
+    </div>
+    <div class="progress-wrap">
+      <div class="progress-top">
+        <span class="amt">NZ$62,400 raised</span>
+        <span class="amt" style="color:#65746F;">of NZ$100,000 goal</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill"></div></div>
+      <p class="progress-note">Illustrative figure — wire this to your live donation platform total so it updates automatically.</p>
+    </div>
+  </div>
+</section>
+
+<section id="partner">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">For Businesses &amp; Partners</span>
+      <h2>Why sponsor the run</h2>
+      <p>Sam's story sits at the intersection of endurance, whānau, and world-first medical research — a rare combination for brand storytelling and genuine community impact.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="num">01</span>
+        <h3>Documentary-length brand exposure</h3>
+        <p>A full-length documentary is already in production. Sponsors are woven into the story, not bolted on as a logo at the end.</p>
+      </div>
+      <div class="why-card">
+        <span class="num">02</span>
+        <h3>National media reach</h3>
+        <p>25 days of live, ongoing coverage across regional and national media, social channels, and community events the length of the North Island.</p>
+      </div>
+      <div class="why-card">
+        <span class="num">03</span>
+        <h3>Measurable research outcome</h3>
+        <p>Funds go directly to New Zealand's first National Brain Tumour Registry, built with NANOS — a clear, reportable CSR outcome for your organisation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tiers-section" id="tiers">
+  <div class="wrap">
+    <div class="section-head on-dark">
+      <span class="eyebrow">Partnership Tiers</span>
+      <h2>Find your level of the trail</h2>
+      <p>Indicative tiers — swap in your real pricing, in-kind equivalents, and inventory. Naming them after the run itself keeps every package legible at a glance.</p>
+    </div>
+    <div class="tier-grid">
+      <div class="tier-card">
+        <span class="tier-eyebrow">Tier 01</span>
+        <div class="tier-name">Trailhead</div>
+        <div class="tier-sub">Community &amp; in-kind partners</div>
+        <ul class="tier-list">
+          <li>Logo on website &amp; race apparel</li>
+          <li>Social media shout-out series</li>
+          <li>Invitation to launch event</li>
+        </ul>
+        <a class="btn btn-outline" href="#contact">Enquire</a>
+      </div>
+      <div class="tier-card featured">
+        <span class="tier-eyebrow">Tier 02 · Most popular</span>
+        <div class="tier-name">Ridge Line</div>
+        <div class="tier-sub">Core cash &amp; gear partners</div>
+        <ul class="tier-list">
+          <li>Everything in Trailhead</li>
+          <li>Featured segment in the documentary</li>
+          <li>Co-branded content across 25 days</li>
+          <li>Quarterly impact report</li>
+        </ul>
+        <a class="btn btn-primary" href="#contact">Enquire</a>
+      </div>
+      <div class="tier-card">
+        <span class="tier-eyebrow">Tier 03</span>
+        <div class="tier-name">Summit Partner</div>
+        <div class="tier-sub">Presenting / naming partner</div>
+        <ul class="tier-list">
+          <li>Everything in Ridge Line</li>
+          <li>Presenting-partner billing on all media</li>
+          <li>On-the-ground activation days</li>
+          <li>First right of renewal for 2028</li>
+        </ul>
+        <a class="btn btn-outline" href="#contact">Enquire</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="impact">
+  <div class="wrap impact-grid">
+    <div class="impact-copy">
+      <span class="eyebrow">Why It Matters</span>
+      <h2 style="margin:10px 0 16px; font-size:clamp(1.4rem,2.4vw,1.9rem);">Brain cancer research is critically underfunded in Aotearoa</h2>
+      <p>The registry is being developed with the New Zealand Aotearoa Neuro-Oncology Society (NANOS), an incorporated national society of over 80 clinicians, researchers, and support groups, linked internationally through the Asian Society of Neuro-Oncology.</p>
+    </div>
+    <div class="impact-quotes">
+      <div class="impact-quote">
+        <p>"Brain cancer is the biggest cancer killer of children in New Zealand — 42% of all childhood cancer deaths."</p>
+        <span>Brain Tumour Support New Zealand</span>
+      </div>
+      <div class="impact-quote">
+        <p>"The five-year survival rate for glioblastoma, the most common adult brain cancer, is just 5%."</p>
+        <span>Brain Tumour Support New Zealand</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story" id="story">
+  <div class="wrap story-grid">
+    <div class="story-photo">Sam training, Wellington — photo</div>
+    <div>
+      <span class="eyebrow">The Story Behind the Run</span>
+      <h2 style="margin:10px 0 16px; font-size:clamp(1.4rem,2.4vw,1.9rem);">Inspired by Georgie</h2>
+      <p style="color:#3C4B47;">Sam, 20, is running in honour of his cousin Georgie's diagnosis of glioblastoma. This section keeps the human story close to the surface — but deliberately after the case for partners, so a business reader isn't asked to process grief before they've understood the opportunity.</p>
+      <a class="btn btn-ghost-dark" href="#" style="margin-top:14px;">Read Georgie's Story</a>
+    </div>
+  </div>
+</section>
+
+<section class="fork" id="contact">
+  <div class="wrap">
+    <div class="section-head on-dark">
+      <span class="eyebrow">Get In Touch</span>
+      <h2>Two ways to be part of this</h2>
+    </div>
+    <div class="fork-grid">
+      <div class="fork-card donate" id="donate">
+        <h3>Donate</h3>
+        <p>Support the run directly. Every dollar goes toward the National Brain Tumour Registry via our charity partner, Brain Tumour Support NZ.</p>
+        <a class="btn btn-primary" href="#">Donate Today</a>
+      </div>
+      <div class="fork-card partner">
+        <h3>Partner with us</h3>
+        <p>Tell us about your organisation and what kind of support you're considering — cash, gear, media, or crew.</p>
+        <a class="btn btn-outline" href="#">Start a Sponsorship Enquiry</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap foot-grid">
+    <div>© Big Brain Foundation</div>
+    <div><a href="#">hello@bigbrainfoundation.org</a> · <a href="#">Instagram</a> · <a href="#">Facebook</a></div>
+  </div>
+</footer>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+</script>
+</body>
+</html>

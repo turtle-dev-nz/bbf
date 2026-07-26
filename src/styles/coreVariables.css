@@ -1,27 +1,30 @@
 :root {
   /* Colors */
-  --color-bg: #08080f;
-  --color-surface: #0f0f1a;
+  --color-bg: #f5f4f1;
+  --color-surface: #1f2a33;
   --color-surface-2: #15152a;
   --color-border: #1e1e35;
-  --color-accent: #6366f1;
-  --color-accent-hover: #4f46e5;
-  --color-accent-light: #818cf8;
+  --color-accent: #04898a;
+  --color-accent-hover: #025656;
+  --color-accent-light: #06d3d5;
   --color-accent-glow: rgba(99, 102, 241, 0.12);
   --color-text: #f1f5f9;
-  --color-text-secondary: #94a3b8;
+  --color-text-secondary: #d8d9d8;
   --color-text-muted: #475569;
   --color-green: #10b981;
   --color-danger: #ef4444;
   --color-picker-wheel-ring: rgba(255, 255, 255, 0.08);
-  --color-navbar-bg: rgba(8, 8, 15, 0.85);
-  --color-navbar-open-bg: rgba(8, 8, 15, 0.97);
-  --color-overlay: rgba(0, 0, 0, 0.55);
+  --color-navbar-bg: #1f2a33;
+  --color-navbar-open-bg: #1f2a33;
+  --color-overlay: rgba(0, 15, 14, 0.548);
   --opacity-disabled: 0.45;
+
+  --run-color-accent: #c75a2c;
 
   /* Typography */
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", "Fira Code", monospace;
+  --font-heading: "Oswald", sans-serif;
 
   /* Font sizes */
   --fs-xs: 0.75rem;
@@ -48,6 +51,9 @@
   --space-16: 4rem;
   --space-20: 5rem;
   --space-24: 6rem;
+
+  --section-nav-height: 80px;
+  --section-strip-height: 80px;
 
   /* Layout */
   --container-max: 1100px;
