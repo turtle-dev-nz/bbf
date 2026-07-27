@@ -1,0 +1,62 @@
+.mission-content {
+  display: grid;
+  gap: var(--space-8);
+  grid-template-columns: 1fr 1fr;
+
+  p {
+    padding-bottom: 1rem;
+  }
+}
+
+.pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+
+  p {
+    padding-bottom: unset;
+  }
+}
+
+.pillar {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.icon {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #0c7c86;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.pillar h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.15rem;
+  color: #12313a;
+}
+
+.pillar p {
+  margin: 0;
+  line-height: 1.5;
+  font-size: 0.95rem;
+  color: #5b6b70;
+}
+
+.divider {
+  height: 1px;
+  background: #e6edef;
+  margin-left: 58px;
+}

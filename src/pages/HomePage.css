@@ -7,6 +7,10 @@
 .home-page__main {
   display: grid;
   padding-top: 80px;
+
+  section {
+    min-height: calc(100svh - var(--section-nav-height));
+  }
 }
 
 .home-hero,

@@ -58,7 +58,7 @@ export function Navbar({
       {menuOpen && <div className="navbar__backdrop" aria-hidden="true" onClick={() => setMenuOpen(false)} />}
       <header className={`navbar${isScrolled ? " navbar--scrolled" : ""}${menuOpen ? " navbar--menu-open" : ""}`}>
         <div className="container navbar__inner">
-          <a href={homeHref} className="navbar__logo" aria-label="Home" onClick={() => setMenuOpen(false)}>
+          <a href={"/"} className="navbar__logo" aria-label="Home" onClick={() => setMenuOpen(false)}>
             <img src={logoSrc} alt={logoAlt} className="navbar__logo-image" />
           </a>
 
