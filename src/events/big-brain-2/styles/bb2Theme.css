@@ -59,7 +59,7 @@
   background: rgba(247, 243, 238, 0.95);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  padding: 12px 24px;
+  padding: 20px 24px;
   border-bottom-color: var(--bb2-border);
 }
 .bb2-nav-inner {
