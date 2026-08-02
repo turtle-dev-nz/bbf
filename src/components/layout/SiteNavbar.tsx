@@ -19,7 +19,7 @@ export function SiteNavbar() {
           <a className="site-nav__link" href="#campaigns">
             Campaigns
           </a>
-          <Link className="site-nav__button" to={ROUTES.samBigBrainRun}>
+          <Link className="site-nav__button" to={ROUTES.bigBrain2}>
             Sam&apos;s Run
           </Link>
         </nav>

@@ -1,976 +1,1150 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sam's Big Brain Run — Donate</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    /* ─────────────────────────────────────────
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sam's Big Brain Run — Donate</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ─────────────────────────────────────────
        DONATION PAGE 3 — STATS-FORWARD / BOLD DATA
        Near-black canvas. The fundraising total
        is the hero — massive, centered, impossible
        to ignore. Milestone markers, live-dashboard
        energy meets charity campaign.
     ───────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg:          #0d1117;
-      --bg-mid:      #141c24;
-      --bg-card:     #161f28;
-      --text:        #f5f0eb;
-      --text-muted:  #7a8a96;
-      --accent:      #c75a2c;
-      --accent-light:#e0733e;
-      --amber:       #e8b84d;
-      --border:      rgba(255,255,255,0.07);
-      --modal-bg:    #111820;
-    }
-
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      padding: 18px 24px;
-      transition: background 0.3s, border-color 0.3s, padding 0.3s;
-      border-bottom: 1px solid transparent;
-    }
-    nav.scrolled {
-      background: rgba(13,17,23,0.92);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom-color: var(--border);
-      padding: 12px 24px;
-    }
-    .nav-inner {
-      max-width: 960px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .nav-logo {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 800;
-      font-size: 1.15rem;
-      letter-spacing: 0.04em;
-      color: var(--text);
-      text-decoration: none;
-      text-transform: uppercase;
-    }
-    .nav-logo span { color: var(--accent); }
-    .nav-cta {
-      background: var(--accent);
-      color: #fff;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 0.9rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      border: none;
-      border-radius: 4px;
-      padding: 8px 20px;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .nav-cta:hover { background: var(--accent-light); }
-
-    /* ── HERO ── */
-    .hero {
-      min-height: 100svh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 100px 24px 60px;
-      position: relative;
-      overflow: hidden;
-    }
-    /* Grid-dot background */
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
-      background-size: 32px 32px;
-      pointer-events: none;
-    }
-    /* Radial glow behind number */
-    .hero::after {
-      content: '';
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -55%);
-      width: 600px; height: 400px;
-      background: radial-gradient(ellipse at center, rgba(199,90,44,0.12) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .hero-inner {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      max-width: 800px;
-    }
-    .hero-eyebrow {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.75rem;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      font-weight: 600;
-      margin-bottom: 24px;
-    }
-    /* THE BIG NUMBER */
-    .big-number-label {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--accent);
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-    .big-number {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 800;
-      font-size: clamp(5rem, 22vw, 14rem);
-      line-height: 0.88;
-      letter-spacing: -0.03em;
-      color: var(--text);
-      display: block;
-      margin-bottom: 8px;
-    }
-    .big-number-sub {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(0.85rem, 2vw, 1rem);
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      font-weight: 600;
-      margin-bottom: 40px;
-    }
-
-    /* Milestone progress bar */
-    .milestone-wrap {
-      margin-bottom: 16px;
-      position: relative;
-    }
-    .milestone-track {
-      height: 6px;
-      background: rgba(255,255,255,0.08);
-      border-radius: 99px;
-      overflow: visible;
-      position: relative;
-    }
-    .milestone-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--accent), var(--accent-light));
-      border-radius: 99px;
-      width: 0%;
-      transition: width 1.6s cubic-bezier(0.22, 1, 0.36, 1);
-      position: relative;
-    }
-    /* Milestone tick marks */
-    .milestone-ticks {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-    }
-    .milestone-tick {
-      position: absolute;
-      top: -3px;
-      width: 2px;
-      height: 12px;
-      background: rgba(255,255,255,0.15);
-      border-radius: 1px;
-      transform: translateX(-50%);
-    }
-    .milestone-tick.passed {
-      background: var(--accent);
-      opacity: 0.7;
-    }
-    .milestone-labels {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 12px;
-    }
-    .milestone-lbl {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.68rem;
-      letter-spacing: 0.08em;
-      color: var(--text-muted);
-      font-weight: 600;
-    }
-    .milestone-lbl.reached { color: var(--accent); }
-
-    /* Data row */
-    .data-row {
-      display: flex;
-      justify-content: center;
-      gap: 0;
-      margin: 32px 0;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      overflow: hidden;
-      background: var(--bg-card);
-    }
-    .data-cell {
-      flex: 1;
-      padding: 16px 12px;
-      border-right: 1px solid var(--border);
-      text-align: center;
-    }
-    .data-cell:last-child { border-right: none; }
-    .data-cell-value {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 800;
-      font-size: 1.6rem;
-      letter-spacing: -0.01em;
-      display: block;
-      color: var(--text);
-      line-height: 1;
-    }
-    .data-cell-value.amber { color: var(--amber); }
-    .data-cell-label {
-      font-size: 0.62rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      font-weight: 500;
-      display: block;
-      margin-top: 5px;
-    }
-
-    .hero-cta {
-      display: inline-block;
-      background: var(--accent);
-      color: #fff;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 800;
-      font-size: 1.15rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      border: none;
-      border-radius: 6px;
-      padding: 17px 40px;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-      box-shadow: 0 0 0 rgba(199,90,44,0);
-    }
-    .hero-cta:hover {
-      background: var(--accent-light);
-      box-shadow: 0 8px 32px rgba(199,90,44,0.35);
-    }
-    .hero-cta:active { transform: scale(0.98); }
-
-    /* Campaign title below CTA */
-    .hero-title-row {
-      margin-top: 48px;
-      padding-top: 40px;
-      border-top: 1px solid var(--border);
-    }
-    .hero-tag {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 800;
-      font-size: clamp(2.5rem, 8vw, 5.5rem);
-      line-height: 0.9;
-      text-transform: uppercase;
-      letter-spacing: -0.02em;
-      color: rgba(245,240,235,0.12);
-    }
-    .hero-tag em {
-      font-style: normal;
-      -webkit-text-stroke: 1px rgba(199,90,44,0.4);
-      color: transparent;
-    }
-
-    /* ── STORY ── */
-    .story-section {
-      background: var(--bg-mid);
-      padding: 72px 24px;
-      border-top: 1px solid var(--border);
-    }
-    .story-inner {
-      max-width: 960px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 40px;
-    }
-    @media (min-width: 680px) {
-      .story-inner { grid-template-columns: 280px 1fr; gap: 60px; align-items: start; }
-    }
-    .section-label {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.72rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--accent);
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
-    .story-left h2 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 800;
-      font-size: clamp(2.5rem, 6vw, 3.8rem);
-      text-transform: uppercase;
-      line-height: 0.92;
-      color: var(--text);
-      margin-bottom: 28px;
-    }
-    /* Number accent in story */
-    .story-number {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 800;
-      font-size: 5rem;
-      color: rgba(199,90,44,0.15);
-      line-height: 1;
-      letter-spacing: -0.04em;
-    }
-    .story-right .story-body {
-      font-size: 0.95rem;
-      line-height: 1.85;
-      color: var(--text-muted);
-    }
-    .story-right .story-body p + p { margin-top: 20px; }
-    /* Highlighted stat inline */
-    .inline-stat {
-      display: inline-block;
-      background: rgba(199,90,44,0.12);
-      border: 1px solid rgba(199,90,44,0.25);
-      border-radius: 4px;
-      padding: 2px 8px;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 0.95rem;
-      color: var(--accent-light);
-      letter-spacing: 0.04em;
-    }
-
-    /* ── SPONSORS ── */
-    .sponsors-section {
-      background: var(--bg);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 40px 0;
-      overflow: hidden;
-    }
-    .sponsors-label {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.68rem;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      font-weight: 600;
-      text-align: center;
-      margin-bottom: 24px;
-    }
-    .ticker-wrap {
-      overflow: hidden;
-      mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
-      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
-    }
-    .ticker-track {
-      display: flex;
-      align-items: center;
-      width: max-content;
-      animation: ticker-scroll 28s linear infinite;
-    }
-    .ticker-track:hover { animation-play-state: paused; }
-    @keyframes ticker-scroll {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
-    .ticker-item {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0 36px;
-      flex-shrink: 0;
-    }
-    .sponsor-chip {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 9px 22px;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 0.95rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: rgba(245,240,235,0.3);
-      white-space: nowrap;
-      transition: border-color 0.2s, color 0.2s;
-    }
-    .ticker-item:hover .sponsor-chip { border-color: var(--accent); color: var(--text); }
-    .ticker-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--accent); opacity: 0.3; flex-shrink: 0; }
-
-    /* ── PARTNERS ── */
-    .partners-section {
-      background: var(--bg-mid);
-      padding: 72px 24px;
-    }
-    .partners-inner { max-width: 960px; margin: 0 auto; }
-    .partners-header {
-      margin-bottom: 32px;
-      padding-bottom: 24px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-    .partners-header h2 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 800;
-      font-size: clamp(2rem, 5vw, 3rem);
-      text-transform: uppercase;
-      line-height: 0.95;
-      color: var(--text);
-    }
-    .partners-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-    @media (min-width: 540px) { .partners-grid { grid-template-columns: 1fr 1fr; } }
-    .partner-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 24px 20px;
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      align-items: center;
-      gap: 16px;
-      text-decoration: none;
-      transition: border-color 0.25s, background 0.25s;
-    }
-    .partner-card:hover { border-color: var(--accent); background: rgba(199,90,44,0.05); }
-    .partner-index {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 800;
-      font-size: 2rem;
-      color: rgba(245,240,235,0.08);
-      letter-spacing: -0.04em;
-      line-height: 1;
-      width: 40px;
-    }
-    .partner-info .partner-name {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      color: var(--text);
-      margin-bottom: 4px;
-    }
-    .partner-info .partner-desc {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      line-height: 1.55;
-    }
-    .partner-arrow {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.8rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      font-weight: 600;
-      color: var(--text-muted);
-      transition: color 0.2s;
-      white-space: nowrap;
-    }
-    .partner-card:hover .partner-arrow { color: var(--accent); }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--bg);
-      border-top: 1px solid var(--border);
-      padding: 28px 24px;
-      text-align: center;
-    }
-    footer p {
-      font-size: 0.76rem;
-      color: var(--text-muted);
-      line-height: 1.75;
-    }
-    footer a { color: var(--accent); text-decoration: none; }
-
-    /* ── MODAL (centered) ── */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(5,8,12,0.75);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      z-index: 200;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-    }
-    .modal-overlay.open { opacity: 1; pointer-events: all; }
-    .modal {
-      background: var(--modal-bg);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      width: 100%;
-      max-width: 460px;
-      max-height: 90svh;
-      overflow-y: auto;
-      padding-bottom: 32px;
-      transform: scale(0.93) translateY(20px);
-      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-      box-shadow: 0 40px 100px rgba(0,0,0,0.6);
-    }
-    .modal-overlay.open .modal { transform: scale(1) translateY(0); }
-    .modal-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 24px 24px 20px;
-      border-bottom: 1px solid var(--border);
-    }
-    .modal-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 800;
-      font-size: 1.5rem;
-      text-transform: uppercase;
-      letter-spacing: 0.02em;
-      color: var(--text);
-    }
-    .modal-close {
-      background: rgba(255,255,255,0.07);
-      border: none;
-      color: var(--text);
-      width: 34px; height: 34px;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .modal-close:hover { background: rgba(255,255,255,0.13); }
-    .modal-body { padding: 24px; }
-    .modal-step-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      font-weight: 500;
-      margin-bottom: 16px;
-    }
-    .amount-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 14px;
-    }
-    .amount-btn {
-      background: rgba(255,255,255,0.04);
-      border: 1.5px solid rgba(255,255,255,0.08);
-      border-radius: 10px;
-      padding: 18px 12px;
-      text-align: center;
-      cursor: pointer;
-      color: var(--text);
-      transition: border-color 0.2s, background 0.2s;
-    }
-    .amount-btn:hover { border-color: var(--accent); background: rgba(199,90,44,0.08); }
-    .amount-btn.selected { border-color: var(--accent); background: rgba(199,90,44,0.14); }
-    .amount-value {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 800;
-      font-size: 1.9rem;
-      letter-spacing: -0.01em;
-      display: block;
-    }
-    .amount-label {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-top: 2px;
-      display: block;
-    }
-    .amount-btn.selected .amount-value { color: var(--accent-light); }
-    .custom-field-wrap { position: relative; margin-bottom: 24px; }
-    .custom-field-prefix {
-      position: absolute; left: 16px; top: 50%; transform: translateY(-50%);
-      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
-      font-size: 1.2rem; color: var(--text-muted); pointer-events: none;
-    }
-    .custom-field {
-      width: 100%;
-      background: rgba(255,255,255,0.04);
-      border: 1.5px solid rgba(255,255,255,0.08);
-      border-radius: 10px;
-      padding: 16px 16px 16px 32px;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700; font-size: 1.2rem;
-      color: var(--text); outline: none;
-      transition: border-color 0.2s;
-    }
-    .custom-field::placeholder { color: rgba(245,240,235,0.22); }
-    .custom-field:focus { border-color: var(--accent); background: rgba(199,90,44,0.07); }
-    .impact-hint {
-      background: rgba(199,90,44,0.09);
-      border-left: 3px solid var(--accent);
-      border-radius: 0 8px 8px 0;
-      padding: 12px 16px; margin-bottom: 24px;
-      font-size: 0.88rem; color: rgba(245,240,235,0.78); line-height: 1.55;
-    }
-    .impact-hint strong { color: var(--accent-light); }
-    .confirm-btn {
-      display: block; width: 100%;
-      background: var(--accent); color: #fff;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 800; font-size: 1.25rem;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      border: none; border-radius: 10px; padding: 20px;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-    }
-    .confirm-btn:hover { background: var(--accent-light); box-shadow: 0 8px 28px rgba(199,90,44,0.3); }
-    .confirm-btn:active { transform: scale(0.98); }
-    .confirm-btn:disabled {
-      background: rgba(255,255,255,0.07);
-      color: var(--text-muted); cursor: not-allowed;
-      box-shadow: none;
-    }
-    .modal-secure-note { text-align: center; font-size: 0.7rem; color: var(--text-muted); margin-top: 14px; }
-    .modal::-webkit-scrollbar { width: 4px; }
-    .modal::-webkit-scrollbar-track { background: transparent; }
-    .modal::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 99px; }
-
-    @media (prefers-reduced-motion: reduce) {
-      .milestone-fill, .modal, .modal-overlay { transition: none; }
-      .ticker-track { animation: none; }
-    }
-  </style>
-</head>
-<body>
-
-<!-- NAV -->
-<nav id="nav">
-  <div class="nav-inner">
-    <a class="nav-logo" href="#">Big<span>Brain</span> Run</a>
-    <button class="nav-cta" onclick="openModal()">Donate Now</button>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-inner">
-    <p class="hero-eyebrow">Sam's Big Brain Run &nbsp;·&nbsp; 2025</p>
-
-    <p class="big-number-label">Raised so far</p>
-    <span class="big-number" id="raised-display">$0</span>
-    <p class="big-number-sub">toward a $5,000 goal for neurological research</p>
-
-    <!-- Milestone progress -->
-    <div class="milestone-wrap">
-      <div class="milestone-track">
-        <div class="milestone-fill" id="progress-fill"></div>
-        <div class="milestone-ticks" id="milestone-ticks"></div>
-      </div>
-      <div class="milestone-labels">
-        <span class="milestone-lbl reached">$0</span>
-        <span class="milestone-lbl" id="ml-1000">$1K</span>
-        <span class="milestone-lbl" id="ml-2000">$2K</span>
-        <span class="milestone-lbl" id="ml-3000">$3K</span>
-        <span class="milestone-lbl" id="ml-4000">$4K</span>
-        <span class="milestone-lbl">$5K</span>
-      </div>
-    </div>
-
-    <!-- Data row -->
-    <div class="data-row">
-      <div class="data-cell">
-        <span class="data-cell-value amber" id="pct-display">0%</span>
-        <span class="data-cell-label">of goal</span>
-      </div>
-      <div class="data-cell">
-        <span class="data-cell-value">143</span>
-        <span class="data-cell-label">donors</span>
-      </div>
-      <div class="data-cell">
-        <span class="data-cell-value">42 km</span>
-        <span class="data-cell-label">run so far</span>
-      </div>
-      <div class="data-cell">
-        <span class="data-cell-value">21</span>
-        <span class="data-cell-label">days left</span>
-      </div>
-    </div>
-
-    <button class="hero-cta" onclick="openModal()">✦ Make a Donation</button>
-
-    <!-- Ghost headline at bottom -->
-    <div class="hero-title-row">
-      <div class="hero-tag">Run for<br>the <em>minds</em><br>that matter.</div>
-    </div>
-  </div>
-</section>
-
-<!-- STORY -->
-<section class="story-section">
-  <div class="story-inner">
-    <div class="story-left">
-      <p class="section-label">The Story</p>
-      <h2>Why Sam<br>Runs</h2>
-      <div class="story-number">100%</div>
-    </div>
-    <div class="story-right">
-      <div class="story-body">
-        <p>
-          Sam has always believed that movement can change things — not just bodies, but minds, communities, and futures. That belief became personal when someone close to him was diagnosed with a neurological condition that turned their world upside down overnight.
-        </p>
-        <p>
-          The Big Brain Run is Sam's way of turning that grief into action. <span class="inline-stat">100% of donations</span> go directly toward the Big Brain Foundation — supporting research, awareness, and the families who need it most.
-        </p>
-        <p>
-          No donation is too small. Whether you give $5 or $500, you're putting one more foot in front of the other alongside Sam. And together, we cover more ground than any of us could alone.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SPONSORS -->
-<section class="sponsors-section">
-  <p class="sponsors-label">Proudly supported by</p>
-  <div class="ticker-wrap">
-    <div class="ticker-track">
-      <div class="ticker-item"><span class="sponsor-chip">Your Logo Here</span></div>
-      <div class="ticker-item"><div class="ticker-dot"></div></div>
-      <div class="ticker-item"><span class="sponsor-chip">Sponsor Co.</span></div>
-      <div class="ticker-item"><div class="ticker-dot"></div></div>
-      <div class="ticker-item"><span class="sponsor-chip">Partner Ltd</span></div>
-      <div class="ticker-item"><div class="ticker-dot"></div></div>
-      <div class="ticker-item"><span class="sponsor-chip">Brand Name</span></div>
-      <div class="ticker-item"><div class="ticker-dot"></div></div>
-      <div class="ticker-item"><span class="sponsor-chip">Supporter Inc</span></div>
-      <div class="ticker-item"><div class="ticker-dot"></div></div>
-      <div class="ticker-item"><span class="sponsor-chip">Company NZ</span></div>
-      <div class="ticker-item"><div class="ticker-dot"></div></div>
-      <div class="ticker-item"><span class="sponsor-chip">Your Logo Here</span></div>
-      <div class="ticker-item"><div class="ticker-dot"></div></div>
-      <div class="ticker-item"><span class="sponsor-chip">Sponsor Co.</span></div>
-      <div class="ticker-item"><div class="ticker-dot"></div></div>
-      <div class="ticker-item"><span class="sponsor-chip">Partner Ltd</span></div>
-      <div class="ticker-item"><div class="ticker-dot"></div></div>
-      <div class="ticker-item"><span class="sponsor-chip">Brand Name</span></div>
-      <div class="ticker-item"><div class="ticker-dot"></div></div>
-      <div class="ticker-item"><span class="sponsor-chip">Supporter Inc</span></div>
-      <div class="ticker-item"><div class="ticker-dot"></div></div>
-      <div class="ticker-item"><span class="sponsor-chip">Company NZ</span></div>
-      <div class="ticker-item"><div class="ticker-dot"></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- PARTNERS -->
-<section class="partners-section">
-  <div class="partners-inner">
-    <div class="partners-header">
-      <div>
-        <p class="section-label">Charity Partners</p>
-        <h2>Together We're Stronger</h2>
-      </div>
-    </div>
-    <div class="partners-grid">
-      <a class="partner-card" href="https://www.braintumoursupport.org.nz" target="_blank" rel="noopener">
-        <span class="partner-index">01</span>
-        <div class="partner-info">
-          <p class="partner-name">Brain Tumour Support NZ</p>
-          <p class="partner-desc">Informing, supporting, and advocating for brain tumour patients and their whānau across New Zealand.</p>
-        </div>
-        <span class="partner-arrow">Visit ↗</span>
-      </a>
-      <a class="partner-card" href="https://www.nanos.org.nz" target="_blank" rel="noopener">
-        <span class="partner-index">02</span>
-        <div class="partner-info">
-          <p class="partner-name">NANOS</p>
-          <p class="partner-desc">The New Zealand Association of Neurologists — advancing neurology practice and patient care nationwide.</p>
-        </div>
-        <span class="partner-arrow">Visit ↗</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <p>
-    Powered by <a href="#">Raisley</a> · Funds managed by the Big Brain Foundation<br>
-    Questions? <a href="mailto:hello@bigbrainfoundation.org">hello@bigbrainfoundation.org</a>
-  </p>
-</footer>
-
-<!-- MODAL -->
-<div class="modal-overlay" id="modal-overlay" onclick="handleOverlayClick(event)">
-  <div class="modal" id="modal">
-    <div class="modal-header">
-      <span class="modal-title">Choose an amount</span>
-      <button class="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
-    </div>
-    <div class="modal-body">
-      <p class="modal-step-label">Select or enter your donation</p>
-      <div class="amount-grid">
-        <button class="amount-btn" onclick="selectAmount(5, this)">
-          <span class="amount-value">$5</span><span class="amount-label">Supporter</span>
-        </button>
-        <button class="amount-btn" onclick="selectAmount(15, this)">
-          <span class="amount-value">$15</span><span class="amount-label">Contributor</span>
-        </button>
-        <button class="amount-btn" onclick="selectAmount(30, this)">
-          <span class="amount-value">$30</span><span class="amount-label">Champion</span>
-        </button>
-        <button class="amount-btn" onclick="selectAmount(50, this)">
-          <span class="amount-value">$50</span><span class="amount-label">Hero</span>
-        </button>
-      </div>
-      <div class="custom-field-wrap">
-        <span class="custom-field-prefix">$</span>
-        <input class="custom-field" id="custom-input" type="number" min="1" placeholder="Custom amount" oninput="handleCustomInput(this)" />
-      </div>
-      <div class="impact-hint" id="impact-hint">Select an amount above to see the difference your donation makes.</div>
-      <button class="confirm-btn" id="confirm-btn" disabled onclick="handleDonate()">Donate</button>
-      <p class="modal-secure-note">🔒 Secure payment via Raisley</p>
-    </div>
-  </div>
-</div>
-
-<script>
-  const RAISLEY_RAISED = 2175;
-  const RAISLEY_GOAL   = 5000;
-  const MILESTONES     = [1000, 2000, 3000, 4000]; // dollar milestones
-
-  function animateCounter(el, target, duration) {
-    const start = performance.now();
-    const fmt = n => '$' + Math.round(n).toLocaleString('en-NZ');
-    function step(now) {
-      const p = Math.min((now - start) / duration, 1);
-      el.textContent = fmt((1 - Math.pow(1 - p, 3)) * target);
-      if (p < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-
-  window.addEventListener('DOMContentLoaded', () => {
-    const pct = Math.min((RAISLEY_RAISED / RAISLEY_GOAL) * 100, 100);
-
-    // Build milestone ticks
-    const ticksEl = document.getElementById('milestone-ticks');
-    MILESTONES.forEach(m => {
-      const tick = document.createElement('div');
-      tick.className = 'milestone-tick' + (RAISLEY_RAISED >= m ? ' passed' : '');
-      tick.style.left = ((m / RAISLEY_GOAL) * 100) + '%';
-      ticksEl.appendChild(tick);
-    });
-
-    // Mark reached milestone labels
-    MILESTONES.forEach(m => {
-      if (RAISLEY_RAISED >= m) {
-        const id = 'ml-' + m;
-        const el = document.getElementById(id);
-        if (el) el.classList.add('reached');
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
       }
-    });
 
-    setTimeout(() => {
-      document.getElementById('progress-fill').style.width = pct + '%';
-      animateCounter(document.getElementById('raised-display'), RAISLEY_RAISED, 1400);
-      document.getElementById('pct-display').textContent = Math.round(pct) + '%';
-    }, 300);
-  });
+      :root {
+        --bg: #0d1117;
+        --bg-mid: #141c24;
+        --bg-card: #161f28;
+        --text: #f5f0eb;
+        --text-muted: #7a8a96;
+        --accent: #c75a2c;
+        --accent-light: #e0733e;
+        --amber: #e8b84d;
+        --border: rgba(255, 255, 255, 0.07);
+        --modal-bg: #111820;
+      }
 
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 60);
-  }, { passive: true });
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
 
-  let selectedAmount = null;
+      /* ── NAV ── */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        padding: 18px 24px;
+        transition:
+          background 0.3s,
+          border-color 0.3s,
+          padding 0.3s;
+        border-bottom: 1px solid transparent;
+      }
+      nav.scrolled {
+        background: rgba(13, 17, 23, 0.92);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-bottom-color: var(--border);
+        padding: 12px 24px;
+      }
+      .nav-inner {
+        max-width: 960px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .nav-logo {
+        font-family: "Barlow Condensed", sans-serif;
+        font-weight: 800;
+        font-size: 1.15rem;
+        letter-spacing: 0.04em;
+        color: var(--text);
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+      .nav-logo span {
+        color: var(--accent);
+      }
+      .nav-cta {
+        background: var(--accent);
+        color: #fff;
+        font-family: "Barlow Condensed", sans-serif;
+        font-weight: 700;
+        font-size: 0.9rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        border: none;
+        border-radius: 4px;
+        padding: 8px 20px;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      .nav-cta:hover {
+        background: var(--accent-light);
+      }
 
-  function openModal() {
-    document.getElementById('modal-overlay').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeModal() {
-    document.getElementById('modal-overlay').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  function handleOverlayClick(e) {
-    if (e.target === document.getElementById('modal-overlay')) closeModal();
-  }
+      /* ── HERO ── */
+      .hero {
+        min-height: 100svh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 100px 24px 60px;
+        position: relative;
+        overflow: hidden;
+      }
+      /* Grid-dot background */
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(circle, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+        background-size: 32px 32px;
+        pointer-events: none;
+      }
+      /* Radial glow behind number */
+      .hero::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -55%);
+        width: 600px;
+        height: 400px;
+        background: radial-gradient(ellipse at center, rgba(199, 90, 44, 0.12) 0%, transparent 70%);
+        pointer-events: none;
+      }
+      .hero-inner {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: 800px;
+      }
+      .hero-eyebrow {
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 0.75rem;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        font-weight: 600;
+        margin-bottom: 24px;
+      }
+      /* THE BIG NUMBER */
+      .big-number-label {
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 0.7rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--accent);
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+      .big-number {
+        font-family: "Barlow Condensed", sans-serif;
+        font-weight: 800;
+        font-size: clamp(5rem, 22vw, 14rem);
+        line-height: 0.88;
+        letter-spacing: -0.03em;
+        color: var(--text);
+        display: block;
+        margin-bottom: 8px;
+      }
+      .big-number-sub {
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: clamp(0.85rem, 2vw, 1rem);
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        font-weight: 600;
+        margin-bottom: 40px;
+      }
 
-  const impactMessages = {
-    5:  '<strong>$5</strong> helps cover awareness materials shared with local schools.',
-    15: '<strong>$15</strong> contributes to funding a community support session.',
-    30: '<strong>$30</strong> funds a neurological research resource for a week.',
-    50: '<strong>$50</strong> sponsors a family attending a Big Brain Foundation event.'
-  };
+      /* Milestone progress bar */
+      .milestone-wrap {
+        margin-bottom: 16px;
+        position: relative;
+      }
+      .milestone-track {
+        height: 6px;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 99px;
+        overflow: visible;
+        position: relative;
+      }
+      .milestone-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--accent), var(--accent-light));
+        border-radius: 99px;
+        width: 0%;
+        transition: width 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+        position: relative;
+      }
+      /* Milestone tick marks */
+      .milestone-ticks {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+      }
+      .milestone-tick {
+        position: absolute;
+        top: -3px;
+        width: 2px;
+        height: 12px;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 1px;
+        transform: translateX(-50%);
+      }
+      .milestone-tick.passed {
+        background: var(--accent);
+        opacity: 0.7;
+      }
+      .milestone-labels {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 12px;
+      }
+      .milestone-lbl {
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 0.68rem;
+        letter-spacing: 0.08em;
+        color: var(--text-muted);
+        font-weight: 600;
+      }
+      .milestone-lbl.reached {
+        color: var(--accent);
+      }
 
-  function selectAmount(amt, el) {
-    document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('selected'));
-    el.classList.add('selected');
-    document.getElementById('custom-input').value = '';
-    selectedAmount = amt;
-    document.getElementById('impact-hint').innerHTML = impactMessages[amt] || `<strong>$${amt}</strong> — every dollar counts.`;
-    updateConfirmBtn(amt);
-  }
+      /* Data row */
+      .data-row {
+        display: flex;
+        justify-content: center;
+        gap: 0;
+        margin: 32px 0;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        overflow: hidden;
+        background: var(--bg-card);
+      }
+      .data-cell {
+        flex: 1;
+        padding: 16px 12px;
+        border-right: 1px solid var(--border);
+        text-align: center;
+      }
+      .data-cell:last-child {
+        border-right: none;
+      }
+      .data-cell-value {
+        font-family: "Barlow Condensed", sans-serif;
+        font-weight: 800;
+        font-size: 1.6rem;
+        letter-spacing: -0.01em;
+        display: block;
+        color: var(--text);
+        line-height: 1;
+      }
+      .data-cell-value.amber {
+        color: var(--amber);
+      }
+      .data-cell-label {
+        font-size: 0.62rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        font-weight: 500;
+        display: block;
+        margin-top: 5px;
+      }
 
-  function handleCustomInput(input) {
-    document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('selected'));
-    const val = parseFloat(input.value);
-    if (val > 0) {
-      selectedAmount = val;
-      document.getElementById('impact-hint').innerHTML = `<strong>$${val.toFixed(2)}</strong> — every dollar counts. Thank you.`;
-      updateConfirmBtn(val);
-    } else {
-      selectedAmount = null;
-      document.getElementById('impact-hint').textContent = 'Enter an amount to donate.';
-      updateConfirmBtn(null);
-    }
-  }
+      .hero-cta {
+        display: inline-block;
+        background: var(--accent);
+        color: #fff;
+        font-family: "Barlow Condensed", sans-serif;
+        font-weight: 800;
+        font-size: 1.15rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        border: none;
+        border-radius: 6px;
+        padding: 17px 40px;
+        cursor: pointer;
+        transition:
+          background 0.2s,
+          transform 0.15s,
+          box-shadow 0.2s;
+        box-shadow: 0 0 0 rgba(199, 90, 44, 0);
+      }
+      .hero-cta:hover {
+        background: var(--accent-light);
+        box-shadow: 0 8px 32px rgba(199, 90, 44, 0.35);
+      }
+      .hero-cta:active {
+        transform: scale(0.98);
+      }
 
-  function updateConfirmBtn(amt) {
-    const btn = document.getElementById('confirm-btn');
-    if (amt && amt > 0) {
-      btn.disabled = false;
-      btn.textContent = `Donate $${Number.isInteger(amt) ? amt : amt.toFixed(2)}`;
-    } else {
-      btn.disabled = true;
-      btn.textContent = 'Donate';
-    }
-  }
+      /* Campaign title below CTA */
+      .hero-title-row {
+        margin-top: 48px;
+        padding-top: 40px;
+        border-top: 1px solid var(--border);
+      }
+      .hero-tag {
+        font-family: "Barlow Condensed", sans-serif;
+        font-weight: 800;
+        font-size: clamp(2.5rem, 8vw, 5.5rem);
+        line-height: 0.9;
+        text-transform: uppercase;
+        letter-spacing: -0.02em;
+        color: rgba(245, 240, 235, 0.12);
+      }
+      .hero-tag em {
+        font-style: normal;
+        -webkit-text-stroke: 1px rgba(199, 90, 44, 0.4);
+        color: transparent;
+      }
 
-  function handleDonate() {
-    if (!selectedAmount) return;
-    alert(`Redirecting to Raisley checkout for $${selectedAmount}…`);
-  }
+      /* ── STORY ── */
+      .story-section {
+        background: var(--bg-mid);
+        padding: 72px 24px;
+        border-top: 1px solid var(--border);
+      }
+      .story-inner {
+        max-width: 960px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      @media (min-width: 680px) {
+        .story-inner {
+          grid-template-columns: 280px 1fr;
+          gap: 60px;
+          align-items: start;
+        }
+      }
+      .section-label {
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 0.72rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--accent);
+        font-weight: 600;
+        margin-bottom: 12px;
+      }
+      .story-left h2 {
+        font-family: "Barlow Condensed", sans-serif;
+        font-weight: 800;
+        font-size: clamp(2.5rem, 6vw, 3.8rem);
+        text-transform: uppercase;
+        line-height: 0.92;
+        color: var(--text);
+        margin-bottom: 28px;
+      }
+      /* Number accent in story */
+      .story-number {
+        font-family: "Barlow Condensed", sans-serif;
+        font-weight: 800;
+        font-size: 5rem;
+        color: rgba(199, 90, 44, 0.15);
+        line-height: 1;
+        letter-spacing: -0.04em;
+      }
+      .story-right .story-body {
+        font-size: 0.95rem;
+        line-height: 1.85;
+        color: var(--text-muted);
+      }
+      .story-right .story-body p + p {
+        margin-top: 20px;
+      }
+      /* Highlighted stat inline */
+      .inline-stat {
+        display: inline-block;
+        background: rgba(199, 90, 44, 0.12);
+        border: 1px solid rgba(199, 90, 44, 0.25);
+        border-radius: 4px;
+        padding: 2px 8px;
+        font-family: "Barlow Condensed", sans-serif;
+        font-weight: 700;
+        font-size: 0.95rem;
+        color: var(--accent-light);
+        letter-spacing: 0.04em;
+      }
 
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-</script>
-</body>
+      /* ── SPONSORS ── */
+      .sponsors-section {
+        background: var(--bg);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        padding: 40px 0;
+        overflow: hidden;
+      }
+      .sponsors-label {
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 0.68rem;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 24px;
+      }
+      .ticker-wrap {
+        overflow: hidden;
+        mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+      }
+      .ticker-track {
+        display: flex;
+        align-items: center;
+        width: max-content;
+        animation: ticker-scroll 28s linear infinite;
+      }
+      .ticker-track:hover {
+        animation-play-state: paused;
+      }
+      @keyframes ticker-scroll {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+      .ticker-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 36px;
+        flex-shrink: 0;
+      }
+      .sponsor-chip {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 9px 22px;
+        font-family: "Barlow Condensed", sans-serif;
+        font-weight: 700;
+        font-size: 0.95rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: rgba(245, 240, 235, 0.3);
+        white-space: nowrap;
+        transition:
+          border-color 0.2s,
+          color 0.2s;
+      }
+      .ticker-item:hover .sponsor-chip {
+        border-color: var(--accent);
+        color: var(--text);
+      }
+      .ticker-dot {
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: var(--accent);
+        opacity: 0.3;
+        flex-shrink: 0;
+      }
+
+      /* ── PARTNERS ── */
+      .partners-section {
+        background: var(--bg-mid);
+        padding: 72px 24px;
+      }
+      .partners-inner {
+        max-width: 960px;
+        margin: 0 auto;
+      }
+      .partners-header {
+        margin-bottom: 32px;
+        padding-bottom: 24px;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+      .partners-header h2 {
+        font-family: "Barlow Condensed", sans-serif;
+        font-weight: 800;
+        font-size: clamp(2rem, 5vw, 3rem);
+        text-transform: uppercase;
+        line-height: 0.95;
+        color: var(--text);
+      }
+      .partners-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      @media (min-width: 540px) {
+        .partners-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      .partner-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 24px 20px;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 16px;
+        text-decoration: none;
+        transition:
+          border-color 0.25s,
+          background 0.25s;
+      }
+      .partner-card:hover {
+        border-color: var(--accent);
+        background: rgba(199, 90, 44, 0.05);
+      }
+      .partner-index {
+        font-family: "Barlow Condensed", sans-serif;
+        font-weight: 800;
+        font-size: 2rem;
+        color: rgba(245, 240, 235, 0.08);
+        letter-spacing: -0.04em;
+        line-height: 1;
+        width: 40px;
+      }
+      .partner-info .partner-name {
+        font-family: "Barlow Condensed", sans-serif;
+        font-weight: 700;
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: var(--text);
+        margin-bottom: 4px;
+      }
+      .partner-info .partner-desc {
+        font-size: 0.78rem;
+        color: var(--text-muted);
+        line-height: 1.55;
+      }
+      .partner-arrow {
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 0.8rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: var(--text-muted);
+        transition: color 0.2s;
+        white-space: nowrap;
+      }
+      .partner-card:hover .partner-arrow {
+        color: var(--accent);
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        background: var(--bg);
+        border-top: 1px solid var(--border);
+        padding: 28px 24px;
+        text-align: center;
+      }
+      footer p {
+        font-size: 0.76rem;
+        color: var(--text-muted);
+        line-height: 1.75;
+      }
+      footer a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      /* ── MODAL (centered) ── */
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(5, 8, 12, 0.75);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        z-index: 200;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+      .modal-overlay.open {
+        opacity: 1;
+        pointer-events: all;
+      }
+      .modal {
+        background: var(--modal-bg);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        width: 100%;
+        max-width: 460px;
+        max-height: 90svh;
+        overflow-y: auto;
+        padding-bottom: 32px;
+        transform: scale(0.93) translateY(20px);
+        transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+      }
+      .modal-overlay.open .modal {
+        transform: scale(1) translateY(0);
+      }
+      .modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 24px 24px 20px;
+        border-bottom: 1px solid var(--border);
+      }
+      .modal-title {
+        font-family: "Barlow Condensed", sans-serif;
+        font-weight: 800;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+        color: var(--text);
+      }
+      .modal-close {
+        background: rgba(255, 255, 255, 0.07);
+        border: none;
+        color: var(--text);
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      .modal-close:hover {
+        background: rgba(255, 255, 255, 0.13);
+      }
+      .modal-body {
+        padding: 24px;
+      }
+      .modal-step-label {
+        font-size: 0.7rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        font-weight: 500;
+        margin-bottom: 16px;
+      }
+      .amount-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-bottom: 14px;
+      }
+      .amount-btn {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1.5px solid rgba(255, 255, 255, 0.08);
+        border-radius: 10px;
+        padding: 18px 12px;
+        text-align: center;
+        cursor: pointer;
+        color: var(--text);
+        transition:
+          border-color 0.2s,
+          background 0.2s;
+      }
+      .amount-btn:hover {
+        border-color: var(--accent);
+        background: rgba(199, 90, 44, 0.08);
+      }
+      .amount-btn.selected {
+        border-color: var(--accent);
+        background: rgba(199, 90, 44, 0.14);
+      }
+      .amount-value {
+        font-family: "Barlow Condensed", sans-serif;
+        font-weight: 800;
+        font-size: 1.9rem;
+        letter-spacing: -0.01em;
+        display: block;
+      }
+      .amount-label {
+        font-size: 0.7rem;
+        color: var(--text-muted);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-top: 2px;
+        display: block;
+      }
+      .amount-btn.selected .amount-value {
+        color: var(--accent-light);
+      }
+      .custom-field-wrap {
+        position: relative;
+        margin-bottom: 24px;
+      }
+      .custom-field-prefix {
+        position: absolute;
+        left: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-family: "Barlow Condensed", sans-serif;
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: var(--text-muted);
+        pointer-events: none;
+      }
+      .custom-field {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1.5px solid rgba(255, 255, 255, 0.08);
+        border-radius: 10px;
+        padding: 16px 16px 16px 32px;
+        font-family: "Barlow Condensed", sans-serif;
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: var(--text);
+        outline: none;
+        transition: border-color 0.2s;
+      }
+      .custom-field::placeholder {
+        color: rgba(245, 240, 235, 0.22);
+      }
+      .custom-field:focus {
+        border-color: var(--accent);
+        background: rgba(199, 90, 44, 0.07);
+      }
+      .impact-hint {
+        background: rgba(199, 90, 44, 0.09);
+        border-left: 3px solid var(--accent);
+        border-radius: 0 8px 8px 0;
+        padding: 12px 16px;
+        margin-bottom: 24px;
+        font-size: 0.88rem;
+        color: rgba(245, 240, 235, 0.78);
+        line-height: 1.55;
+      }
+      .impact-hint strong {
+        color: var(--accent-light);
+      }
+      .confirm-btn {
+        display: block;
+        width: 100%;
+        background: var(--accent);
+        color: #fff;
+        font-family: "Barlow Condensed", sans-serif;
+        font-weight: 800;
+        font-size: 1.25rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        border: none;
+        border-radius: 10px;
+        padding: 20px;
+        cursor: pointer;
+        transition:
+          background 0.2s,
+          transform 0.15s,
+          box-shadow 0.2s;
+      }
+      .confirm-btn:hover {
+        background: var(--accent-light);
+        box-shadow: 0 8px 28px rgba(199, 90, 44, 0.3);
+      }
+      .confirm-btn:active {
+        transform: scale(0.98);
+      }
+      .confirm-btn:disabled {
+        background: rgba(255, 255, 255, 0.07);
+        color: var(--text-muted);
+        cursor: not-allowed;
+        box-shadow: none;
+      }
+      .modal-secure-note {
+        text-align: center;
+        font-size: 0.7rem;
+        color: var(--text-muted);
+        margin-top: 14px;
+      }
+      .modal::-webkit-scrollbar {
+        width: 4px;
+      }
+      .modal::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .modal::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 99px;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .milestone-fill,
+        .modal,
+        .modal-overlay {
+          transition: none;
+        }
+        .ticker-track {
+          animation: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav id="nav">
+      <div class="nav-inner">
+        <a class="nav-logo" href="#">Big<span>Brain</span> Run</a>
+        <button class="nav-cta" onclick="openModal()">Donate Now</button>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-inner">
+        <p class="hero-eyebrow">Sam's Big Brain Run &nbsp;·&nbsp; 2025</p>
+
+        <p class="big-number-label">Raised so far</p>
+        <span class="big-number" id="raised-display">$0</span>
+        <p class="big-number-sub">toward a $5,000 goal for neurological research</p>
+
+        <!-- Milestone progress -->
+        <div class="milestone-wrap">
+          <div class="milestone-track">
+            <div class="milestone-fill" id="progress-fill"></div>
+            <div class="milestone-ticks" id="milestone-ticks"></div>
+          </div>
+          <div class="milestone-labels">
+            <span class="milestone-lbl reached">$0</span>
+            <span class="milestone-lbl" id="ml-1000">$1K</span>
+            <span class="milestone-lbl" id="ml-2000">$2K</span>
+            <span class="milestone-lbl" id="ml-3000">$3K</span>
+            <span class="milestone-lbl" id="ml-4000">$4K</span>
+            <span class="milestone-lbl">$5K</span>
+          </div>
+        </div>
+
+        <!-- Data row -->
+        <div class="data-row">
+          <div class="data-cell">
+            <span class="data-cell-value amber" id="pct-display">0%</span>
+            <span class="data-cell-label">of goal</span>
+          </div>
+          <div class="data-cell">
+            <span class="data-cell-value">143</span>
+            <span class="data-cell-label">donors</span>
+          </div>
+          <div class="data-cell">
+            <span class="data-cell-value">42 km</span>
+            <span class="data-cell-label">run so far</span>
+          </div>
+          <div class="data-cell">
+            <span class="data-cell-value">21</span>
+            <span class="data-cell-label">days left</span>
+          </div>
+        </div>
+
+        <button class="hero-cta" onclick="openModal()">✦ Make a Donation</button>
+
+        <!-- Ghost headline at bottom -->
+        <div class="hero-title-row">
+          <div class="hero-tag">Run for<br />the <em>minds</em><br />that matter.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STORY -->
+    <section class="story-section">
+      <div class="story-inner">
+        <div class="story-left">
+          <p class="section-label">The Story</p>
+          <h2>Why Sam<br />Runs</h2>
+          <div class="story-number">100%</div>
+        </div>
+        <div class="story-right">
+          <div class="story-body">
+            <p>
+              Sam has always believed that movement can change things — not just bodies, but minds, communities, and
+              futures. That belief became personal when someone close to him was diagnosed with a neurological condition
+              that turned their world upside down overnight.
+            </p>
+            <p>
+              The Big Brain Run is Sam's way of turning that grief into action.
+              <span class="inline-stat">100% of donations</span> go directly toward the Big Brain Foundation —
+              supporting research, awareness, and the families who need it most.
+            </p>
+            <p>
+              No donation is too small. Whether you give $5 or $500, you're putting one more foot in front of the other
+              alongside Sam. And together, we cover more ground than any of us could alone.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPONSORS -->
+    <section class="sponsors-section">
+      <p class="sponsors-label">Proudly supported by</p>
+      <div class="ticker-wrap">
+        <div class="ticker-track">
+          <div class="ticker-item"><span class="sponsor-chip">Your Logo Here</span></div>
+          <div class="ticker-item"><div class="ticker-dot"></div></div>
+          <div class="ticker-item"><span class="sponsor-chip">Sponsor Co.</span></div>
+          <div class="ticker-item"><div class="ticker-dot"></div></div>
+          <div class="ticker-item"><span class="sponsor-chip">Partner Ltd</span></div>
+          <div class="ticker-item"><div class="ticker-dot"></div></div>
+          <div class="ticker-item"><span class="sponsor-chip">Brand Name</span></div>
+          <div class="ticker-item"><div class="ticker-dot"></div></div>
+          <div class="ticker-item"><span class="sponsor-chip">Supporter Inc</span></div>
+          <div class="ticker-item"><div class="ticker-dot"></div></div>
+          <div class="ticker-item"><span class="sponsor-chip">Company NZ</span></div>
+          <div class="ticker-item"><div class="ticker-dot"></div></div>
+          <div class="ticker-item"><span class="sponsor-chip">Your Logo Here</span></div>
+          <div class="ticker-item"><div class="ticker-dot"></div></div>
+          <div class="ticker-item"><span class="sponsor-chip">Sponsor Co.</span></div>
+          <div class="ticker-item"><div class="ticker-dot"></div></div>
+          <div class="ticker-item"><span class="sponsor-chip">Partner Ltd</span></div>
+          <div class="ticker-item"><div class="ticker-dot"></div></div>
+          <div class="ticker-item"><span class="sponsor-chip">Brand Name</span></div>
+          <div class="ticker-item"><div class="ticker-dot"></div></div>
+          <div class="ticker-item"><span class="sponsor-chip">Supporter Inc</span></div>
+          <div class="ticker-item"><div class="ticker-dot"></div></div>
+          <div class="ticker-item"><span class="sponsor-chip">Company NZ</span></div>
+          <div class="ticker-item"><div class="ticker-dot"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTNERS -->
+    <section class="partners-section">
+      <div class="partners-inner">
+        <div class="partners-header">
+          <div>
+            <p class="section-label">Charity Partners</p>
+            <h2>Together We're Stronger</h2>
+          </div>
+        </div>
+        <div class="partners-grid">
+          <a class="partner-card" href="https://www.braintumoursupport.org.nz" target="_blank" rel="noopener">
+            <span class="partner-index">01</span>
+            <div class="partner-info">
+              <p class="partner-name">Brain Tumour Support NZ</p>
+              <p class="partner-desc">
+                Informing, supporting, and advocating for brain tumour patients and their whānau across New Zealand.
+              </p>
+            </div>
+            <span class="partner-arrow">Visit ↗</span>
+          </a>
+          <a class="partner-card" href="https://www.nanos.org.nz" target="_blank" rel="noopener">
+            <span class="partner-index">02</span>
+            <div class="partner-info">
+              <p class="partner-name">NANOS</p>
+              <p class="partner-desc">
+                The New Zealand Association of Neurologists — advancing neurology practice and patient care nationwide.
+              </p>
+            </div>
+            <span class="partner-arrow">Visit ↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>
+        Powered by <a href="#">Raisley</a> · Funds managed by the Big Brain Foundation<br />
+        Questions? <a href="mailto:hello@bigbrainfoundation.org">hello@bigbrainfoundation.org</a>
+      </p>
+    </footer>
+
+    <!-- MODAL -->
+    <div class="modal-overlay" id="modal-overlay" onclick="handleOverlayClick(event)">
+      <div class="modal" id="modal">
+        <div class="modal-header">
+          <span class="modal-title">Choose an amount</span>
+          <button class="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
+        </div>
+        <div class="modal-body">
+          <p class="modal-step-label">Select or enter your donation</p>
+          <div class="amount-grid">
+            <button class="amount-btn" onclick="selectAmount(5, this)">
+              <span class="amount-value">$5</span><span class="amount-label">Supporter</span>
+            </button>
+            <button class="amount-btn" onclick="selectAmount(15, this)">
+              <span class="amount-value">$15</span><span class="amount-label">Contributor</span>
+            </button>
+            <button class="amount-btn" onclick="selectAmount(30, this)">
+              <span class="amount-value">$30</span><span class="amount-label">Champion</span>
+            </button>
+            <button class="amount-btn" onclick="selectAmount(50, this)">
+              <span class="amount-value">$50</span><span class="amount-label">Hero</span>
+            </button>
+          </div>
+          <div class="custom-field-wrap">
+            <span class="custom-field-prefix">$</span>
+            <input
+              class="custom-field"
+              id="custom-input"
+              type="number"
+              min="1"
+              placeholder="Custom amount"
+              oninput="handleCustomInput(this)"
+            />
+          </div>
+          <div class="impact-hint" id="impact-hint">
+            Select an amount above to see the difference your donation makes.
+          </div>
+          <button class="confirm-btn" id="confirm-btn" disabled onclick="handleDonate()">Donate</button>
+          <p class="modal-secure-note">🔒 Secure payment via Raisley</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const RAISLEY_RAISED = 2175;
+      const RAISLEY_GOAL = 5000;
+      const MILESTONES = [1000, 2000, 3000, 4000]; // dollar milestones
+
+      function animateCounter(el, target, duration) {
+        const start = performance.now();
+        const fmt = (n) => "$" + Math.round(n).toLocaleString("en-NZ");
+        function step(now) {
+          const p = Math.min((now - start) / duration, 1);
+          el.textContent = fmt((1 - Math.pow(1 - p, 3)) * target);
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+
+      window.addEventListener("DOMContentLoaded", () => {
+        const pct = Math.min((RAISLEY_RAISED / RAISLEY_GOAL) * 100, 100);
+
+        // Build milestone ticks
+        const ticksEl = document.getElementById("milestone-ticks");
+        MILESTONES.forEach((m) => {
+          const tick = document.createElement("div");
+          tick.className = "milestone-tick" + (RAISLEY_RAISED >= m ? " passed" : "");
+          tick.style.left = (m / RAISLEY_GOAL) * 100 + "%";
+          ticksEl.appendChild(tick);
+        });
+
+        // Mark reached milestone labels
+        MILESTONES.forEach((m) => {
+          if (RAISLEY_RAISED >= m) {
+            const id = "ml-" + m;
+            const el = document.getElementById(id);
+            if (el) el.classList.add("reached");
+          }
+        });
+
+        setTimeout(() => {
+          document.getElementById("progress-fill").style.width = pct + "%";
+          animateCounter(document.getElementById("raised-display"), RAISLEY_RAISED, 1400);
+          document.getElementById("pct-display").textContent = Math.round(pct) + "%";
+        }, 300);
+      });
+
+      const nav = document.getElementById("nav");
+      window.addEventListener(
+        "scroll",
+        () => {
+          nav.classList.toggle("scrolled", window.scrollY > 60);
+        },
+        { passive: true },
+      );
+
+      let selectedAmount = null;
+
+      function openModal() {
+        document.getElementById("modal-overlay").classList.add("open");
+        document.body.style.overflow = "hidden";
+      }
+      function closeModal() {
+        document.getElementById("modal-overlay").classList.remove("open");
+        document.body.style.overflow = "";
+      }
+      function handleOverlayClick(e) {
+        if (e.target === document.getElementById("modal-overlay")) closeModal();
+      }
+
+      const impactMessages = {
+        5: "<strong>$5</strong> helps cover awareness materials shared with local schools.",
+        15: "<strong>$15</strong> contributes to funding a community support session.",
+        30: "<strong>$30</strong> funds a neurological research resource for a week.",
+        50: "<strong>$50</strong> sponsors a family attending a Big Brain Foundation event.",
+      };
+
+      function selectAmount(amt, el) {
+        document.querySelectorAll(".amount-btn").forEach((b) => b.classList.remove("selected"));
+        el.classList.add("selected");
+        document.getElementById("custom-input").value = "";
+        selectedAmount = amt;
+        document.getElementById("impact-hint").innerHTML =
+          impactMessages[amt] || `<strong>$${amt}</strong> — every dollar counts.`;
+        updateConfirmBtn(amt);
+      }
+
+      function handleCustomInput(input) {
+        document.querySelectorAll(".amount-btn").forEach((b) => b.classList.remove("selected"));
+        const val = parseFloat(input.value);
+        if (val > 0) {
+          selectedAmount = val;
+          document.getElementById("impact-hint").innerHTML =
+            `<strong>$${val.toFixed(2)}</strong> — every dollar counts. Thank you.`;
+          updateConfirmBtn(val);
+        } else {
+          selectedAmount = null;
+          document.getElementById("impact-hint").textContent = "Enter an amount to donate.";
+          updateConfirmBtn(null);
+        }
+      }
+
+      function updateConfirmBtn(amt) {
+        const btn = document.getElementById("confirm-btn");
+        if (amt && amt > 0) {
+          btn.disabled = false;
+          btn.textContent = `Donate $${Number.isInteger(amt) ? amt : amt.toFixed(2)}`;
+        } else {
+          btn.disabled = true;
+          btn.textContent = "Donate";
+        }
+      }
+
+      function handleDonate() {
+        if (!selectedAmount) return;
+        alert(`Redirecting to Raisley checkout for $${selectedAmount}…`);
+      }
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeModal();
+      });
+    </script>
+  </body>
 </html>

@@ -1,12 +1,5 @@
 import type { IconType } from "react-icons";
-import {
-  FiCompass,
-  FiBookOpen,
-  FiHeart,
-  FiActivity,
-  FiGift,
-  FiStar,
-} from "react-icons/fi";
+import { FiCompass, FiBookOpen, FiHeart, FiActivity, FiGift, FiStar } from "react-icons/fi";
 import { BB2_CHOICES } from "../data/content";
 
 type ChoiceIcon = (typeof BB2_CHOICES)[number]["icon"];
@@ -52,8 +45,7 @@ export function ChooseSection({ onDonate }: ChooseSectionProps) {
           <FiHeart aria-hidden="true" /> Today, you can choose to donate.
         </button>
         <p className="bb2-choose-banner-text">
-          Together, we&apos;re building the future of brain cancer research in New
-          Zealand.
+          Together, we&apos;re building the future of brain cancer research in New Zealand.
         </p>
       </div>
     </section>

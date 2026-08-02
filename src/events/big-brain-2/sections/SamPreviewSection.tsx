@@ -9,8 +9,8 @@ export function SamPreviewSection() {
           loading="lazy"
         />
         <p className="bb2-sam-preview-copy">
-          By collecting better data, researchers can better understand brain cancer, improve treatment, and
-          create more hope for the future patients and their families.
+          By collecting better data, researchers can better understand brain cancer, improve treatment, and create more
+          hope for the future patients and their families.
         </p>
       </div>
     </section>

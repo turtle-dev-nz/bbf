@@ -32,7 +32,7 @@
   --bb2-font-body: "Inter", system-ui, sans-serif;
 
   font-family: var(--bb2-font-body);
-  background: var(--bb2-bg);
+  background: transparent;
   color: var(--bb2-text);
   min-height: 100svh;
   overflow-x: hidden;
@@ -578,7 +578,7 @@
 
 /* ── STORY ── */
 .bb2-story-section {
-  background: var(--bb2-bg);
+  background: transparent;
   padding: 80px 24px;
   border-top: 1px solid var(--bb2-border);
 }
@@ -748,7 +748,7 @@
 }
 
 .bb2-sam-preview-section {
-  background: var(--bb2-bg);
+  background: transparent;
   border-top: 1px solid var(--bb2-border);
   padding: 44px 0 24px;
 }
@@ -779,7 +779,7 @@
 
 /* ── PARTNERS ── */
 .bb2-partners-section {
-  background: var(--bb2-bg);
+  background: transparent;
   padding: 80px 24px;
 }
 .bb2-partners-inner {
@@ -1361,7 +1361,9 @@
   border-radius: 6px;
   padding: 16px 30px;
   cursor: pointer;
-  transition: background 0.2s, transform 0.15s;
+  transition:
+    background 0.2s,
+    transform 0.15s;
 }
 .bb2-story-modal-cta:hover {
   background: var(--bb2-accent-lt);
@@ -1481,7 +1483,7 @@
 
 /* ── FOLLOW JOURNEY SECTION ── */
 .bb2-follow-section {
-  background: var(--bb2-bg);
+  background: transparent;
   padding: 48px 24px;
   border-top: 1px solid var(--bb2-border);
 }

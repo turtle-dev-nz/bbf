@@ -10,7 +10,7 @@ const Hero = () => {
             Connecting people, research and communities to <span>improve brain health across New Zealand.</span>
           </h1>
           <div className="home-actions">
-            <Link className="home-button home-button--primary" to={ROUTES.samBigBrainRun}>
+            <Link className="home-button home-button--primary" to={ROUTES.bigBrain2}>
               View Sam&apos;s Big Brain Run
             </Link>
             <a className="home-button home-button--secondary" href="#campaigns">

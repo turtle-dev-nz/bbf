@@ -30,20 +30,10 @@ export function StoryModal({ isOpen, onClose, onDonate }: StoryModalProps) {
   if (!isOpen) return null;
 
   return (
-    <div
-      className="bb2-story-modal-overlay"
-      role="dialog"
-      aria-modal="true"
-      aria-label="Sam's Story"
-    >
+    <div className="bb2-story-modal-overlay" role="dialog" aria-modal="true" aria-label="Sam's Story">
       <div className="bb2-story-modal-bar">
         <span className="bb2-story-modal-label">Sam&apos;s Story</span>
-        <button
-          className="bb2-story-modal-close"
-          onClick={onClose}
-          type="button"
-          aria-label="Close story"
-        >
+        <button className="bb2-story-modal-close" onClick={onClose} type="button" aria-label="Close story">
           <FiX size={16} />
           <span>Close</span>
         </button>
@@ -52,7 +42,8 @@ export function StoryModal({ isOpen, onClose, onDonate }: StoryModalProps) {
       <div className="bb2-story-modal-body">
         <p className="bb2-section-label">The Story</p>
         <h2 className="bb2-story-modal-title">
-          Why I<br />Run
+          Why I<br />
+          Run
         </h2>
         <blockquote className="bb2-story-modal-quote">{BB2_STORY.pullQuote}</blockquote>
 
@@ -63,15 +54,8 @@ export function StoryModal({ isOpen, onClose, onDonate }: StoryModalProps) {
         </div>
 
         <div className="bb2-story-modal-georgie">
-          <p>
-            This run is inspired by Sam&apos;s cousin Georgie, who was diagnosed with
-            Glioblastoma in 2023.
-          </p>
-          <Link
-            className="bb2-story-modal-georgie-link"
-            to={ROUTES.georgiesStory}
-            onClick={onClose}
-          >
+          <p>This run is inspired by Sam&apos;s cousin Georgie, who was diagnosed with Glioblastoma in 2023.</p>
+          <Link className="bb2-story-modal-georgie-link" to={ROUTES.georgiesStory} onClick={onClose}>
             Read Georgie&apos;s Story <FiArrowRight />
           </Link>
         </div>

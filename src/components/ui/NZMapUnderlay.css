@@ -1,0 +1,61 @@
+/* ============================================================
+   NZ Map Underlay
+   Fixed behind all page content. Uses mix-blend-mode so the
+   map shows through opaque section backgrounds.
+   The trail canvas sits in the same layer (z-index 0) and
+   is rendered above the map image but still behind content.
+   pointer-events: none on both layers so nothing is blocked.
+   ============================================================ */
+
+.nzmap-underlay {
+  position: fixed;
+  inset: 0;
+  /* Sit behind content while remaining visible through transparent layers. */
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.nzmap-underlay__map {
+  position: absolute;
+  /* Swap viewport dimensions before rotation so portrait screens map correctly. */
+  width: 100vh;
+  height: 120vw;
+  left: 60%;
+  top: 50%;
+  /*
+   * The source image has NZ rotated 90° clockwise from correct.
+   * Rotating -90° (counter-clockwise) corrects the orientation.
+   *
+   * CSS rotation happens after layout — the element still takes up
+   * its original box. We use contain so the image sits centred
+   * within the fixed viewport area.
+   */
+  transform: translate(-35%, -50%) rotate(-90deg);
+  overflow: hidden;
+}
+
+.nzmap-underlay__image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: 52% 50%;
+  background-repeat: no-repeat;
+
+  /*
+   * multiply: white areas of the image disappear (white × colour = colour),
+   * dark NZ outlines slightly darken whatever is behind the element.
+   * Applied here (not on the container) so the canvas trail is unaffected.
+   */
+  /* mix-blend-mode: normal; */
+  opacity: 0.18;
+}
+
+.nzmap-underlay__canvas {
+  position: absolute;
+  inset: 0;
+  /* CSS size fills the container; actual pixel dimensions are
+     set via JS to match the viewport for correct coordinate maths. */
+  width: 100%;
+  height: 100%;
+}
