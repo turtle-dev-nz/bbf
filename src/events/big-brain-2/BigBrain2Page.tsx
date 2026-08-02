@@ -1,0 +1,54 @@
+import { useState } from "react";
+import "./styles/bb2Theme.css";
+import { DonationNav } from "./components/DonationNav";
+import { DonationModal } from "./components/DonationModal";
+import { StoryModal } from "./components/StoryModal";
+import { HeroSection } from "./sections/HeroSection";
+import { StorySection } from "./sections/StorySection";
+import { SponsorsSection } from "./sections/SponsorsSection";
+import { SamPreviewSection } from "./sections/SamPreviewSection";
+import { ChooseSection } from "./sections/ChooseSection";
+import { FollowJourneySection } from "./sections/FollowJourneySection";
+import { PartnersSection } from "./sections/PartnersSection";
+
+export function BigBrain2Page() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [storyOpen, setStoryOpen] = useState(false);
+
+  const openModal = () => setModalOpen(true);
+  const closeModal = () => setModalOpen(false);
+
+  return (
+    <div className="bb2">
+      <DonationNav onOpenModal={openModal} />
+
+      <main>
+        <HeroSection onOpenModal={openModal} />
+        <SponsorsSection />
+        <SamPreviewSection />
+        <StorySection onReadMore={() => setStoryOpen(true)} />
+        <ChooseSection onDonate={openModal} />
+        <FollowJourneySection />
+        <PartnersSection />
+      </main>
+
+      <footer className="bb2-footer">
+        <p>
+          Powered by <a href="#">Raisley</a> · Funds managed by the Big Brain Foundation
+          <br />
+          Questions? <a href="mailto:hello@bigbrainfoundation.org">hello@bigbrainfoundation.org</a>
+        </p>
+      </footer>
+
+      <DonationModal isOpen={modalOpen} onClose={closeModal} />
+      <StoryModal
+        isOpen={storyOpen}
+        onClose={() => setStoryOpen(false)}
+        onDonate={() => {
+          setStoryOpen(false);
+          openModal();
+        }}
+      />
+    </div>
+  );
+}

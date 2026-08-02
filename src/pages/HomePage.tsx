@@ -1,6 +1,3 @@
-import { Link } from "react-router-dom";
-import { FiArrowRight } from "react-icons/fi";
-import { ROUTES } from "../app/routes";
 import bigbrainLogo from "../assets/bigbrain-logo-dk_bg-web.webp";
 import { Navbar, type NavbarLink } from "../components/layout/Navbar";
 import { SiteFooter } from "../components/layout/SiteFooter";

@@ -1,6 +1,5 @@
-import { useState } from "react";
+
 import "./CampaignCard.css";
-import { motion } from "framer-motion";
 
 interface CampaignCardProps {
   children: React.ReactNode;

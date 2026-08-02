@@ -1,0 +1,120 @@
+import cactusLogo from "../../../assets/campaigns/bigBrainRun/sponsors/cactus-logo-horz.avif";
+import drymaxLogo from "../../../assets/campaigns/bigBrainRun/sponsors/drymax_logo_hi-res-scaled.webp";
+import garminLogo from "../../../assets/campaigns/bigBrainRun/sponsors/garmin-logo-black.png";
+import icebreakerLogo from "../../../assets/campaigns/bigBrainRun/sponsors/icebreaker-MTN-Logo-Black (1).avif";
+import mizunoLogo from "../../../assets/campaigns/bigBrainRun/sponsors/mizuno-logo.png";
+import shoeClinicLogo from "../../../assets/campaigns/bigBrainRun/sponsors/shoe-clinic-diamond-logo-round.webp";
+import vwLogo from "../../../assets/campaigns/bigBrainRun/sponsors/vw-logo.png";
+
+export const BB2_CAMPAIGN = {
+  raised: 353,
+  goal: 100000,
+  eyebrow: "Sam's Big Brain Run · 2025",
+  description:
+    "Every dollar donated goes directly to NANOS to help build New Zealand's first national Brain Tumour Registry and advance brain cancer research.",
+} as const;
+
+export const BB2_PHASES = [
+  {
+    number: 1,
+    name: "Registry Planning",
+    goal: 25000,
+    description: "Establish the foundations and infrastructure for the Registry.",
+  },
+  {
+    number: 2,
+    name: "National Data Collection",
+    goal: 56000,
+    description: "Collect national data to better understand brain tumours across New Zealand.",
+  },
+  {
+    number: 3,
+    name: "Research Growth",
+    goal: 100000,
+    description: "Support research growth and drive future breakthroughs.",
+  },
+] as const;
+
+export const BB2_CURRENT_PHASE_INDEX = 0;
+
+export const BB2_PRESET_AMOUNTS = [
+  { amount: 5, label: "Supporter" },
+  { amount: 15, label: "Contributor" },
+  { amount: 30, label: "Champion" },
+  { amount: 50, label: "Hero" },
+] as const;
+
+export const BB2_IMPACT_MESSAGES: Record<number, string> = {
+  5: "$5 helps cover awareness materials shared with local schools.",
+  15: "$15 contributes to funding a community support session.",
+  30: "$30 funds a neurological research resource for a week.",
+  50: "$50 sponsors a family attending a Big Brain Foundation event.",
+};
+
+export const BB2_STORY = {
+  pullQuote: '"This is about far more than running. This is a story about people."',
+  paragraphs: [
+    "I'm Sam Saunt-Lord, 20 years old from Wellington. In January 2027, I will run 25 consecutive ultra-marathons down New Zealand's North Island to raise awareness and funding for brain cancer research.",
+    "Inspired by my cousin Georgie's diagnosis of Glioblastoma — the most aggressive and incurable brain cancer, with a prognosis of 12–18 months — I am running to raise money for the first National Brain Tumour Registry here in Aotearoa.",
+    "Along the way, I'll be sharing kōrero with patients, whānau, caregivers, researchers, and advocates whose lives have been impacted by this devastating disease.",
+    "A documentary is being made and filming has started. It will follow my journey and capture the intensely physical challenge of running more than 1,300 kilometres in 25 days, whilst exploring deeply human stories of resilience, determination, hope, and courage that define the brain cancer community of Aotearoa every single day.",
+    "This run will push me to the edge of my physical and emotional limits. Battling fatigue, injury, weather, and the relentless demands of consecutive ultra-marathons.",
+    "But this is about far more than running. This is a story about people. It is a story about the kiwi community coming together, about bravery and resilience in the face of adversity, and about finding hope when the odds seem overwhelming.",
+    "It is a story that celebrates the extraordinary resilience of ordinary New Zealanders and shines a light on an aggressive disease that urgently needs greater awareness, support, and research funding.",
+  ],
+} as const;
+
+export const BB2_GEORGIE = {
+  pullQuote:
+    '"I will fight for as long as I possibly can but want to ensure that the best is being done for the whole brain cancer community."',
+  paragraphs: [
+    "I have had multiple migraines every month for over 20 years, but on this occasion, it was different. It got worse quickly. I came in from outside, sat on the sofa and it exploded in my head. My last thought was, that's it, I'm gone.",
+    "The date of the seizure was 20th May 2023. That was the start of my journey. A few days later I was informed about the brain tumour.",
+    "My procedure has been the standard approach: operate to remove the big chunk, then radio and chemo, followed by more chemo. The standard procedure has not changed in decades, nor has life expectancy — the average is 18 months. What we need is more research, more trials, more exploration; fundamentally we need more investment.",
+    "Whilst I have a GBM (Glioblastoma tumour), I also have a life I love, a world I'm incredibly grateful for, a history that inspires and builds my strength, and a family that I am utterly devoted to.",
+    "Limited life expectancy brings forward your priorities. The main one is my family — particularly my kids — being around as long as possible. I was 13 when my father died. It was gutting, he was a wonderful man, and everyone loved being with him. You can focus on the loss, but over time I was able to focus on the strength he gave me.",
+    "One fear that stewed a little longer than others was 'discovering you were going to die'. I thought that would be the worst thing to live with. And yet, when that fear became a reality, my biggest fear disappeared. Now I knew I was going to die earlier than scheduled, but now I could make plans!",
+  ],
+  secondQuote: '"Now I knew I was going to die earlier than scheduled, but now I could make plans!"',
+} as const;
+
+export const BB2_SOCIAL = [
+  { platform: "instagram", handle: "@sams_bigbrainrun", href: "https://instagram.com/sams_bigbrainrun" },
+  { platform: "facebook", handle: "@samsbigbrainrun", href: "https://facebook.com/samsbigbrainrun" },
+  { platform: "web", handle: "bigbrainfoundation.org", href: "https://bigbrainfoundation.org" },
+] as const;
+
+export const BB2_CHOICES = [
+  { icon: "compass", text: "Sam chooses to run." },
+  { icon: "book", text: "Researchers choose to learn." },
+  { icon: "heart", text: "Families choose to love." },
+  { icon: "activity", text: "Doctors choose to care." },
+  { icon: "gift", text: "Volunteers choose to give." },
+  { icon: "award", text: "Sponsors choose to contribute." },
+] as const;
+
+export const BB2_SPONSORS = [
+  { name: "Cactus", logoSrc: cactusLogo },
+  { name: "Drymax", logoSrc: drymaxLogo },
+  { name: "Garmin", logoSrc: garminLogo },
+  { name: "Icebreaker", logoSrc: icebreakerLogo },
+  { name: "Mizuno", logoSrc: mizunoLogo },
+  { name: "Shoe Clinic", logoSrc: shoeClinicLogo },
+  { name: "Volkswagen", logoSrc: vwLogo },
+] as const;
+
+export const BB2_PARTNERS = [
+  {
+    initials: "BTS",
+    name: "Brain Tumour Support NZ",
+    description: "Informing, supporting, and advocating for brain tumour patients and their whānau across New Zealand.",
+    href: "https://www.braintumoursupport.org.nz",
+  },
+  {
+    initials: "NAN",
+    name: "NANOS",
+    description:
+      "The New Zealand Association of Neurologists — advancing neurology practice and patient care nationwide.",
+    href: "https://www.nanos.org.nz",
+  },
+] as const;

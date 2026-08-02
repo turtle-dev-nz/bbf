@@ -1,0 +1,24 @@
+<svg width="1200" height="1600" viewBox="0 0 1200 1600" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Sam running placeholder</title>
+  <desc id="desc">Placeholder artwork for a future tall portrait of Sam running.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="1600" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F1E7DD"/>
+      <stop offset="1" stop-color="#E4D6C8"/>
+    </linearGradient>
+    <linearGradient id="stripe" x1="0" y1="0" x2="1200" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D1784E"/>
+      <stop offset="1" stop-color="#C75A2C"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1600" fill="url(#bg)"/>
+  <rect x="0" y="1260" width="1200" height="340" fill="#F8F3ED" opacity="0.74"/>
+  <path d="M0 980C180 910 340 860 510 860C680 860 830 915 1020 980C1090 1003 1148 1018 1200 1028V1260H0V980Z" fill="url(#stripe)" opacity="0.18"/>
+  <circle cx="600" cy="610" r="170" fill="#C75A2C" opacity="0.14"/>
+  <path d="M595 494C556 494 524 526 524 565C524 604 556 636 595 636C634 636 666 604 666 565C666 526 634 494 595 494Z" fill="#C75A2C" opacity="0.5"/>
+  <path d="M480 915L560 735L700 790L762 944" stroke="#A14A27" stroke-width="56" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+  <path d="M560 880L430 1034" stroke="#A14A27" stroke-width="46" stroke-linecap="round" opacity="0.5"/>
+  <path d="M690 885L860 826" stroke="#A14A27" stroke-width="46" stroke-linecap="round" opacity="0.5"/>
+  <text x="600" y="1340" fill="#1F2A33" font-family="Barlow Condensed, Arial, sans-serif" font-size="86" font-weight="700" text-anchor="middle" letter-spacing="6">SAM RUNNING IMAGE</text>
+  <text x="600" y="1430" fill="#8A7E77" font-family="Barlow Condensed, Arial, sans-serif" font-size="40" text-anchor="middle" letter-spacing="5">PLACEHOLDER</text>
+</svg>

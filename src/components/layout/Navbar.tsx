@@ -28,7 +28,6 @@ interface NavbarProps {
 export function Navbar({
   logoSrc,
   logoAlt,
-  homeHref = "#",
   ariaLabel = "Primary navigation",
   navLinks,
   mobileMenuId = "mobile-navigation",
