@@ -23,11 +23,11 @@
    * After the -90deg rotation this renders as a stable portrait footprint,
    * and clamp keeps the size sensible from phones through large desktops.
    */
-  width: clamp(28rem, 80svh, 52rem);
+  width: clamp(28rem, 90svh, 52rem);
   aspect-ratio: 16 / 9;
   height: auto;
   left: 60%;
-  top: 50%;
+  top: 45svh;
   /*
    * The source image has NZ rotated 90° clockwise from correct.
    * Rotating -90° (counter-clockwise) corrects the orientation.
