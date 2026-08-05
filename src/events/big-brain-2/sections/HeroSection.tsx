@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { BBR_CAMPAIGN, BBR_CURRENT_PHASE_INDEX, BBR_PHASES } from "../data/content";
+import "./HeroSection.css";
 
 interface HeroSectionProps {
   onOpenModal: () => void;
@@ -88,7 +89,7 @@ export function HeroSection({ onOpenModal }: HeroSectionProps) {
               <strong>
                 Phase {currentPhase.number} · {currentPhase.name}
               </strong>
-              <span className="bbr-fund-phase-goal">{fmt(currentPhase.goal)} Goal</span>
+              {/* <span className="bbr-fund-phase-goal">{fmt(currentPhase.goal)} Goal</span> */}
             </p>
             <div className="bbr-fund-bar-wrap">
               <div className="bbr-progress-track">

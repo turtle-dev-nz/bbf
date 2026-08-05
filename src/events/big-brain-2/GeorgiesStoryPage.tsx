@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
-import "./styles/bbrTheme.css";
 import { ROUTES } from "../../app/routes";
 import { BBR_GEORGIE } from "./data/content";
 import { DonationNav } from "./components/DonationNav";
 import { DonationModal } from "./components/DonationModal";
+import "./GeorgiesStoryPage.css";
 
 export function GeorgiesStoryPage() {
   const [modalOpen, setModalOpen] = useState(false);

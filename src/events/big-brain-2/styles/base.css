@@ -2,7 +2,7 @@
    BIG BRAIN 2 — BASE THEME
    Shared variables, fonts, and cross-section
    utility classes. All selectors scoped under
-   .bb2 to avoid bleeding into other pages.
+   .bbr to avoid bleeding into other pages.
 ───────────────────────────────────────── */
 
 @font-face {
@@ -14,32 +14,32 @@
 }
 
 /* ── Variables ── */
-.bb2 {
-  --bb2-bg: #f7f3ee;
-  --bb2-bg-mid: #ede8e2;
-  --bb2-bg-card: #ffffff;
-  --bb2-text: #1f2a33;
-  --bb2-muted: #8a7e77;
-  --bb2-accent: #c75a2c;
-  --bb2-accent-lt: #e0733e;
-  --bb2-border: rgba(31, 42, 51, 0.1);
-  --bb2-modal-bg: #1a242c;
-  --bb2-modal-text: #f5f0eb;
-  --bb2-modal-muted: rgba(245, 240, 235, 0.45);
-  --bb2-font-display: "Barlow Condensed", sans-serif;
-  --bb2-font-secondary: "Avallon Alt", "Barlow Condensed", sans-serif;
-  --bb2-font-body: "Inter", system-ui, sans-serif;
+.bbr {
+  --bbr-bg: #f7f3ee;
+  --bbr-bg-mid: #ede8e2;
+  --bbr-bg-card: #ffffff;
+  --bbr-text: #1f2a33;
+  --bbr-muted: #8a7e77;
+  --bbr-accent: #c75a2c;
+  --bbr-accent-lt: #e0733e;
+  --bbr-border: rgba(31, 42, 51, 0.1);
+  --bbr-modal-bg: #1a242c;
+  --bbr-modal-text: #f5f0eb;
+  --bbr-modal-muted: rgba(245, 240, 235, 0.45);
+  --bbr-font-display: "Barlow Condensed", sans-serif;
+  --bbr-font-secondary: "Avallon Alt", "Barlow Condensed", sans-serif;
+  --bbr-font-body: "Inter", system-ui, sans-serif;
 
-  font-family: var(--bb2-font-body);
+  font-family: var(--bbr-font-body);
   background: transparent;
-  color: var(--bb2-text);
+  color: var(--bbr-text);
   min-height: 100svh;
   overflow-x: hidden;
   /* Override global body font inherited from coreVariables */
   -webkit-font-smoothing: antialiased;
 }
 
-.bb2-visually-hidden {
+.bbr-visually-hidden {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -52,39 +52,39 @@
 }
 
 /* Section eyebrow label, reused across Story / Partners / Georgie's Story */
-.bb2-section-label {
-  font-family: var(--bb2-font-display);
+.bbr-section-label {
+  font-family: var(--bbr-font-display);
   font-size: 0.75rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--bb2-accent);
+  color: var(--bbr-accent);
   font-weight: 600;
   margin-bottom: 14px;
 }
 
 /* Pull quote, reused across Story section and Georgie's Story page */
-.bb2-pull-quote {
+.bbr-pull-quote {
   padding: 20px 20px 20px 22px;
-  border-left: 4px solid var(--bb2-accent);
+  border-left: 4px solid var(--bbr-accent);
   background: rgba(199, 90, 44, 0.06);
   border-radius: 0 10px 10px 0;
-  font-family: var(--bb2-font-display);
+  font-family: var(--bbr-font-display);
   font-size: 1.25rem;
   font-weight: 700;
   line-height: 1.4;
-  color: var(--bb2-text);
+  color: var(--bbr-text);
   font-style: normal;
   margin: 0;
 }
 
 /* Primary CTA button, reused in Hero and Georgie's Story page */
-.bb2-hero-cta {
+.bbr-hero-cta {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  background: var(--bb2-text);
-  color: var(--bb2-bg);
-  font-family: var(--bb2-font-display);
+  background: var(--bbr-text);
+  color: var(--bbr-bg);
+  font-family: var(--bbr-font-display);
   font-weight: 800;
   font-size: 1.1rem;
   letter-spacing: 0.1em;
@@ -97,25 +97,25 @@
     background 0.2s,
     transform 0.15s;
 }
-.bb2-hero-cta:hover {
-  background: var(--bb2-accent);
+.bbr-hero-cta:hover {
+  background: var(--bbr-accent);
 }
-.bb2-hero-cta:active {
+.bbr-hero-cta:active {
   transform: scale(0.98);
 }
 
 /* ── FOOTER ── */
-.bb2-footer {
-  background: var(--bb2-text);
+.bbr-footer {
+  background: var(--bbr-text);
   padding: 32px 24px;
   text-align: center;
 }
-.bb2-footer p {
+.bbr-footer p {
   font-size: 0.78rem;
   color: rgba(245, 240, 235, 0.45);
   line-height: 1.75;
 }
-.bb2-footer a {
-  color: var(--bb2-accent);
+.bbr-footer a {
+  color: var(--bbr-accent);
   text-decoration: none;
 }

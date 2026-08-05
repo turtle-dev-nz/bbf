@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FiX, FiArrowRight } from "react-icons/fi";
 import { ROUTES } from "../../../app/routes";
 import { BBR_STORY } from "../data/content";
+import "./StoryModal.css";
 
 interface StoryModalProps {
   isOpen: boolean;

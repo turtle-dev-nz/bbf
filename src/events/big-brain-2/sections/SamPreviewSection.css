@@ -1,39 +1,40 @@
-.bb2-sam-preview-section {
+.bbr-sam-preview-section {
   background: transparent;
-  border-top: 1px solid var(--bb2-border);
+  border-top: 1px solid var(--bbr-border);
   padding: 44px 0 24px;
 }
 
-.bb2-sam-preview {
+.bbr-sam-preview {
   max-width: 700px;
   margin: 0 auto;
   padding: 0 24px;
 }
 
-.bb2-sam-preview-image {
+.bbr-sam-preview-image {
   display: block;
   width: 100%;
   max-height: min(72vh, 820px);
   object-fit: cover;
   border-radius: 12px;
-  border: 1px solid var(--bb2-border);
-  background: var(--bb2-bg-card);
+  border: 1px solid var(--bbr-border);
+  background: var(--bbr-bg-card);
 }
 
-.bb2-sam-preview-copy {
+.bbr-sam-preview-copy {
+  backdrop-filter: blur(2px);
   margin-top: 18px;
   font-size: 0.94rem;
   line-height: 1.75;
-  color: var(--bb2-text);
+  color: var(--bbr-text);
   text-align: center;
 }
 
 @media (max-width: 640px) {
-  .bb2-sam-preview {
+  .bbr-sam-preview {
     padding: 0 18px;
   }
 
-  .bb2-sam-preview-copy {
+  .bbr-sam-preview-copy {
     font-size: 0.9rem;
     line-height: 1.68;
   }

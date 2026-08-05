@@ -1,4 +1,5 @@
 import { BBR_PARTNERS } from "../data/content";
+import "./PartnersSection.css";
 
 export function PartnersSection() {
   return (
@@ -25,7 +26,8 @@ export function PartnersSection() {
               rel="noopener noreferrer"
             >
               <div className="bbr-partner-logo-wrap">
-                <span className="bbr-partner-initials">{partner.initials}</span>
+                <img className="bbr-partner-logo" src={partner.logo} alt={partner.name} width={80} height={80} />
+                {/* <span className="bbr-partner-initials">{partner.initials}</span> */}
               </div>
               <div className="bbr-partner-info">
                 <p className="bbr-partner-name">{partner.name}</p>

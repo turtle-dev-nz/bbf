@@ -1,13 +1,13 @@
 /* ── PARTNERS ── */
-.bb2-partners-section {
+.bbr-partners-section {
   background: transparent;
   padding: 80px 24px;
 }
-.bb2-partners-inner {
+.bbr-partners-inner {
   max-width: 1100px;
   margin: 0 auto;
 }
-.bb2-partners-header {
+.bbr-partners-header {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -15,27 +15,27 @@
   gap: 16px;
   margin-bottom: 36px;
 }
-.bb2-partners-header h2 {
-  font-family: var(--bb2-font-display);
+.bbr-partners-header h2 {
+  font-family: var(--bbr-font-display);
   font-weight: 800;
   font-size: clamp(2rem, 5vw, 3rem);
   text-transform: uppercase;
   line-height: 0.95;
-  color: var(--bb2-text);
+  color: var(--bbr-text);
 }
-.bb2-partners-grid {
+.bbr-partners-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 16px;
 }
 @media (min-width: 540px) {
-  .bb2-partners-grid {
+  .bbr-partners-grid {
     grid-template-columns: 1fr 1fr;
   }
 }
-.bb2-partner-card {
-  background: var(--bb2-bg-card);
-  border: 1px solid var(--bb2-border);
+.bbr-partner-card {
+  background: var(--bbr-bg-card);
+  border: 1px solid var(--bbr-border);
   border-radius: 14px;
   padding: 28px 24px;
   display: flex;
@@ -47,51 +47,57 @@
     box-shadow 0.25s,
     transform 0.2s;
 }
-.bb2-partner-card:hover {
-  border-color: var(--bb2-accent);
+.bbr-partner-card:hover {
+  border-color: var(--bbr-accent);
   box-shadow: 0 6px 28px rgba(199, 90, 44, 0.1);
   transform: translateY(-2px);
 }
-.bb2-partner-logo-wrap {
-  width: 52px;
-  height: 52px;
+.bbr-partner-logo-wrap {
+  width: 80px;
+  height: 80px;
   border-radius: 10px;
-  background: var(--bb2-bg-mid);
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 }
-.bb2-partner-initials {
-  font-family: var(--bb2-font-display);
+.bbr-partner-logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  display: block;
+}
+.bbr-partner-initials {
+  font-family: var(--bbr-font-display);
   font-weight: 800;
   font-size: 1rem;
-  color: var(--bb2-text);
+  color: var(--bbr-text);
   letter-spacing: 0.02em;
 }
-.bb2-partner-info {
+.bbr-partner-info {
   flex: 1;
 }
-.bb2-partner-name {
-  font-family: var(--bb2-font-display);
+.bbr-partner-name {
+  font-family: var(--bbr-font-display);
   font-weight: 700;
   font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: var(--bb2-text);
+  color: var(--bbr-text);
   margin-bottom: 6px;
 }
-.bb2-partner-desc {
+.bbr-partner-desc {
   font-size: 0.8rem;
-  color: var(--bb2-muted);
+  color: var(--bbr-muted);
   line-height: 1.6;
   margin-bottom: 10px;
 }
-.bb2-partner-link {
-  font-family: var(--bb2-font-display);
+.bbr-partner-link {
+  font-family: var(--bbr-font-display);
   font-size: 0.76rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   font-weight: 600;
-  color: var(--bb2-accent);
+  color: var(--bbr-accent);
 }

@@ -1,63 +1,63 @@
 /* ── GEORGIE'S STORY PAGE ── */
-.bb2-georgie-page {
+.bbr-georgie-page {
   padding: 100px 24px 80px;
 }
 
-.bb2-georgie-page-inner {
+.bbr-georgie-page-inner {
   max-width: 680px;
   margin: 0 auto;
 }
 
-.bb2-georgie-back {
+.bbr-georgie-back {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   text-decoration: none;
-  font-family: var(--bb2-font-display);
+  font-family: var(--bbr-font-display);
   font-size: 0.75rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--bb2-muted);
+  color: var(--bbr-muted);
   margin-bottom: 32px;
   transition: color 0.2s;
 }
-.bb2-georgie-back:hover {
-  color: var(--bb2-accent);
+.bbr-georgie-back:hover {
+  color: var(--bbr-accent);
 }
 
-.bb2-georgie-title {
-  font-family: var(--bb2-font-display);
+.bbr-georgie-title {
+  font-family: var(--bbr-font-display);
   font-weight: 800;
   font-size: clamp(2.8rem, 9vw, 5rem);
   text-transform: uppercase;
   line-height: 0.88;
-  color: var(--bb2-text);
+  color: var(--bbr-text);
   margin: 16px 0 32px;
 }
 
-.bb2-georgie-body {
+.bbr-georgie-body {
   font-size: 1rem;
   line-height: 1.82;
-  color: var(--bb2-muted);
+  color: var(--bbr-muted);
   margin: 32px 0;
 }
-.bb2-georgie-body p + p {
+.bbr-georgie-body p + p {
   margin-top: 22px;
 }
 
-.bb2-georgie-second-quote {
+.bbr-georgie-second-quote {
   margin: 36px 0;
 }
 
-.bb2-georgie-cta-block {
+.bbr-georgie-cta-block {
   margin-top: 48px;
   padding-top: 36px;
-  border-top: 1px solid var(--bb2-border);
+  border-top: 1px solid var(--bbr-border);
 }
-.bb2-georgie-cta-block p {
+.bbr-georgie-cta-block p {
   font-size: 0.95rem;
   line-height: 1.7;
-  color: var(--bb2-muted);
+  color: var(--bbr-muted);
   max-width: 480px;
   margin-bottom: 24px;
 }

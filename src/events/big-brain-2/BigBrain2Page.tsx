@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./styles/bbrTheme.css";
 import { DonationNav } from "./components/DonationNav";
 import { DonationModal } from "./components/DonationModal";
 import { StoryModal } from "./components/StoryModal";
@@ -10,6 +9,7 @@ import { SamPreviewSection } from "./sections/SamPreviewSection";
 import { ChooseSection } from "./sections/ChooseSection";
 import { FollowJourneySection } from "./sections/FollowJourneySection";
 import { PartnersSection } from "./sections/PartnersSection";
+import "./styles/base.css";
 
 export function BigBrain2Page() {
   const [modalOpen, setModalOpen] = useState(false);

@@ -1,17 +1,17 @@
 /* ── STORY MODAL ── */
-.bb2-story-modal-overlay {
+.bbr-story-modal-overlay {
   position: fixed;
   inset: 0;
   z-index: 300;
-  background: var(--bb2-modal-bg);
-  color: var(--bb2-modal-text);
+  background: var(--bbr-modal-bg);
+  color: var(--bbr-modal-text);
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  animation: bb2-story-modal-enter 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: bbr-story-modal-enter 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-@keyframes bb2-story-modal-enter {
+@keyframes bbr-story-modal-enter {
   from {
     opacity: 0;
     transform: translateY(16px);
@@ -22,11 +22,11 @@
   }
 }
 
-.bb2-story-modal-bar {
+.bbr-story-modal-bar {
   position: sticky;
   top: 0;
   z-index: 10;
-  background: var(--bb2-modal-bg);
+  background: var(--bbr-modal-bg);
   border-bottom: 1px solid rgba(245, 240, 235, 0.08);
   padding: 14px 24px;
   display: flex;
@@ -35,22 +35,22 @@
   flex-shrink: 0;
 }
 
-.bb2-story-modal-label {
-  font-family: var(--bb2-font-display);
+.bbr-story-modal-label {
+  font-family: var(--bbr-font-display);
   font-size: 0.7rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--bb2-modal-muted);
+  color: var(--bbr-modal-muted);
 }
 
-.bb2-story-modal-close {
+.bbr-story-modal-close {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--bb2-modal-text);
-  font-family: var(--bb2-font-display);
+  color: var(--bbr-modal-text);
+  font-family: var(--bbr-font-display);
   font-size: 0.72rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -59,11 +59,11 @@
   cursor: pointer;
   transition: background 0.2s;
 }
-.bb2-story-modal-close:hover {
+.bbr-story-modal-close:hover {
   background: rgba(255, 255, 255, 0.14);
 }
 
-.bb2-story-modal-body {
+.bbr-story-modal-body {
   flex: 1;
   overflow-y: auto;
   padding: 48px 24px 80px;
@@ -72,56 +72,56 @@
   width: 100%;
 }
 
-.bb2-story-modal-title {
-  font-family: var(--bb2-font-display);
+.bbr-story-modal-title {
+  font-family: var(--bbr-font-display);
   font-weight: 800;
   font-size: clamp(2.5rem, 9vw, 4.5rem);
   text-transform: uppercase;
   line-height: 0.88;
-  color: var(--bb2-modal-text);
+  color: var(--bbr-modal-text);
   margin-bottom: 32px;
 }
 
-.bb2-story-modal-quote {
+.bbr-story-modal-quote {
   padding: 18px 18px 18px 20px;
-  border-left: 3px solid var(--bb2-accent);
+  border-left: 3px solid var(--bbr-accent);
   background: rgba(199, 90, 44, 0.08);
   border-radius: 0 8px 8px 0;
-  font-family: var(--bb2-font-display);
+  font-family: var(--bbr-font-display);
   font-size: 1.15rem;
   font-weight: 700;
   line-height: 1.4;
-  color: var(--bb2-modal-text);
+  color: var(--bbr-modal-text);
   font-style: normal;
   margin: 0 0 36px;
 }
 
-.bb2-story-modal-text p {
+.bbr-story-modal-text p {
   font-size: 1rem;
   line-height: 1.8;
   color: rgba(245, 240, 235, 0.72);
   margin-bottom: 20px;
 }
 
-.bb2-story-modal-georgie {
+.bbr-story-modal-georgie {
   margin: 40px 0 0;
   padding: 24px;
   border: 1px solid rgba(245, 240, 235, 0.1);
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.04);
 }
-.bb2-story-modal-georgie p {
+.bbr-story-modal-georgie p {
   font-size: 0.9rem;
-  color: var(--bb2-modal-muted);
+  color: var(--bbr-modal-muted);
   margin-bottom: 14px;
   line-height: 1.6;
 }
-.bb2-story-modal-georgie-link {
+.bbr-story-modal-georgie-link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: var(--bb2-accent-lt);
-  font-family: var(--bb2-font-display);
+  color: var(--bbr-accent-lt);
+  font-family: var(--bbr-font-display);
   font-weight: 700;
   font-size: 0.85rem;
   letter-spacing: 0.1em;
@@ -129,21 +129,21 @@
   text-decoration: none;
   transition: color 0.2s;
 }
-.bb2-story-modal-georgie-link:hover {
+.bbr-story-modal-georgie-link:hover {
   color: #fff;
 }
 
-.bb2-story-modal-footer {
+.bbr-story-modal-footer {
   margin-top: 36px;
 }
 
-.bb2-story-modal-cta {
+.bbr-story-modal-cta {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: var(--bb2-accent);
+  background: var(--bbr-accent);
   color: #fff;
-  font-family: var(--bb2-font-display);
+  font-family: var(--bbr-font-display);
   font-weight: 800;
   font-size: 1.05rem;
   letter-spacing: 0.1em;
@@ -156,9 +156,9 @@
     background 0.2s,
     transform 0.15s;
 }
-.bb2-story-modal-cta:hover {
-  background: var(--bb2-accent-lt);
+.bbr-story-modal-cta:hover {
+  background: var(--bbr-accent-lt);
 }
-.bb2-story-modal-cta:active {
+.bbr-story-modal-cta:active {
   transform: scale(0.98);
 }

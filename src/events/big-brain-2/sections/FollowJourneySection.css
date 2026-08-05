@@ -1,36 +1,38 @@
 /* ── FOLLOW JOURNEY SECTION ── */
-.bb2-follow-section {
+.bbr-follow-section {
   background: transparent;
   padding: 48px 24px;
-  border-top: 1px solid var(--bb2-border);
+  border-top: 1px solid var(--bbr-border);
 }
 
-.bb2-follow-inner {
+.bbr-follow-inner {
   max-width: 1100px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
   gap: 36px;
 }
+
 @media (min-width: 700px) {
-  .bb2-follow-inner {
-    grid-template-columns: auto 1fr auto;
+  .bbr-follow-inner {
+    display: flex;
+    justify-content: center;
     align-items: center;
     gap: 60px;
   }
 }
 
-.bb2-follow-title {
-  font-family: var(--bb2-font-display);
+.bbr-follow-title {
+  font-family: var(--bbr-font-display);
   font-weight: 800;
   font-size: 0.75rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--bb2-text);
+  color: var(--bbr-text);
   margin-bottom: 16px;
 }
 
-.bb2-follow-links {
+.bbr-follow-links {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -39,44 +41,48 @@
   gap: 12px;
 }
 
-.bb2-follow-link {
+.bbr-follow-link {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   text-decoration: none;
   font-size: 0.88rem;
-  color: var(--bb2-text);
+  color: var(--bbr-text);
   transition: color 0.2s;
 }
-.bb2-follow-link svg {
-  color: var(--bb2-muted);
+.bbr-follow-link svg {
+  color: var(--bbr-muted);
   flex-shrink: 0;
 }
-.bb2-follow-link:hover {
-  color: var(--bb2-accent);
+.bbr-follow-link:hover {
+  color: var(--bbr-accent);
 }
-.bb2-follow-link:hover svg {
-  color: var(--bb2-accent);
+.bbr-follow-link:hover svg {
+  color: var(--bbr-accent);
 }
 
-.bb2-follow-tagline {
-  font-size: 0.92rem;
+.bbr-follow-tagline {
+  font-size: 1.5rem;
   line-height: 1.9;
-  color: var(--bb2-muted);
+  color: var(--bbr-accent);
+  width: max-content;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-family: var(--bbr-font-display);
 }
 
-.bb2-follow-map {
+.bbr-follow-map {
   display: flex;
   justify-content: center;
 }
 
-.bb2-nz-map {
+.bbr-nz-map {
   width: 100%;
   max-width: 90px;
   height: auto;
 }
 @media (max-width: 699px) {
-  .bb2-nz-map {
+  .bbr-nz-map {
     max-width: 72px;
   }
 }

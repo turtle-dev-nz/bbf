@@ -18,9 +18,14 @@
 
 .nzmap-underlay__map {
   position: absolute;
-  /* Swap viewport dimensions before rotation so portrait screens map correctly. */
-  width: 100vh;
-  height: 120vw;
+  /*
+   * Use one primary dimension and preserve source ratio (3840x2160 = 16:9).
+   * After the -90deg rotation this renders as a stable portrait footprint,
+   * and clamp keeps the size sensible from phones through large desktops.
+   */
+  width: clamp(28rem, 80vh, 52rem);
+  aspect-ratio: 16 / 9;
+  height: auto;
   left: 60%;
   top: 50%;
   /*
@@ -33,6 +38,13 @@
    */
   transform: translate(-35%, -50%) rotate(-90deg);
   overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  .nzmap-underlay__map {
+    /* Desktop scales with viewport width; mobile base sizing remains unchanged. */
+    width: clamp(52rem, 74vw, 96rem);
+  }
 }
 
 .nzmap-underlay__image {

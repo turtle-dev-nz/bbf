@@ -1,5 +1,5 @@
 /* ── NAV ── */
-.bb2-nav {
+.bbr-nav {
   position: fixed;
   top: 0;
   left: 0;
@@ -13,14 +13,14 @@
   background: transparent;
   border-bottom: 1px solid transparent;
 }
-.bb2-nav.scrolled {
+.bbr-nav.scrolled {
   background: rgba(247, 243, 238, 0.95);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   padding: 20px 24px;
-  border-bottom-color: var(--bb2-border);
+  border-bottom-color: var(--bbr-border);
 }
-.bb2-nav-inner {
+.bbr-nav-inner {
   max-width: 1100px;
   margin: 0 auto;
   display: flex;
@@ -29,7 +29,7 @@
   position: relative;
   overflow: visible;
 }
-.bb2-nav-brand {
+.bbr-nav-brand {
   position: relative;
   min-height: 62px;
   min-width: 280px;
@@ -38,7 +38,7 @@
   text-decoration: none;
 }
 
-.bb2-nav-badge {
+.bbr-nav-badge {
   position: absolute;
   left: -8px;
   top: -22px;
@@ -51,30 +51,30 @@
     opacity 0.3s ease;
 }
 
-.bb2-nav-marquee {
-  font-family: var(--bb2-font-secondary);
+.bbr-nav-marquee {
+  font-family: var(--bbr-font-secondary);
   font-size: clamp(1rem, 2.7vw, 1.45rem);
   line-height: 1;
   letter-spacing: 0.03em;
-  color: var(--bb2-text);
+  color: var(--bbr-text);
   white-space: nowrap;
   display: inline-block;
   max-width: 300px;
   overflow: hidden;
 }
 
-.bb2-nav-marquee-track {
+.bbr-nav-marquee-track {
   display: inline-block;
 }
 
-.bb2-nav-marquee-accent {
-  color: var(--bb2-accent);
+.bbr-nav-marquee-accent {
+  color: var(--bbr-accent);
 }
 
-.bb2-nav-cta {
-  background: var(--bb2-accent);
+.bbr-nav-cta {
+  background: var(--bbr-accent);
   color: #fff;
-  font-family: var(--bb2-font-display);
+  font-family: var(--bbr-font-display);
   font-weight: 700;
   font-size: 0.95rem;
   letter-spacing: 0.06em;
@@ -85,13 +85,13 @@
   cursor: pointer;
   transition: background 0.2s;
 }
-.bb2-nav-cta:hover {
-  background: var(--bb2-accent-lt);
+.bbr-nav-cta:hover {
+  background: var(--bbr-accent-lt);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .bb2-nav-badge,
-  .bb2-nav-marquee-track {
+  .bbr-nav-badge,
+  .bbr-nav-marquee-track {
     transition: none;
     animation: none;
     transform: none;
@@ -99,18 +99,18 @@
 }
 
 @media (max-width: 640px) {
-  .bb2-nav-brand {
+  .bbr-nav-brand {
     min-width: 172px;
     min-height: 54px;
   }
 
-  .bb2-nav-badge {
+  .bbr-nav-badge {
     left: -4px;
     top: -14px;
     width: clamp(104px, 32vw, 142px);
   }
 
-  .bb2-nav-marquee {
+  .bbr-nav-marquee {
     max-width: 176px;
     font-size: clamp(0.85rem, 4.8vw, 1rem);
   }

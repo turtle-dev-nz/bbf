@@ -5,6 +5,9 @@ import icebreakerLogo from "../../../assets/campaigns/bigBrainRun/sponsors/icebr
 import mizunoLogo from "../../../assets/campaigns/bigBrainRun/sponsors/mizuno-logo.png";
 import shoeClinicLogo from "../../../assets/campaigns/bigBrainRun/sponsors/shoe-clinic-diamond-logo-round.webp";
 import vwLogo from "../../../assets/campaigns/bigBrainRun/sponsors/vw-logo.png";
+import southlandLogo from "../../../assets/campaigns/bigBrainRun/sponsors/sourthland-logo.jpg";
+import btsLogo from "../../../assets/campaigns/bigBrainRun/sponsors/brain-tumour-support-logo.png";
+import nanosLogo from "../../../assets/campaigns/bigBrainRun/sponsors/nano-logo.png";
 
 export const BBR_CAMPAIGN = {
   raised: 353,
@@ -85,7 +88,6 @@ export const BBR_SOCIAL = [
 ] as const;
 
 export const BBR_CHOICES = [
-  { icon: "compass", text: "Sam chooses to run." },
   { icon: "book", text: "Researchers choose to learn." },
   { icon: "heart", text: "Families choose to love." },
   { icon: "activity", text: "Doctors choose to care." },
@@ -95,13 +97,14 @@ export const BBR_CHOICES = [
 ] as const;
 
 export const BBR_SPONSORS = [
-  { name: "Cactus", logoSrc: cactusLogo },
-  { name: "Drymax", logoSrc: drymaxLogo },
-  { name: "Garmin", logoSrc: garminLogo },
-  { name: "Icebreaker", logoSrc: icebreakerLogo },
-  { name: "Mizuno", logoSrc: mizunoLogo },
-  { name: "Shoe Clinic", logoSrc: shoeClinicLogo },
-  { name: "Volkswagen", logoSrc: vwLogo },
+  { name: "Cactus", logoSrc: cactusLogo, link: "https://cactusoutdoor.co.nz" },
+  { name: "Drymax", logoSrc: drymaxLogo, link: "https://shoeclinic.co.nz/accessories/drymax-socks" },
+  { name: "Garmin", logoSrc: garminLogo, link: "https://garmin.com" },
+  { name: "Icebreaker", logoSrc: icebreakerLogo, link: "https://ap.icebreaker.com/en-nz" },
+  { name: "Mizuno", logoSrc: mizunoLogo, link: "https://nzl.mizuno.com" },
+  { name: "Shoe Clinic", logoSrc: shoeClinicLogo, link: "https://shoeclinic.co.nz" },
+  { name: "Volkswagen", logoSrc: vwLogo, link: "https://volkswagen.co.nz" },
+  { name: "Southland", logoSrc: southlandLogo, link: "https://www.locatorbeacons.co.nz/" },
 ] as const;
 
 export const BBR_PARTNERS = [
@@ -110,6 +113,7 @@ export const BBR_PARTNERS = [
     name: "Brain Tumour Support NZ",
     description: "Informing, supporting, and advocating for brain tumour patients and their whānau across New Zealand.",
     href: "https://www.braintumoursupport.org.nz",
+    logo: btsLogo,
   },
   {
     initials: "NAN",
@@ -117,5 +121,6 @@ export const BBR_PARTNERS = [
     description:
       "The New Zealand Association of Neurologists — advancing neurology practice and patient care nationwide.",
     href: "https://www.nanos.org.nz",
+    logo: nanosLogo,
   },
 ] as const;

@@ -1,4 +1,5 @@
 import "./SamPreviewSection.css";
+import "./SamPreviewSection.css";
 
 export function SamPreviewSection() {
   return (
