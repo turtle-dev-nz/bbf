@@ -1,5 +1,5 @@
 import type { IconType } from "react-icons";
-import { FiCompass, FiBookOpen, FiHeart, FiActivity, FiGift, FiStar } from "react-icons/fi";
+import { FiCompass, FiBookOpen, FiHeart, FiActivity, FiGift, FiStar, FiUsers } from "react-icons/fi";
 import { BBR_CHOICES } from "../data/content";
 
 type ChoiceIcon = (typeof BBR_CHOICES)[number]["icon"];
@@ -11,6 +11,7 @@ const ICONS: Record<ChoiceIcon, IconType> = {
   activity: FiActivity,
   gift: FiGift,
   award: FiStar,
+  people: FiUsers,
 };
 
 interface ChooseSectionProps {
@@ -18,6 +19,9 @@ interface ChooseSectionProps {
 }
 
 export function ChooseSection({ onDonate }: ChooseSectionProps) {
+  const featuredChoice = BBR_CHOICES.find((choice) => choice.icon === "compass");
+  const gridChoices = BBR_CHOICES.filter((choice) => choice.icon !== "compass");
+
   return (
     <section className="bbr-choose-section">
       <div className="bbr-choose-inner">
@@ -39,6 +43,14 @@ export function ChooseSection({ onDonate }: ChooseSectionProps) {
             );
           })}
         </div>
+        {featuredChoice ? (
+          <div className="bb2-choose-featured">
+            <div className="bb2-choose-item bb2-choose-item-featured">
+              <FiCompass className="bb2-choose-icon" size={22} />
+              <span className="bb2-choose-text">{featuredChoice.text}</span>
+            </div>
+          </div>
+        ) : null}
       </div>
       <div className="bbr-choose-banner">
         <button className="bbr-choose-banner-action" type="button" onClick={onDonate}>

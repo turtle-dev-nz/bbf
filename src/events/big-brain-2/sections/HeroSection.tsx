@@ -74,7 +74,7 @@ export function HeroSection({ onOpenModal }: HeroSectionProps) {
         <h1 className="bbr-hero-title">
           Every step south funds New Zealand's
           <br />
-          <em>First brain tumour registry.</em>
+          <em>{" First brain tumour registry."}</em>
         </h1>
 
         <p className="bbr-hero-desc">{BBR_CAMPAIGN.description}</p>
