@@ -1,5 +1,5 @@
 import type { IconType } from "react-icons";
-import { FiCompass, FiBookOpen, FiHeart, FiActivity, FiGift, FiStar } from "react-icons/fi";
+import { FiCompass, FiBookOpen, FiHeart, FiActivity, FiGift, FiStar, FiUsers } from "react-icons/fi";
 import { BBR_CHOICES } from "../data/content";
 
 type ChoiceIcon = (typeof BBR_CHOICES)[number]["icon"];
@@ -19,8 +19,8 @@ interface ChooseSectionProps {
 }
 
 export function ChooseSection({ onDonate }: ChooseSectionProps) {
-  const featuredChoice = BB2_CHOICES.find((choice) => choice.icon === "compass");
-  const gridChoices = BB2_CHOICES.filter((choice) => choice.icon !== "compass");
+  const featuredChoice = BBR_CHOICES.find((choice) => choice.icon === "compass");
+  const gridChoices = BBR_CHOICES.filter((choice) => choice.icon !== "compass");
 
   return (
     <section className="bbr-choose-section">
