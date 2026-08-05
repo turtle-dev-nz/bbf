@@ -1,0 +1,121 @@
+/* ── CHOOSE SECTION ── */
+.bb2-choose-section {
+  background: var(--bb2-bg-card);
+  border-top: 1px solid var(--bb2-border);
+}
+
+.bb2-choose-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px 24px 0;
+}
+
+.bb2-choose-header {
+  margin-bottom: 32px;
+}
+
+.bb2-choose-preamble {
+  font-family: var(--bb2-font-display);
+  font-weight: 800;
+  font-size: clamp(1rem, 3.5vw, 1.35rem);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.25;
+  color: var(--bb2-text);
+}
+.bb2-choose-preamble span {
+  color: var(--bb2-accent);
+}
+
+.bb2-choose-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--bb2-border);
+  border-left: 1px solid var(--bb2-border);
+}
+@media (min-width: 700px) {
+  .bb2-choose-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.bb2-choose-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 14px;
+  border-right: 1px solid var(--bb2-border);
+  border-bottom: 1px solid var(--bb2-border);
+}
+
+.bb2-choose-featured {
+  border-left: 1px solid var(--bb2-border);
+  border-right: 1px solid var(--bb2-border);
+  border-bottom: 1px solid var(--bb2-border);
+}
+
+.bb2-choose-item-featured {
+  justify-content: center;
+  border-right: none;
+  border-bottom: none;
+  padding: 18px 14px;
+}
+
+.bb2-choose-icon {
+  color: var(--bb2-muted);
+  flex-shrink: 0;
+}
+
+.bb2-choose-text {
+  font-size: 0.82rem;
+  color: var(--bb2-text);
+  line-height: 1.35;
+}
+
+.bb2-choose-banner {
+  margin-top: 0;
+  background: var(--bb2-text);
+  padding: 18px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+@media (min-width: 700px) {
+  .bb2-choose-banner {
+    flex-direction: row;
+    align-items: center;
+    gap: 28px;
+    max-width: 100%;
+    padding: 18px max(24px, calc((100% - 1100px) / 2 + 24px));
+  }
+}
+
+.bb2-choose-banner-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--bb2-font-display);
+  font-weight: 800;
+  font-size: 0.88rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bb2-accent-lt);
+  padding: 0;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+.bb2-choose-banner-action:hover {
+  color: #fff;
+}
+
+.bb2-choose-banner-text {
+  font-family: var(--bb2-font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: rgba(247, 243, 238, 0.45);
+  line-height: 1.5;
+}

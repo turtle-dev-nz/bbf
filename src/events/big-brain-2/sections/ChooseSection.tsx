@@ -1,6 +1,7 @@
 import type { IconType } from "react-icons";
-import { FiCompass, FiBookOpen, FiHeart, FiActivity, FiGift, FiStar } from "react-icons/fi";
+import { FiCompass, FiBookOpen, FiHeart, FiActivity, FiGift, FiStar, FiUsers } from "react-icons/fi";
 import { BB2_CHOICES } from "../data/content";
+import "./ChooseSection.css";
 
 type ChoiceIcon = (typeof BB2_CHOICES)[number]["icon"];
 
@@ -11,6 +12,7 @@ const ICONS: Record<ChoiceIcon, IconType> = {
   activity: FiActivity,
   gift: FiGift,
   award: FiStar,
+  people: FiUsers,
 };
 
 interface ChooseSectionProps {
@@ -18,6 +20,9 @@ interface ChooseSectionProps {
 }
 
 export function ChooseSection({ onDonate }: ChooseSectionProps) {
+  const featuredChoice = BB2_CHOICES.find((choice) => choice.icon === "compass");
+  const gridChoices = BB2_CHOICES.filter((choice) => choice.icon !== "compass");
+
   return (
     <section className="bb2-choose-section">
       <div className="bb2-choose-inner">
@@ -29,7 +34,7 @@ export function ChooseSection({ onDonate }: ChooseSectionProps) {
           </p>
         </div>
         <div className="bb2-choose-grid">
-          {BB2_CHOICES.map((choice) => {
+          {gridChoices.map((choice) => {
             const Icon = ICONS[choice.icon];
             return (
               <div key={choice.icon} className="bb2-choose-item">
@@ -39,6 +44,14 @@ export function ChooseSection({ onDonate }: ChooseSectionProps) {
             );
           })}
         </div>
+        {featuredChoice ? (
+          <div className="bb2-choose-featured">
+            <div className="bb2-choose-item bb2-choose-item-featured">
+              <FiCompass className="bb2-choose-icon" size={22} />
+              <span className="bb2-choose-text">{featuredChoice.text}</span>
+            </div>
+          </div>
+        ) : null}
       </div>
       <div className="bb2-choose-banner">
         <button className="bb2-choose-banner-action" type="button" onClick={onDonate}>

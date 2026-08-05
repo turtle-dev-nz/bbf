@@ -91,6 +91,7 @@ export const BB2_CHOICES = [
   { icon: "activity", text: "Doctors choose to care." },
   { icon: "gift", text: "Volunteers choose to give." },
   { icon: "award", text: "Sponsors choose to contribute." },
+  { icon: "people", text: "Supporters choose to take action." },
 ] as const;
 
 export const BB2_SPONSORS = [

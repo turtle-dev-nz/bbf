@@ -1,0 +1,40 @@
+.bb2-sam-preview-section {
+  background: transparent;
+  border-top: 1px solid var(--bb2-border);
+  padding: 44px 0 24px;
+}
+
+.bb2-sam-preview {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.bb2-sam-preview-image {
+  display: block;
+  width: 100%;
+  max-height: min(72vh, 820px);
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--bb2-border);
+  background: var(--bb2-bg-card);
+}
+
+.bb2-sam-preview-copy {
+  margin-top: 18px;
+  font-size: 0.94rem;
+  line-height: 1.75;
+  color: var(--bb2-text);
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .bb2-sam-preview {
+    padding: 0 18px;
+  }
+
+  .bb2-sam-preview-copy {
+    font-size: 0.9rem;
+    line-height: 1.68;
+  }
+}

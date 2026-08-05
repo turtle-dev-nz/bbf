@@ -1,0 +1,95 @@
+/* ── SPONSORS ── */
+.bb2-sponsors-section {
+  background: var(--bb2-bg-mid);
+  border-top: 1px solid var(--bb2-border);
+  border-bottom: 1px solid var(--bb2-border);
+  padding: 44px 0;
+  overflow: hidden;
+}
+.bb2-sponsors-label {
+  font-family: var(--bb2-font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--bb2-muted);
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 24px;
+}
+.bb2-ticker-wrap {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+.bb2-ticker-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: bb2-ticker 28s linear infinite;
+}
+.bb2-ticker-track:hover {
+  animation-play-state: paused;
+}
+@keyframes bb2-ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.bb2-ticker-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 36px;
+  flex-shrink: 0;
+}
+.bb2-sponsor-chip {
+  background: var(--bb2-bg-card);
+  border: 1px solid var(--bb2-border);
+  border-radius: 6px;
+  padding: 0;
+  min-width: 156px;
+  min-height: 56px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    border-color 0.2s,
+    color 0.2s;
+}
+.bb2-ticker-item:hover .bb2-sponsor-chip {
+  border-color: var(--bb2-accent);
+}
+.bb2-sponsor-logo {
+  max-height: 50px;
+  width: auto;
+  max-width: 124px;
+  object-fit: contain;
+  filter: none;
+  opacity: 1;
+  transition:
+    filter 0.2s,
+    opacity 0.2s,
+    transform 0.2s;
+}
+.bb2-ticker-item:hover .bb2-sponsor-logo {
+  filter: none;
+  opacity: 1;
+  transform: scale(1.02);
+}
+.bb2-ticker-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--bb2-accent);
+  opacity: 0.3;
+  flex-shrink: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bb2-ticker-track {
+    animation: none;
+  }
+}

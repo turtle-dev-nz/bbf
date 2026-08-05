@@ -1,3 +1,5 @@
+import "./SamPreviewSection.css";
+
 export function SamPreviewSection() {
   return (
     <section className="bb2-sam-preview-section">

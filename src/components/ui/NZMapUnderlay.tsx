@@ -32,8 +32,8 @@ const NZ_PATH: [number, number][] = [
 // ─────────────────────────────────────────────────────────────────────────────
 // Accent colours matching --color-accent and --color-accent-light
 // ─────────────────────────────────────────────────────────────────────────────
-const TRAIL_HEX = "#ca8319c0";
-const DOT_HEX = "#db7f07";
+const TRAIL_HEX = "#ca831971";
+const DOT_HEX = "#d17600a6";
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 

@@ -1,4 +1,5 @@
 import { BB2_PARTNERS } from "../data/content";
+import "./PartnersSection.css";
 
 export function PartnersSection() {
   return (

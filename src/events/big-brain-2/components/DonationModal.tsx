@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import "./DonationModal.css";
 
 interface DonationModalProps {
   isOpen: boolean;

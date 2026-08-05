@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { BB2_CAMPAIGN, BB2_CURRENT_PHASE_INDEX, BB2_PHASES } from "../data/content";
+import "./HeroSection.css";
 
 interface HeroSectionProps {
   onOpenModal: () => void;
@@ -74,10 +75,11 @@ export function HeroSection({ onOpenModal }: HeroSectionProps) {
         <h1 className="bb2-hero-title">
           Every step south funds New Zealand's
           <br />
-          <em>First brain tumour registry.</em>
+          <em>{" First brain tumour registry."}</em>
         </h1>
-
-        <p className="bb2-hero-desc">{BB2_CAMPAIGN.description}</p>
+        <div className="bb2-hero-desc-wrapper">
+          <p className="bb2-hero-desc">{BB2_CAMPAIGN.description}</p>
+        </div>
 
         <div className="bb2-fund-widget">
           {/* ── Top: metrics ── */}

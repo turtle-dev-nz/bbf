@@ -1,4 +1,5 @@
 import { useScrollPosition } from "../../../hooks/useScrollPosition";
+import "./DonationNav.css";
 
 interface DonationNavProps {
   onOpenModal: () => void;

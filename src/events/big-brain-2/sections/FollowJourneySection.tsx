@@ -1,6 +1,7 @@
 import type { IconType } from "react-icons";
 import { FiInstagram, FiFacebook, FiGlobe } from "react-icons/fi";
 import { BB2_SOCIAL } from "../data/content";
+import "./FollowJourneySection.css";
 
 type SocialPlatform = (typeof BB2_SOCIAL)[number]["platform"];
 

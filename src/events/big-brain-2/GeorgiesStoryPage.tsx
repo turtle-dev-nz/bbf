@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
-import "./styles/bb2Theme.css";
+import "./styles/base.css";
+import "./GeorgiesStoryPage.css";
 import { ROUTES } from "../../app/routes";
 import { BB2_GEORGIE } from "./data/content";
 import { DonationNav } from "./components/DonationNav";

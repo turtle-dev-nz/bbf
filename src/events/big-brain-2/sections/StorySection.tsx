@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { FiArrowRight } from "react-icons/fi";
 import { ROUTES } from "../../../app/routes";
 import { BB2_STORY } from "../data/content";
+import "./StorySection.css";
 
 const PREVIEW_COUNT = 2;
 

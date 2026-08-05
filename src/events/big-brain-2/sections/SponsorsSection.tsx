@@ -1,4 +1,5 @@
 import { BB2_SPONSORS } from "../data/content";
+import "./SponsorsSection.css";
 
 export function SponsorsSection() {
   // Duplicate for seamless infinite scroll

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./styles/bb2Theme.css";
+import "./styles/base.css";
 import { DonationNav } from "./components/DonationNav";
 import { DonationModal } from "./components/DonationModal";
 import { StoryModal } from "./components/StoryModal";
