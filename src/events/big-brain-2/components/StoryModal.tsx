@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FiX, FiArrowRight } from "react-icons/fi";
 import { ROUTES } from "../../../app/routes";
-import { bbr_STORY } from "../data/content";
+import { BBR_STORY } from "../data/content";
 
 interface StoryModalProps {
   isOpen: boolean;
@@ -45,10 +45,10 @@ export function StoryModal({ isOpen, onClose, onDonate }: StoryModalProps) {
           Why I<br />
           Run
         </h2>
-        <blockquote className="bbr-story-modal-quote">{bbr_STORY.pullQuote}</blockquote>
+        <blockquote className="bbr-story-modal-quote">{BBR_STORY.pullQuote}</blockquote>
 
         <div className="bbr-story-modal-text">
-          {bbr_STORY.paragraphs.map((para, i) => (
+          {BBR_STORY.paragraphs.map((para, i) => (
             <p key={i}>{para}</p>
           ))}
         </div>

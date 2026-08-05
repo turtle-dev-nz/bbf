@@ -6,7 +6,7 @@ import mizunoLogo from "../../../assets/campaigns/bigBrainRun/sponsors/mizuno-lo
 import shoeClinicLogo from "../../../assets/campaigns/bigBrainRun/sponsors/shoe-clinic-diamond-logo-round.webp";
 import vwLogo from "../../../assets/campaigns/bigBrainRun/sponsors/vw-logo.png";
 
-export const bbr_CAMPAIGN = {
+export const BBR_CAMPAIGN = {
   raised: 353,
   goal: 100000,
   eyebrow: "Sam's Big Brain Run · 2025",
@@ -14,7 +14,7 @@ export const bbr_CAMPAIGN = {
     "Every dollar donated goes directly to NANOS to help build New Zealand's first national Brain Tumour Registry and advance brain cancer research.",
 } as const;
 
-export const bbr_PHASES = [
+export const BBR_PHASES = [
   {
     number: 1,
     name: "Registry Planning",
@@ -35,23 +35,23 @@ export const bbr_PHASES = [
   },
 ] as const;
 
-export const bbr_CURRENT_PHASE_INDEX = 0;
+export const BBR_CURRENT_PHASE_INDEX = 0;
 
-export const bbr_PRESET_AMOUNTS = [
+export const BBR_PRESET_AMOUNTS = [
   { amount: 5, label: "Supporter" },
   { amount: 15, label: "Contributor" },
   { amount: 30, label: "Champion" },
   { amount: 50, label: "Hero" },
 ] as const;
 
-export const bbr_IMPACT_MESSAGES: Record<number, string> = {
+export const BBR_IMPACT_MESSAGES: Record<number, string> = {
   5: "$5 helps cover awareness materials shared with local schools.",
   15: "$15 contributes to funding a community support session.",
   30: "$30 funds a neurological research resource for a week.",
   50: "$50 sponsors a family attending a Big Brain Foundation event.",
 };
 
-export const bbr_STORY = {
+export const BBR_STORY = {
   pullQuote: '"This is about far more than running. This is a story about people."',
   paragraphs: [
     "I'm Sam Saunt-Lord, 20 years old from Wellington. In January 2027, I will run 25 consecutive ultra-marathons down New Zealand's North Island to raise awareness and funding for brain cancer research.",
@@ -64,7 +64,7 @@ export const bbr_STORY = {
   ],
 } as const;
 
-export const bbr_GEORGIE = {
+export const BBR_GEORGIE = {
   pullQuote:
     '"I will fight for as long as I possibly can but want to ensure that the best is being done for the whole brain cancer community."',
   paragraphs: [
@@ -78,13 +78,13 @@ export const bbr_GEORGIE = {
   secondQuote: '"Now I knew I was going to die earlier than scheduled, but now I could make plans!"',
 } as const;
 
-export const bbr_SOCIAL = [
+export const BBR_SOCIAL = [
   { platform: "instagram", handle: "@sams_bigbrainrun", href: "https://instagram.com/sams_bigbrainrun" },
   { platform: "facebook", handle: "@samsbigbrainrun", href: "https://facebook.com/samsbigbrainrun" },
   { platform: "web", handle: "bigbrainfoundation.org", href: "https://bigbrainfoundation.org" },
 ] as const;
 
-export const bbr_CHOICES = [
+export const BBR_CHOICES = [
   { icon: "compass", text: "Sam chooses to run." },
   { icon: "book", text: "Researchers choose to learn." },
   { icon: "heart", text: "Families choose to love." },
@@ -93,7 +93,7 @@ export const bbr_CHOICES = [
   { icon: "award", text: "Sponsors choose to contribute." },
 ] as const;
 
-export const bbr_SPONSORS = [
+export const BBR_SPONSORS = [
   { name: "Cactus", logoSrc: cactusLogo },
   { name: "Drymax", logoSrc: drymaxLogo },
   { name: "Garmin", logoSrc: garminLogo },
@@ -103,7 +103,7 @@ export const bbr_SPONSORS = [
   { name: "Volkswagen", logoSrc: vwLogo },
 ] as const;
 
-export const bbr_PARTNERS = [
+export const BBR_PARTNERS = [
   {
     initials: "BTS",
     name: "Brain Tumour Support NZ",

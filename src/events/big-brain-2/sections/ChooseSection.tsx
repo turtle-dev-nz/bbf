@@ -1,8 +1,8 @@
 import type { IconType } from "react-icons";
 import { FiCompass, FiBookOpen, FiHeart, FiActivity, FiGift, FiStar } from "react-icons/fi";
-import { bbr_CHOICES } from "../data/content";
+import { BBR_CHOICES } from "../data/content";
 
-type ChoiceIcon = (typeof bbr_CHOICES)[number]["icon"];
+type ChoiceIcon = (typeof BBR_CHOICES)[number]["icon"];
 
 const ICONS: Record<ChoiceIcon, IconType> = {
   compass: FiCompass,
@@ -29,7 +29,7 @@ export function ChooseSection({ onDonate }: ChooseSectionProps) {
           </p>
         </div>
         <div className="bbr-choose-grid">
-          {bbr_CHOICES.map((choice) => {
+          {BBR_CHOICES.map((choice) => {
             const Icon = ICONS[choice.icon];
             return (
               <div key={choice.icon} className="bbr-choose-item">

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { bbr_CAMPAIGN, bbr_CURRENT_PHASE_INDEX, bbr_PHASES } from "../data/content";
+import { BBR_CAMPAIGN, BBR_CURRENT_PHASE_INDEX, BBR_PHASES } from "../data/content";
 
 interface HeroSectionProps {
   onOpenModal: () => void;
@@ -23,8 +23,8 @@ export function HeroSection({ onOpenModal }: HeroSectionProps) {
     return () => clearTimeout(id);
   }, [phasesOpen]);
 
-  const currentPhase = bbr_PHASES[bbr_CURRENT_PHASE_INDEX];
-  const phasePct = Math.min((bbr_CAMPAIGN.raised / currentPhase.goal) * 100, 100);
+  const currentPhase = BBR_PHASES[BBR_CURRENT_PHASE_INDEX];
+  const phasePct = Math.min((BBR_CAMPAIGN.raised / currentPhase.goal) * 100, 100);
 
   useEffect(() => {
     let cancelled = false;
@@ -38,7 +38,7 @@ export function HeroSection({ onOpenModal }: HeroSectionProps) {
 
       const start = performance.now();
       const duration = 1200;
-      const target = bbr_CAMPAIGN.raised;
+      const target = BBR_CAMPAIGN.raised;
 
       const step = (now: number) => {
         if (cancelled) return;
@@ -69,7 +69,7 @@ export function HeroSection({ onOpenModal }: HeroSectionProps) {
   return (
     <section className="bbr-hero" ref={sectionRef}>
       <div className="bbr-hero-inner">
-        {/* <p className="bbr-hero-eyebrow">{bbr_CAMPAIGN.eyebrow}</p> */}
+        {/* <p className="bbr-hero-eyebrow">{BBR_CAMPAIGN.eyebrow}</p> */}
 
         <h1 className="bbr-hero-title">
           Every step south funds New Zealand's
@@ -77,7 +77,7 @@ export function HeroSection({ onOpenModal }: HeroSectionProps) {
           <em>First brain tumour registry.</em>
         </h1>
 
-        <p className="bbr-hero-desc">{bbr_CAMPAIGN.description}</p>
+        <p className="bbr-hero-desc">{BBR_CAMPAIGN.description}</p>
 
         <div className="bbr-fund-widget">
           {/* ── Top: metrics ── */}
@@ -122,7 +122,7 @@ export function HeroSection({ onOpenModal }: HeroSectionProps) {
             <div className={`bbr-phases-list-wrap${phasesOpen ? " open" : ""}`}>
               <div>
                 <div className="bbr-phases-list">
-                  {bbr_PHASES.map((phase) => {
+                  {BBR_PHASES.map((phase) => {
                     const isCurrent = phase.number === currentPhase.number;
                     return (
                       <div key={phase.number} className={`bbr-phase-row${isCurrent ? " current" : ""}`}>

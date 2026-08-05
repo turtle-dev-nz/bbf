@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 import "./styles/bbrTheme.css";
 import { ROUTES } from "../../app/routes";
-import { bbr_GEORGIE } from "./data/content";
+import { BBR_GEORGIE } from "./data/content";
 import { DonationNav } from "./components/DonationNav";
 import { DonationModal } from "./components/DonationModal";
 
@@ -29,15 +29,15 @@ export function GeorgiesStoryPage() {
               Own Words
             </h1>
 
-            <blockquote className="bbr-pull-quote">{bbr_GEORGIE.pullQuote}</blockquote>
+            <blockquote className="bbr-pull-quote">{BBR_GEORGIE.pullQuote}</blockquote>
 
             <div className="bbr-georgie-body">
-              {bbr_GEORGIE.paragraphs.map((para, i) => (
+              {BBR_GEORGIE.paragraphs.map((para, i) => (
                 <p key={i}>{para}</p>
               ))}
             </div>
 
-            <blockquote className="bbr-pull-quote bbr-georgie-second-quote">{bbr_GEORGIE.secondQuote}</blockquote>
+            <blockquote className="bbr-pull-quote bbr-georgie-second-quote">{BBR_GEORGIE.secondQuote}</blockquote>
 
             <div className="bbr-georgie-cta-block">
               <p>

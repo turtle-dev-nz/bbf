@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { FiArrowRight } from "react-icons/fi";
 import { ROUTES } from "../../../app/routes";
-import { bbr_STORY } from "../data/content";
+import { BBR_STORY } from "../data/content";
 
 const PREVIEW_COUNT = 2;
 
@@ -20,11 +20,11 @@ export function StorySection({ onReadMore }: StorySectionProps) {
             <br />
             Runs
           </h2>
-          <blockquote className="bbr-pull-quote">{bbr_STORY.pullQuote}</blockquote>
+          <blockquote className="bbr-pull-quote">{BBR_STORY.pullQuote}</blockquote>
         </div>
 
         <div className="bbr-story-body">
-          {bbr_STORY.paragraphs.slice(0, PREVIEW_COUNT).map((para, i) => (
+          {BBR_STORY.paragraphs.slice(0, PREVIEW_COUNT).map((para, i) => (
             <p key={i}>{para}</p>
           ))}
           <div className="bbr-story-actions">

@@ -1,8 +1,8 @@
-import { bbr_SPONSORS } from "../data/content";
+import { BBR_SPONSORS } from "../data/content";
 
 export function SponsorsSection() {
   // Duplicate for seamless infinite scroll
-  const looped = [...bbr_SPONSORS, ...bbr_SPONSORS];
+  const looped = [...BBR_SPONSORS, ...BBR_SPONSORS];
 
   return (
     <section className="bbr-sponsors-section">

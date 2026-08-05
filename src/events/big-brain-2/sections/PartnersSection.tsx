@@ -1,4 +1,4 @@
-import { bbr_PARTNERS } from "../data/content";
+import { BBR_PARTNERS } from "../data/content";
 
 export function PartnersSection() {
   return (
@@ -16,7 +16,7 @@ export function PartnersSection() {
         </div>
 
         <div className="bbr-partners-grid">
-          {bbr_PARTNERS.map((partner) => (
+          {BBR_PARTNERS.map((partner) => (
             <a
               key={partner.name}
               className="bbr-partner-card"
