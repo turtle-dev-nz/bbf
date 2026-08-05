@@ -10,16 +10,16 @@ export function DonationNav({ onOpenModal }: DonationNavProps) {
   const isScrolled = scrollY > 60;
 
   return (
-    <nav className={`bb2-nav${isScrolled ? " scrolled" : ""}`}>
-      <div className="bb2-nav-inner">
-        <a className="bb2-nav-brand" href="#">
-          {/* <img className="bb2-nav-badge" src={navBadge} alt="Sam's Big Brain Run badge" /> */}
-          <span className="bb2-nav-marquee">
-            <span className="bb2-nav-marquee-accent">Sam&apos;s</span> Big Brain Run
+    <nav className={`bbr-nav${isScrolled ? " scrolled" : ""}`}>
+      <div className="bbr-nav-inner">
+        <a className="bbr-nav-brand" href="#">
+          {/* <img className="bbr-nav-badge" src={navBadge} alt="Sam's Big Brain Run badge" /> */}
+          <span className="bbr-nav-marquee">
+            <span className="bbr-nav-marquee-accent">Sam&apos;s</span> Big Brain Run
           </span>
-          <span className="bb2-visually-hidden">Sam&apos;s Big Brain Run</span>
+          <span className="bbr-visually-hidden">Sam&apos;s Big Brain Run</span>
         </a>
-        <button className="bb2-nav-cta" onClick={onOpenModal} type="button">
+        <button className="bbr-nav-cta" onClick={onOpenModal} type="button">
           Donate Now
         </button>
       </div>

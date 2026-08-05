@@ -56,22 +56,22 @@ export function DonationModal({ isOpen, onClose }: DonationModalProps) {
 
   return (
     <div
-      className={`bb2-modal-overlay${isOpen ? " open" : ""}`}
+      className={`bbr-modal-overlay${isOpen ? " open" : ""}`}
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
       aria-hidden={!isOpen}
     >
-      <div className="bb2-modal" role="dialog" aria-modal="true" aria-label="Donate to Sam's Big Brain Run">
-        <div className="bb2-modal-header">
-          <span className="bb2-modal-title">Make a donation</span>
-          <button className="bb2-modal-close" onClick={onClose} aria-label="Close donation modal" type="button">
+      <div className="bbr-modal" role="dialog" aria-modal="true" aria-label="Donate to Sam's Big Brain Run">
+        <div className="bbr-modal-header">
+          <span className="bbr-modal-title">Make a donation</span>
+          <button className="bbr-modal-close" onClick={onClose} aria-label="Close donation modal" type="button">
             ✕
           </button>
         </div>
 
-        <div className="bb2-modal-body">
-          {/* <p className="bb2-modal-step-label">Secure payment powered by Raisely</p> */}
+        <div className="bbr-modal-body">
+          {/* <p className="bbr-modal-step-label">Secure payment powered by Raisely</p> */}
 
           <div
             className="raisely-donate"
@@ -82,11 +82,11 @@ export function DonationModal({ isOpen, onClose }: DonationModalProps) {
             data-max-height="600px"
           />
 
-          {/* <div className="bb2-impact-hint">
+          {/* <div className="bbr-impact-hint">
             Every gift helps unlock the next milestone. Thank you for backing Sam's Big Brain Run.
           </div>
 
-          <p className="bb2-modal-secure-note">Secure payment via Raisely</p> */}
+          <p className="bbr-modal-secure-note">Secure payment via Raisely</p> */}
         </div>
       </div>
     </div>

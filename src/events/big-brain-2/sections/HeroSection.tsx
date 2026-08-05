@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { BB2_CAMPAIGN, BB2_CURRENT_PHASE_INDEX, BB2_PHASES } from "../data/content";
-import "./HeroSection.css";
+import { BBR_CAMPAIGN, BBR_CURRENT_PHASE_INDEX, BBR_PHASES } from "../data/content";
 
 interface HeroSectionProps {
   onOpenModal: () => void;
@@ -24,8 +23,8 @@ export function HeroSection({ onOpenModal }: HeroSectionProps) {
     return () => clearTimeout(id);
   }, [phasesOpen]);
 
-  const currentPhase = BB2_PHASES[BB2_CURRENT_PHASE_INDEX];
-  const phasePct = Math.min((BB2_CAMPAIGN.raised / currentPhase.goal) * 100, 100);
+  const currentPhase = BBR_PHASES[BBR_CURRENT_PHASE_INDEX];
+  const phasePct = Math.min((BBR_CAMPAIGN.raised / currentPhase.goal) * 100, 100);
 
   useEffect(() => {
     let cancelled = false;
@@ -39,7 +38,7 @@ export function HeroSection({ onOpenModal }: HeroSectionProps) {
 
       const start = performance.now();
       const duration = 1200;
-      const target = BB2_CAMPAIGN.raised;
+      const target = BBR_CAMPAIGN.raised;
 
       const step = (now: number) => {
         if (cancelled) return;
@@ -68,76 +67,75 @@ export function HeroSection({ onOpenModal }: HeroSectionProps) {
   const fmt = (n: number) => "$" + n.toLocaleString("en-NZ");
 
   return (
-    <section className="bb2-hero" ref={sectionRef}>
-      <div className="bb2-hero-inner">
-        {/* <p className="bb2-hero-eyebrow">{BB2_CAMPAIGN.eyebrow}</p> */}
+    <section className="bbr-hero" ref={sectionRef}>
+      <div className="bbr-hero-inner">
+        {/* <p className="bbr-hero-eyebrow">{BBR_CAMPAIGN.eyebrow}</p> */}
 
-        <h1 className="bb2-hero-title">
+        <h1 className="bbr-hero-title">
           Every step south funds New Zealand's
           <br />
           <em>{" First brain tumour registry."}</em>
         </h1>
-        <div className="bb2-hero-desc-wrapper">
-          <p className="bb2-hero-desc">{BB2_CAMPAIGN.description}</p>
-        </div>
 
-        <div className="bb2-fund-widget">
+        <p className="bbr-hero-desc">{BBR_CAMPAIGN.description}</p>
+
+        <div className="bbr-fund-widget">
           {/* ── Top: metrics ── */}
-          <div className="bb2-fund-top">
-            <p className="bb2-fund-widget-title">Help Build the Foundation</p>
-            {/* <p className="bb2-fund-phase-eyebrow">Current Phase</p> */}
-            <p className="bb2-fund-phase-name">
+          <div className="bbr-fund-top">
+            <p className="bbr-fund-widget-title">Help Build the Foundation</p>
+            {/* <p className="bbr-fund-phase-eyebrow">Current Phase</p> */}
+            <p className="bbr-fund-phase-name">
               <strong>
                 Phase {currentPhase.number} · {currentPhase.name}
               </strong>
-              <span className="bb2-fund-phase-goal">{fmt(currentPhase.goal)} Goal</span>
+              <span className="bbr-fund-phase-goal">{fmt(currentPhase.goal)} Goal</span>
             </p>
-            <div className="bb2-fund-bar-wrap">
-              <div className="bb2-progress-track">
-                <div className="bb2-progress-fill" style={{ width: `${progressWidth}%` }} />
+            <div className="bbr-fund-bar-wrap">
+              <div className="bbr-progress-track">
+                <div className="bbr-progress-fill" style={{ width: `${progressWidth}%` }} />
               </div>
             </div>
-            <div className="bb2-fund-amounts">
-              <span className="bb2-fund-raised">
+            <div className="bbr-fund-amounts">
+              <span className="bbr-fund-raised">
                 {fmt(displayRaised)} <em>Raised</em>
               </span>
-              <span className="bb2-fund-goal-label">{fmt(currentPhase.goal)}</span>
+              <span className="bbr-fund-goal-label">{fmt(currentPhase.goal)}</span>
             </div>
-            <p className="bb2-fund-body-desc">
+            <p className="bbr-fund-body-desc">
               Every contribution helps lay the foundation for New Zealand's first brain tumour registry.
             </p>
           </div>
 
           {/* ── Bottom: phases toggle ── */}
-          <div className="bb2-phases-section">
+          <div className="bbr-phases-section">
             <button
-              className={`bb2-phases-toggle${phasesOpen ? " open" : ""}`}
+              className={`bbr-phases-toggle${phasesOpen ? " open" : ""}`}
               type="button"
               aria-expanded={phasesOpen}
               onClick={() => setPhasesOpen((v) => !v)}
             >
               <span>Phases</span>
-              <span className="bb2-phase-chevron" aria-hidden="true">
+              <span className="bbr-phase-chevron" aria-hidden="true">
                 ▾
               </span>
             </button>
-            <div className={`bb2-phases-list-wrap${phasesOpen ? " open" : ""}`}>
+            <div className={`bbr-phases-list-wrap${phasesOpen ? " open" : ""}`}>
               <div>
-                <div className="bb2-phases-list">
-                  {BB2_PHASES.map((phase) => {
+                <div className="bbr-phases-list">
+                  {BBR_PHASES.map((phase) => {
                     const isCurrent = phase.number === currentPhase.number;
                     return (
-                      <div key={phase.number} className={`bb2-phase-row${isCurrent ? " current" : ""}`}>
-                        <div className="bb2-phase-btn">
-                          <span className="bb2-phase-num">{phase.number}</span>
-                          <div className="bb2-phase-info">
-                            <span className="bb2-phase-tag">
+                      <div key={phase.number} className={`bbr-phase-row${isCurrent ? " current" : ""}`}>
+                        <div className="bbr-phase-btn">
+                          <span className="bbr-phase-num">{phase.number}</span>
+                          <div className="bbr-phase-info">
+                            <span className="bbr-phase-tag">
                               Phase {phase.number} · {phase.name}
                             </span>
-                            <span className="bb2-phase-amount">{fmt(phase.goal)}</span>
+                            <span className="bbr-phase-amount">{fmt(phase.goal)}</span>
                           </div>
                         </div>
-                        <p className="bb2-phase-desc">{phase.description}</p>
+                        <p className="bbr-phase-desc">{phase.description}</p>
                       </div>
                     );
                   })}
@@ -147,8 +145,8 @@ export function HeroSection({ onOpenModal }: HeroSectionProps) {
           </div>
         </div>
 
-        <div className="bb2-hero-cta-row" ref={ctaRef}>
-          <button className="bb2-hero-cta" onClick={onOpenModal} type="button">
+        <div className="bbr-hero-cta-row" ref={ctaRef}>
+          <button className="bbr-hero-cta" onClick={onOpenModal} type="button">
             Make a Donation &nbsp;→
           </button>
         </div>
