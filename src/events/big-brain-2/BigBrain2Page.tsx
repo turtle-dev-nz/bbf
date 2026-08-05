@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./styles/bb2Theme.css";
 import { DonationNav } from "./components/DonationNav";
 import { DonationModal } from "./components/DonationModal";
 import { StoryModal } from "./components/StoryModal";
@@ -19,7 +18,7 @@ export function BigBrain2Page() {
   const closeModal = () => setModalOpen(false);
 
   return (
-    <div className="bb2">
+    <div className="bbr">
       <DonationNav onOpenModal={openModal} />
 
       <main>
@@ -32,7 +31,7 @@ export function BigBrain2Page() {
         <PartnersSection />
       </main>
 
-      <footer className="bb2-footer">
+      <footer className="bbr-footer">
         <p>
           Powered by <a href="#">Raisley</a> · Funds managed by the Big Brain Foundation
           <br />

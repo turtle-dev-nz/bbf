@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FiX, FiArrowRight } from "react-icons/fi";
 import { ROUTES } from "../../../app/routes";
-import { BB2_STORY } from "../data/content";
+import { bbr_STORY } from "../data/content";
 
 interface StoryModalProps {
   isOpen: boolean;
@@ -30,39 +30,39 @@ export function StoryModal({ isOpen, onClose, onDonate }: StoryModalProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="bb2-story-modal-overlay" role="dialog" aria-modal="true" aria-label="Sam's Story">
-      <div className="bb2-story-modal-bar">
-        <span className="bb2-story-modal-label">Sam&apos;s Story</span>
-        <button className="bb2-story-modal-close" onClick={onClose} type="button" aria-label="Close story">
+    <div className="bbr-story-modal-overlay" role="dialog" aria-modal="true" aria-label="Sam's Story">
+      <div className="bbr-story-modal-bar">
+        <span className="bbr-story-modal-label">Sam&apos;s Story</span>
+        <button className="bbr-story-modal-close" onClick={onClose} type="button" aria-label="Close story">
           <FiX size={16} />
           <span>Close</span>
         </button>
       </div>
 
-      <div className="bb2-story-modal-body">
-        <p className="bb2-section-label">The Story</p>
-        <h2 className="bb2-story-modal-title">
+      <div className="bbr-story-modal-body">
+        <p className="bbr-section-label">The Story</p>
+        <h2 className="bbr-story-modal-title">
           Why I<br />
           Run
         </h2>
-        <blockquote className="bb2-story-modal-quote">{BB2_STORY.pullQuote}</blockquote>
+        <blockquote className="bbr-story-modal-quote">{bbr_STORY.pullQuote}</blockquote>
 
-        <div className="bb2-story-modal-text">
-          {BB2_STORY.paragraphs.map((para, i) => (
+        <div className="bbr-story-modal-text">
+          {bbr_STORY.paragraphs.map((para, i) => (
             <p key={i}>{para}</p>
           ))}
         </div>
 
-        <div className="bb2-story-modal-georgie">
+        <div className="bbr-story-modal-georgie">
           <p>This run is inspired by Sam&apos;s cousin Georgie, who was diagnosed with Glioblastoma in 2023.</p>
-          <Link className="bb2-story-modal-georgie-link" to={ROUTES.georgiesStory} onClick={onClose}>
+          <Link className="bbr-story-modal-georgie-link" to={ROUTES.georgiesStory} onClick={onClose}>
             Read Georgie&apos;s Story <FiArrowRight />
           </Link>
         </div>
 
-        <div className="bb2-story-modal-footer">
+        <div className="bbr-story-modal-footer">
           <button
-            className="bb2-story-modal-cta"
+            className="bbr-story-modal-cta"
             type="button"
             onClick={() => {
               onClose();

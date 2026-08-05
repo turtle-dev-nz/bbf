@@ -1,12 +1,12 @@
-import { BB2_PARTNERS } from "../data/content";
+import { bbr_PARTNERS } from "../data/content";
 
 export function PartnersSection() {
   return (
-    <section className="bb2-partners-section">
-      <div className="bb2-partners-inner">
-        <div className="bb2-partners-header">
+    <section className="bbr-partners-section">
+      <div className="bbr-partners-inner">
+        <div className="bbr-partners-header">
           <div>
-            <p className="bb2-section-label">Charity Partners</p>
+            <p className="bbr-section-label">Charity Partners</p>
             <h2>
               Together We're
               <br />
@@ -15,22 +15,22 @@ export function PartnersSection() {
           </div>
         </div>
 
-        <div className="bb2-partners-grid">
-          {BB2_PARTNERS.map((partner) => (
+        <div className="bbr-partners-grid">
+          {bbr_PARTNERS.map((partner) => (
             <a
               key={partner.name}
-              className="bb2-partner-card"
+              className="bbr-partner-card"
               href={partner.href}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <div className="bb2-partner-logo-wrap">
-                <span className="bb2-partner-initials">{partner.initials}</span>
+              <div className="bbr-partner-logo-wrap">
+                <span className="bbr-partner-initials">{partner.initials}</span>
               </div>
-              <div className="bb2-partner-info">
-                <p className="bb2-partner-name">{partner.name}</p>
-                <p className="bb2-partner-desc">{partner.description}</p>
-                <span className="bb2-partner-link">Visit ↗</span>
+              <div className="bbr-partner-info">
+                <p className="bbr-partner-name">{partner.name}</p>
+                <p className="bbr-partner-desc">{partner.description}</p>
+                <span className="bbr-partner-link">Visit ↗</span>
               </div>
             </a>
           ))}
