@@ -43,7 +43,7 @@
 @media (min-width: 1024px) {
   .nzmap-underlay__map {
     /* Desktop scales with viewport width; mobile base sizing remains unchanged. */
-    width: clamp(52rem, 74svw, 96rem);
+    width: clamp(52rem, 74vw, 96rem);
   }
 }
 

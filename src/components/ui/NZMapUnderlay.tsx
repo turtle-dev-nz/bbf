@@ -97,6 +97,7 @@ export function NZMapUnderlay() {
   const imageRef = useRef<HTMLDivElement>(null);
   const imageSizeRef = useRef({ width: 1, height: 1 });
   const progressRef = useRef(0);
+  const viewportHeightRef = useRef(1);
   const rafRef = useRef<number>(0);
 
   const getBackgroundImageRect = useCallback((imageEl: HTMLDivElement) => {
@@ -236,6 +237,8 @@ export function NZMapUnderlay() {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
+    viewportHeightRef.current = window.visualViewport?.height || window.innerHeight || 1;
+
     const img = new Image();
     img.src = nzmapUrl;
     img.onload = () => {
@@ -257,7 +260,7 @@ export function NZMapUnderlay() {
 
     // Update progress on scroll using rAF batching
     const onScroll = () => {
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const maxScroll = document.documentElement.scrollHeight - viewportHeightRef.current;
       progressRef.current = maxScroll > 0 ? Math.min(window.scrollY / maxScroll, 1) : 0;
 
       cancelAnimationFrame(rafRef.current);
