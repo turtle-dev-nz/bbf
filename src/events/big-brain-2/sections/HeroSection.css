@@ -71,6 +71,10 @@
   backdrop-filter: blur(1px);
 }
 
+.bbr-hero-desc p + p {
+  margin-top: 0.85rem;
+}
+
 /* Stats strip */
 .bbr-stats-strip {
   display: flex;
@@ -418,6 +422,43 @@
   flex-wrap: wrap;
   margin-top: 24px;
   width: 100%;
+}
+
+@media (max-width: 900px), (max-height: 820px) {
+  .bbr-hero {
+    justify-content: flex-start;
+    padding-top: 96px;
+    padding-bottom: 88px;
+    overflow: visible;
+  }
+
+  .bbr-hero-title {
+    margin-bottom: 24px;
+  }
+
+  .bbr-hero-desc {
+    margin-bottom: 24px;
+  }
+
+  .bbr-fund-widget {
+    margin-bottom: 24px;
+  }
+
+  .bbr-hero-cta-row {
+    margin-top: 16px;
+  }
+}
+
+@media (max-width: 520px) {
+  .bbr-hero {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .bbr-hero-cta {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

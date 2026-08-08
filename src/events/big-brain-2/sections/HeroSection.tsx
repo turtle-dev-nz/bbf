@@ -78,7 +78,7 @@ export function HeroSection({ onOpenModal }: HeroSectionProps) {
           <em>{" First brain tumour registry."}</em>
         </h1>
 
-        <p className="bbr-hero-desc">{BBR_CAMPAIGN.description}</p>
+        <div className="bbr-hero-desc">{BBR_CAMPAIGN.description}</div>
 
         <div className="bbr-fund-widget">
           {/* ── Top: metrics ── */}

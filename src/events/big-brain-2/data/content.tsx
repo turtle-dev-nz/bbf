@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import cactusLogo from "../../../assets/campaigns/bigBrainRun/sponsors/cactus-logo-horz.avif";
 import drymaxLogo from "../../../assets/campaigns/bigBrainRun/sponsors/drymax_logo_hi-res-scaled.webp";
 import garminLogo from "../../../assets/campaigns/bigBrainRun/sponsors/garmin-logo-black.png";
@@ -9,13 +10,32 @@ import southlandLogo from "../../../assets/campaigns/bigBrainRun/sponsors/sourth
 import btsLogo from "../../../assets/campaigns/bigBrainRun/sponsors/brain-tumour-support-logo.png";
 import nanosLogo from "../../../assets/campaigns/bigBrainRun/sponsors/nano-logo.png";
 
-export const BBR_CAMPAIGN = {
+type BbrCampaign = {
+  raised: number;
+  goal: number;
+  eyebrow: string;
+  description: ReactNode;
+};
+
+export const BBR_CAMPAIGN: BbrCampaign = {
   raised: 353,
   goal: 100000,
   eyebrow: "Sam's Big Brain Run · 2025",
-  description:
-    "Every dollar donated goes directly to NANOS to help build New Zealand's first national Brain Tumour Registry and advance brain cancer research.",
-} as const;
+  description: (
+    <>
+      <p>
+        Supported by Brain Tumor Support, every dollar donated goes directly to NANOS,{" "}
+        <b>the leading neuro-oncology society in NZ</b>, to help build New Zealand's first national Brain Tumour
+        Registry and advance brain cancer research. By collecting better data, researchers can better understand brain
+        cancer, gain more funding, improve treatment, and create more hope for future patients and their families.
+      </p>
+      <p>
+        <strong>Be part of something bigger.</strong>
+      </p>
+      <p>Donate today</p>
+    </>
+  ),
+};
 
 export const BBR_PHASES = [
   {
@@ -39,6 +59,12 @@ export const BBR_PHASES = [
 ] as const;
 
 export const BBR_CURRENT_PHASE_INDEX = 0;
+
+export const BBR_DONATION_IMPACT = {
+  points: ["Building New Zealand's first Brain Tumour Registry", "Supporting NANOS' brain cancer research"],
+  summary:
+    "Every donation helps create the national evidence researchers need to better understand brain cancer, compare New Zealand internationally, attract future research funding, and improve outcomes for future generations.",
+} as const;
 
 export const BBR_PRESET_AMOUNTS = [
   { amount: 5, label: "Supporter" },

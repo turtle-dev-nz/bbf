@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import { ROUTES } from "../app/routes";
+// import { Link } from "react-router-dom";
+// import { ROUTES } from "../app/routes";
 import "./Hero.css";
 const Hero = () => {
   return (
@@ -9,14 +9,14 @@ const Hero = () => {
           <h1>
             Connecting people, research and communities to <span>improve brain health across New Zealand.</span>
           </h1>
-          <div className="home-actions">
+          {/* <div className="home-actions">
             <Link className="home-button home-button--primary" to={ROUTES.bigBrain2}>
               View Sam&apos;s Big Brain Run
             </Link>
             <a className="home-button home-button--secondary" href="#campaigns">
               Explore campaigns
             </a>
-          </div>
+          </div> */}
         </div>
 
         <div className="home-hero__support"></div>

@@ -1,20 +1,5 @@
-.campaigns {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-}
-
-.campaign-card-wrapper {
-  min-width: 0;
-}
-
-.expanded {
-  grid-column: 1 / -1;
-  width: 100%;
-}
-
-.campaign-wrapper {
+.featured-section {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var(--space-6);
 }

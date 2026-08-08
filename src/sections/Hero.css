@@ -12,6 +12,12 @@ h1 {
   height: calc(100svh - var(--section-nav-height));
 }
 
+@media (max-width: 768px) {
+  .home-hero {
+    height: auto;
+  }
+}
+
 .home-hero__support {
   display: grid;
   gap: var(--space-4);

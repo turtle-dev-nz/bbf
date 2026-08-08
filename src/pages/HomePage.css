@@ -13,9 +13,16 @@
   }
 }
 
+@media (max-width: 768px) {
+  .home-page__main section {
+    min-height: unset;
+  }
+}
+
 .home-hero,
 .home-section {
   padding: var(--space-20) 0;
+  padding-top: 0;
   scroll-margin-top: 104px;
 }
 
@@ -174,6 +181,7 @@
   .home-hero,
   .home-section {
     padding: var(--space-16) 0;
+    padding-bottom: 0;
     scroll-margin-top: 80px;
   }
 }

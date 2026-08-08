@@ -10,20 +10,17 @@ const Mission = () => {
             <div>
               <h2>Why we exist</h2>
               <p>
-                Every year, thousands of New Zealanders are affected by conditions that impact the brain. While many
-                incredible organisations are working to improve outcomes, lasting change happens when communities,
-                charities, researchers and supporters work together.
+                The Big Brain Foundation exists to improve the lives of individuals, families, and communities affected
+                by neurological challenges.
               </p>
               <p>
-                The Big Brain Foundation exists to bring those people together—raising awareness, supporting meaningful
-                initiatives and creating opportunities for more people to make a difference.{" "}
+                Inspired by lived family experiences, we are committed to supporting initiatives around the brain and
+                its complexity.
               </p>
               <p>
-                Whether it's backing a local fundraiser, supporting a national awareness campaign or helping new ideas
-                grow, our goal is simple:
-              </p>
-              <p>
-                <strong>To create a stronger future for brain health in Aotearoa.</strong>
+                By turning personal challenge into collective action, we aim to inspire, mobilise, and accelerate
+                discoveries in brain research that makes a meaningful difference in people’s lives now and for
+                generations to come.
               </p>
             </div>
 

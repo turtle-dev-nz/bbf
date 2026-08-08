@@ -8,8 +8,8 @@ import Campaign from "../sections/Campaign";
 
 const homeNavLinks: NavbarLink[] = [
   { label: "Home", id: "home" },
+  { label: "Events", id: "campaigns" },
   { label: "Mission", id: "mission" },
-  { label: "Campaigns", id: "campaigns" },
 ];
 
 export function HomePage() {
@@ -27,8 +27,8 @@ export function HomePage() {
 
       <main className="home-page__main">
         <Hero />
-        <Mission />
         <Campaign />
+        <Mission />
         {/* <section className="home-section" id="campaigns">
           <div className="container home-section__inner">
             <div className="home-section__intro">

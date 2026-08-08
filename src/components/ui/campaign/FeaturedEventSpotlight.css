@@ -1,0 +1,129 @@
+.featured-spotlight {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+.featured-spotlight__media {
+  position: relative;
+  min-height: 420px;
+}
+
+.spotlight-image-wrapper {
+  position: absolute;
+  inset: 0;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #6b351b;
+    mix-blend-mode: color;
+  }
+}
+
+.spotlight-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%);
+  mix-blend-mode: multiply;
+}
+
+.spotlight-badge {
+  position: absolute;
+  z-index: 2;
+  top: 1.5rem;
+  left: 1.5rem;
+  width: 130px;
+  height: auto;
+}
+
+.featured-spotlight__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-10) var(--space-8);
+  justify-content: center;
+}
+
+.spotlight-tag {
+  font-size: var(--fs-xs);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.spotlight-title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(var(--fs-2xl), 3.5vw, var(--fs-4xl));
+  text-transform: uppercase;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: #182329;
+}
+
+.spotlight-description {
+  margin: 0;
+  color: #405157;
+  font-size: var(--fs-base);
+  line-height: 1.6;
+}
+
+.featured-stats {
+  display: flex;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+  padding: var(--space-4) 0;
+  border-top: 1px solid rgba(24, 35, 41, 0.1);
+  border-bottom: 1px solid rgba(24, 35, 41, 0.1);
+}
+
+.featured-stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.featured-stat__value {
+  font-family: var(--font-heading);
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #182329;
+  line-height: 1;
+}
+
+.featured-stat__label {
+  font-size: var(--fs-xs);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #405157;
+}
+
+.spotlight-actions {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+@media (max-width: 768px) {
+  .featured-spotlight {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-spotlight__media {
+    min-height: 240px;
+  }
+
+  .featured-spotlight__content {
+    padding: var(--space-6);
+  }
+}

@@ -78,6 +78,7 @@
   background: #10181d;
   color: rgba(245, 244, 241, 0.72);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: var(--space-16);
 }
 
 .site-global-footer__inner {
