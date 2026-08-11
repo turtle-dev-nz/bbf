@@ -24,12 +24,16 @@ export const BBR_CAMPAIGN: BbrCampaign = {
   description: (
     <>
       <p>
-        Supported by Brain Tumor Support, every dollar donated goes directly to{" "}
+        Supported by{" "}
+        <a href="https://www.braintumoursupport.org.nz" target="_blank" rel="noopener noreferrer">
+          Brain Tumor Support
+        </a>
+        , every dollar donated goes directly to{" "}
         <a href="https://www.nanos.co.nz" target="_blank" rel="noopener noreferrer">
           NANOS
         </a>
-        , <b>the leading neuro-oncology society in NZ</b>, to help build New Zealand's first national Brain Tumour
-        Registry and advance brain cancer research.
+        , the leading neuro-oncology society in NZ, to help build New Zealand's first national Brain Tumour Registry and
+        advance brain cancer research.
       </p>
       <p>
         <strong>Be part of something bigger.</strong>
@@ -82,7 +86,12 @@ export const BBR_IMPACT_MESSAGES: Record<number, string> = {
 };
 
 export const BBR_MAIN_PAGE_STORY = {
-  pullQuote: '"Some challenges change your perspective forever."',
+  pullQuote: (
+    <span>
+      "He couldn’t change her diagnosis. <br />
+      But he could help change what comes next.."
+    </span>
+  ),
   paragraphs: [
     "After facing his own mental health struggles, Sam realised life was too short to stand still. He chose to change course by pushing himself beyond his limits, challenging both his mind and body, and dedicating that journey to making a difference for others.",
     "Then someone close to him was diagnosed with brain cancer.",
@@ -106,7 +115,7 @@ export const BBR_STORY = {
   pullQuote: '"This is about far more than running. This is a story about people."',
   paragraphs: [
     "I'm Sam Saunt-Lord, 20 years old from Wellington. In January 2027, I will run 25 consecutive ultra-marathons down New Zealand's North Island to raise awareness and funding for brain cancer research.",
-    "Inspired by my cousin Georgie's diagnosis of Glioblastoma — the most aggressive and incurable brain cancer, with a prognosis of 12–18 months — I am running to raise money for the first National Brain Tumour Registry here in Aotearoa.",
+    "Inspired by my cousin Georgie's diagnosis of Glioblastoma - the most aggressive and incurable brain cancer, with a prognosis of 12–18 months - I am running to raise money for the first National Brain Tumour Registry here in Aotearoa.",
     "Along the way, I'll be sharing kōrero with patients, whānau, caregivers, researchers, and advocates whose lives have been impacted by this devastating disease.",
     "A documentary is being made and filming has started. It will follow my journey and capture the intensely physical challenge of running more than 1,300 kilometres in 25 days, whilst exploring deeply human stories of resilience, determination, hope, and courage that define the brain cancer community of Aotearoa every single day.",
     "This run will push me to the edge of my physical and emotional limits. Battling fatigue, injury, weather, and the relentless demands of consecutive ultra-marathons.",
@@ -121,9 +130,9 @@ export const BBR_GEORGIE = {
   paragraphs: [
     "I have had multiple migraines every month for over 20 years, but on this occasion, it was different. It got worse quickly. I came in from outside, sat on the sofa and it exploded in my head. My last thought was, that's it, I'm gone.",
     "The date of the seizure was 20th May 2023. That was the start of my journey. A few days later I was informed about the brain tumour.",
-    "My procedure has been the standard approach: operate to remove the big chunk, then radio and chemo, followed by more chemo. The standard procedure has not changed in decades, nor has life expectancy — the average is 18 months. What we need is more research, more trials, more exploration; fundamentally we need more investment.",
+    "My procedure has been the standard approach: operate to remove the big chunk, then radio and chemo, followed by more chemo. The standard procedure has not changed in decades, nor has life expectancy - the average is 18 months. What we need is more research, more trials, more exploration; fundamentally we need more investment.",
     "Whilst I have a GBM (Glioblastoma tumour), I also have a life I love, a world I'm incredibly grateful for, a history that inspires and builds my strength, and a family that I am utterly devoted to.",
-    "Limited life expectancy brings forward your priorities. The main one is my family — particularly my kids — being around as long as possible. I was 13 when my father died. It was gutting, he was a wonderful man, and everyone loved being with him. You can focus on the loss, but over time I was able to focus on the strength he gave me.",
+    "Limited life expectancy brings forward your priorities. The main one is my family - particularly my kids - being around as long as possible. I was 13 when my father died. It was gutting, he was a wonderful man, and everyone loved being with him. You can focus on the loss, but over time I was able to focus on the strength he gave me.",
     "One fear that stewed a little longer than others was 'discovering you were going to die'. I thought that would be the worst thing to live with. And yet, when that fear became a reality, my biggest fear disappeared. Now I knew I was going to die earlier than scheduled, but now I could make plans!",
   ],
   secondQuote: '"Now I knew I was going to die earlier than scheduled, but now I could make plans!"',
@@ -167,7 +176,7 @@ export const BBR_PARTNERS = [
     initials: "NAN",
     name: "NANOS",
     description:
-      "The New Zealand Association of Neurologists — advancing neurology practice and patient care nationwide.",
+      "The New Zealand Association of Neurologists - advancing neurology practice and patient care nationwide.",
     href: "https://www.nanos.co.nz",
     logo: nanosLogo,
   },

@@ -33,11 +33,13 @@ export function FollowJourneySection() {
         </div>
 
         <p className="bbr-follow-tagline">
-          Follow the journey.
+          Share the journey.
           <br />
-          Share the course.
+          Follow Sam.
           <br />
-          Be part of something extraordinary.
+          Every conversation
+          <br />
+          helps build the movement.
         </p>
       </div>
     </section>

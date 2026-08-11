@@ -16,7 +16,7 @@ export function HeroSection() {
             funds <span className="run-hero__accent">NZ's first National Brain Tumour Registry.</span>
           </h1>
           <p className="run-hero__lede">
-            In January 2027, Sam Saunt-Lord runs 25 consecutive ultramarathons down New Zealand's North Island — filmed
+            In January 2027, Sam Saunt-Lord runs 25 consecutive ultramarathons down New Zealand's North Island - filmed
             for documentary, backed by leading Kiwi brands, and raising NZ$100k for brain cancer research.
           </p>
           <div className="run-actions">

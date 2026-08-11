@@ -12,10 +12,10 @@ function App() {
 
   return (
     <>
-      {/* Fixed map + trail — hidden on Big Brain 2 run routes */}
+      {/* Fixed map + trail - hidden on Big Brain 2 run routes */}
       {showUnderlay ? <NZMapUnderlay /> : null}
 
-      {/* Content wrapper — establishes stacking context above the map */}
+      {/* Content wrapper - establishes stacking context above the map */}
       <div className="app-content">
         <Routes>
           <Route path={ROUTES.home} element={<HomePage />} />

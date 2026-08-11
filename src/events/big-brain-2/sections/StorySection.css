@@ -1,7 +1,7 @@
 /* ── STORY ── */
 .bbr-story-section {
   background: transparent;
-  padding: 80px 24px;
+  padding: 48px 24px;
   border-top: 1px solid var(--bbr-border);
 }
 .bbr-story-inner {

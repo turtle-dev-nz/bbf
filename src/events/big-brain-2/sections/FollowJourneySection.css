@@ -66,9 +66,11 @@
   line-height: 1.9;
   color: var(--bbr-accent);
   width: max-content;
+  width: 100%;
   font-weight: 600;
   text-transform: uppercase;
   font-family: var(--bbr-font-display);
+  white-space: break-spaces;
 }
 
 .bbr-follow-map {
