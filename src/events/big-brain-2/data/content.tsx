@@ -81,6 +81,27 @@ export const BBR_IMPACT_MESSAGES: Record<number, string> = {
   50: "$50 sponsors a family attending a Big Brain Foundation event.",
 };
 
+export const BBR_MAIN_PAGE_STORY = {
+  pullQuote: '"Some challenges change your perspective forever."',
+  paragraphs: [
+    "After facing his own mental health struggles, Sam realised life was too short to stand still. He chose to change course by pushing himself beyond his limits, challenging both his mind and body, and dedicating that journey to making a difference for others.",
+    "Then someone close to him was diagnosed with brain cancer.",
+    "So he chose to run..",
+    <div className="bbr-story-list-section">
+      <ul className="bbr-story-list">
+        <li>Twenty-five ultramarathons</li>
+        <li>Twenty-five consecutive days</li>
+      </ul>
+      <span className="bbr-story-list-equals">=</span>
+      <strong className="bbr-story-list-result">The length of the North Island of New Zealand.</strong>
+    </div>,
+
+    "Not because running will cure brain cancer. But because every kilometre can help build something that will outlast the run itself.",
+    "Every donation helps fund New Zealand’s first Brain Tumour Registry and supports NANOS’ research into better diagnosis, treatment, and outcomes for future generations.",
+    "This isn’t just about one person running. It’s about thousands of New Zealanders choosing to do something that matters.",
+  ],
+};
+
 export const BBR_STORY = {
   pullQuote: '"This is about far more than running. This is a story about people."',
   paragraphs: [
