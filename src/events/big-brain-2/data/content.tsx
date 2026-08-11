@@ -24,15 +24,16 @@ export const BBR_CAMPAIGN: BbrCampaign = {
   description: (
     <>
       <p>
-        Supported by Brain Tumor Support, every dollar donated goes directly to NANOS,{" "}
-        <b>the leading neuro-oncology society in NZ</b>, to help build New Zealand's first national Brain Tumour
-        Registry and advance brain cancer research. By collecting better data, researchers can better understand brain
-        cancer, gain more funding, improve treatment, and create more hope for future patients and their families.
+        Supported by Brain Tumor Support, every dollar donated goes directly to{" "}
+        <a href="https://www.nanos.co.nz" target="_blank" rel="noopener noreferrer">
+          NANOS
+        </a>
+        , <b>the leading neuro-oncology society in NZ</b>, to help build New Zealand's first national Brain Tumour
+        Registry and advance brain cancer research.
       </p>
       <p>
         <strong>Be part of something bigger.</strong>
       </p>
-      <p>Donate today</p>
     </>
   ),
 };
@@ -146,7 +147,7 @@ export const BBR_PARTNERS = [
     name: "NANOS",
     description:
       "The New Zealand Association of Neurologists — advancing neurology practice and patient care nationwide.",
-    href: "https://www.nanos.org.nz",
+    href: "https://www.nanos.co.nz",
     logo: nanosLogo,
   },
 ] as const;

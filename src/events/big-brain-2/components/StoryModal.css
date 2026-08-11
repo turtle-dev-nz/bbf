@@ -67,9 +67,32 @@
   flex: 1;
   overflow-y: auto;
   padding: 48px 24px 80px;
+  width: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(245, 240, 235, 0.28) transparent;
+}
+
+.bbr-story-modal-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.bbr-story-modal-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.bbr-story-modal-body::-webkit-scrollbar-thumb {
+  background: rgba(197, 102, 7, 0.28);
+  border-radius: 999px;
+}
+
+.bbr-story-modal-body::-webkit-scrollbar-thumb:hover {
+  background: rgba(245, 240, 235, 0.45);
+}
+
+.bbr-story-modal-content {
+  width: 100%;
   max-width: 680px;
   margin: 0 auto;
-  width: 100%;
 }
 
 .bbr-story-modal-title {
@@ -161,4 +184,24 @@
 }
 .bbr-story-modal-cta:active {
   transform: scale(0.98);
+}
+
+@media (min-width: 1200px) {
+  .bbr-story-modal-overlay {
+    top: 36px;
+    right: 0;
+    bottom: 36px;
+    left: 0;
+    width: min(960px, calc(100vw - 72px));
+    margin: 0 auto;
+    border-radius: 14px;
+    border: 1px solid rgba(245, 240, 235, 0.12);
+    box-shadow:
+      0 28px 60px rgba(0, 0, 0, 0.46),
+      0 0 0 9999px rgba(0, 0, 0, 0.48);
+  }
+
+  .bbr-story-modal-bar {
+    border-radius: 14px 14px 0 0;
+  }
 }

@@ -12,6 +12,10 @@ export function DonationImpactSection() {
           ))}
         </ul>
         <p className="bbr-donation-impact-copy">{BBR_DONATION_IMPACT.summary}</p>
+        <p className="bbr-donation-impact-copy">
+          By collecting better data, researchers can better understand brain cancer, improve treatment, and create more
+          hope for the future patients and their families.
+        </p>
       </div>
     </section>
   );

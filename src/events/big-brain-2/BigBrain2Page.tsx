@@ -3,6 +3,7 @@ import { DonationNav } from "./components/DonationNav";
 import { DonationModal } from "./components/DonationModal";
 import { StoryModal } from "./components/StoryModal";
 import { HeroSection } from "./sections/HeroSection";
+import { DonationSection } from "./sections/DonationSection";
 import { DonationImpactSection } from "./sections/DonationImpactSection";
 import { StorySection } from "./sections/StorySection";
 import { SponsorsSection } from "./sections/SponsorsSection";
@@ -24,7 +25,8 @@ export function BigBrain2Page() {
       <DonationNav onOpenModal={openModal} />
 
       <main>
-        <HeroSection onOpenModal={openModal} />
+        <HeroSection />
+        <DonationSection onOpenModal={openModal} />
         <DonationImpactSection />
         <SponsorsSection />
         <SamPreviewSection />

@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { ROUTES } from "./app/routes";
 import { HomePage } from "./pages/HomePage";
 // import { SamsBigBrainRunPage } from "./events/sams-big-brain-run/SamsBigBrainRunPage";
@@ -7,10 +7,13 @@ import { GeorgiesStoryPage } from "./events/big-brain-2/GeorgiesStoryPage";
 import { NZMapUnderlay } from "./components/ui/NZMapUnderlay";
 
 function App() {
+  const { pathname } = useLocation();
+  const showUnderlay = !pathname.includes("georgies-story");
+
   return (
     <>
-      {/* Fixed map + trail — sits beneath all page content (z-index 0) */}
-      <NZMapUnderlay />
+      {/* Fixed map + trail — hidden on Big Brain 2 run routes */}
+      {showUnderlay ? <NZMapUnderlay /> : null}
 
       {/* Content wrapper — establishes stacking context above the map */}
       <div className="app-content">

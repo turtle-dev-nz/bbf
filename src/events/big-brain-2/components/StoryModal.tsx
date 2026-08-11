@@ -41,37 +41,36 @@ export function StoryModal({ isOpen, onClose, onDonate }: StoryModalProps) {
       </div>
 
       <div className="bbr-story-modal-body">
-        <p className="bbr-section-label">The Story</p>
-        <h2 className="bbr-story-modal-title">
-          Why I<br />
-          Run
-        </h2>
-        <blockquote className="bbr-story-modal-quote">{BBR_STORY.pullQuote}</blockquote>
+        <div className="bbr-story-modal-content">
+          <p className="bbr-section-label">The Story</p>
+          <h2 className="bbr-story-modal-title">Why I Run</h2>
+          <blockquote className="bbr-story-modal-quote">{BBR_STORY.pullQuote}</blockquote>
 
-        <div className="bbr-story-modal-text">
-          {BBR_STORY.paragraphs.map((para, i) => (
-            <p key={i}>{para}</p>
-          ))}
-        </div>
+          <div className="bbr-story-modal-text">
+            {BBR_STORY.paragraphs.map((para, i) => (
+              <p key={i}>{para}</p>
+            ))}
+          </div>
 
-        <div className="bbr-story-modal-georgie">
-          <p>This run is inspired by Sam&apos;s cousin Georgie, who was diagnosed with Glioblastoma in 2023.</p>
-          <Link className="bbr-story-modal-georgie-link" to={ROUTES.georgiesStory} onClick={onClose}>
-            Read Georgie&apos;s Story <FiArrowRight />
-          </Link>
-        </div>
+          <div className="bbr-story-modal-georgie">
+            <p>This run is inspired by Sam&apos;s cousin Georgie, who was diagnosed with Glioblastoma in 2023.</p>
+            <Link className="bbr-story-modal-georgie-link" to={ROUTES.georgiesStory} onClick={onClose}>
+              Read Georgie&apos;s Story <FiArrowRight />
+            </Link>
+          </div>
 
-        <div className="bbr-story-modal-footer">
-          <button
-            className="bbr-story-modal-cta"
-            type="button"
-            onClick={() => {
-              onClose();
-              onDonate();
-            }}
-          >
-            Donate Now <FiArrowRight />
-          </button>
+          <div className="bbr-story-modal-footer">
+            <button
+              className="bbr-story-modal-cta"
+              type="button"
+              onClick={() => {
+                onClose();
+                onDonate();
+              }}
+            >
+              Donate Now <FiArrowRight />
+            </button>
+          </div>
         </div>
       </div>
     </div>

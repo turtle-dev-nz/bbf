@@ -227,7 +227,7 @@ export function NZMapUnderlay() {
       // Core dot
       ctx.beginPath();
       ctx.arc(px, py, 3.5, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(255, 255, 255, 0.95)`;
+      ctx.fillStyle = `rgba(${DOT_COLOR.rgb}, ${0.9 * DOT_COLOR.alpha})`;
       ctx.fill();
     },
     [getBackgroundImageRect],

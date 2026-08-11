@@ -1,14 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FiArrowLeft } from "react-icons/fi";
 import { ROUTES } from "../../app/routes";
 import { BBR_GEORGIE } from "./data/content";
 import { DonationNav } from "./components/DonationNav";
 import { DonationModal } from "./components/DonationModal";
+import georgieFamily from "../../assets/campaigns/bigBrainRun/georgie-family.webp";
 import "./GeorgiesStoryPage.css";
 
 export function GeorgiesStoryPage() {
   const [modalOpen, setModalOpen] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, []);
 
   return (
     <div className="bbr">
@@ -30,6 +35,12 @@ export function GeorgiesStoryPage() {
             </h1>
 
             <blockquote className="bbr-pull-quote">{BBR_GEORGIE.pullQuote}</blockquote>
+
+            <div>
+              <figure className="bbr-georgie-figure">
+                <img className="bbr-georgie-image" src={georgieFamily} alt="Georgie with family" />
+              </figure>
+            </div>
 
             <div className="bbr-georgie-body">
               {BBR_GEORGIE.paragraphs.map((para, i) => (
