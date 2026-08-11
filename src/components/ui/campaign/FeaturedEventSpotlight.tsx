@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { Button } from "./Button";
 import "./FeaturedEventSpotlight.css";
 
