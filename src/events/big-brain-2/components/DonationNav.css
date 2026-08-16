@@ -71,24 +71,6 @@
   color: var(--bbr-accent);
 }
 
-.bbr-nav-cta {
-  background: var(--bbr-accent);
-  color: #fff;
-  font-family: var(--bbr-font-display);
-  font-weight: 700;
-  font-size: 0.95rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  border: none;
-  border-radius: 4px;
-  padding: 9px 22px;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-.bbr-nav-cta:hover {
-  background: var(--bbr-accent-lt);
-}
-
 @media (prefers-reduced-motion: reduce) {
   .bbr-nav-badge,
   .bbr-nav-marquee-track {

@@ -160,32 +160,6 @@
   margin-top: 36px;
 }
 
-.bbr-story-modal-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: var(--bbr-accent);
-  color: #fff;
-  font-family: var(--bbr-font-display);
-  font-weight: 800;
-  font-size: 1.05rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  border: none;
-  border-radius: 6px;
-  padding: 16px 30px;
-  cursor: pointer;
-  transition:
-    background 0.2s,
-    transform 0.15s;
-}
-.bbr-story-modal-cta:hover {
-  background: var(--bbr-accent-lt);
-}
-.bbr-story-modal-cta:active {
-  transform: scale(0.98);
-}
-
 @media (min-width: 1200px) {
   .bbr-story-modal-overlay {
     top: 36px;

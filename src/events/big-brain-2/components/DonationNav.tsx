@@ -1,4 +1,5 @@
 import { useScrollPosition } from "../../../hooks/useScrollPosition";
+import { BBRButton } from "../../../components/ui/campaign/samsBigBrainRun/BBRButton";
 import "./DonationNav.css";
 
 interface DonationNavProps {
@@ -19,9 +20,9 @@ export function DonationNav({ onOpenModal }: DonationNavProps) {
           </span>
           <span className="bbr-visually-hidden">Sam&apos;s Big Brain Run</span>
         </a>
-        <button className="bbr-nav-cta" onClick={onOpenModal} type="button">
+        <BBRButton size="sm" onClick={onOpenModal}>
           Donate Now
-        </button>
+        </BBRButton>
       </div>
     </nav>
   );

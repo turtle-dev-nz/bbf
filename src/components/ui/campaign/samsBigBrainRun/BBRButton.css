@@ -1,0 +1,44 @@
+.bbr-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bbr-accent);
+  color: #fff;
+  font-family: var(--bbr-font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.15s;
+}
+.bbr-button:hover {
+  background: var(--bbr-accent-lt);
+}
+.bbr-button:active {
+  transform: scale(0.98);
+}
+
+.bbr-button--sm {
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  border-radius: 4px;
+  padding: 9px 22px;
+}
+
+.bbr-button--md {
+  font-size: 0.92rem;
+  letter-spacing: 0.08em;
+  border-radius: 5px;
+  padding: 11px 22px;
+}
+
+.bbr-button--lg {
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  gap: 10px;
+  border-radius: 6px;
+  padding: 16px 30px;
+}

@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FiX, FiArrowRight } from "react-icons/fi";
 import { ROUTES } from "../../../app/routes";
+import { BBRButton } from "../../../components/ui/campaign/samsBigBrainRun/BBRButton";
 import { BBR_STORY } from "../data/content";
 import "./StoryModal.css";
 
@@ -60,16 +61,15 @@ export function StoryModal({ isOpen, onClose, onDonate }: StoryModalProps) {
           </div>
 
           <div className="bbr-story-modal-footer">
-            <button
-              className="bbr-story-modal-cta"
-              type="button"
+            <BBRButton
+              size="lg"
               onClick={() => {
                 onClose();
                 onDonate();
               }}
             >
               Donate Now <FiArrowRight />
-            </button>
+            </BBRButton>
           </div>
         </div>
       </div>
