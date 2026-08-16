@@ -2,15 +2,25 @@
 .bbr-follow-section {
   background: transparent;
   padding: 48px 24px;
+  background: var(--bbr-text);
   border-top: 1px solid var(--bbr-border);
+}
+
+.bbr-choose-banner {
+  margin-top: 0;
+  padding: 18px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .bbr-follow-inner {
   max-width: 1100px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
 }
 
 @media (min-width: 700px) {
@@ -18,7 +28,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 60px;
+    /* gap: 60px; */
   }
 }
 
@@ -46,8 +56,8 @@
   align-items: center;
   gap: 10px;
   text-decoration: none;
-  font-size: 0.88rem;
-  color: var(--bbr-text);
+  font-size: 0.95rem;
+  color: var(--bbr-bg-card);
   transition: color 0.2s;
 }
 .bbr-follow-link svg {
@@ -63,10 +73,11 @@
 
 .bbr-follow-tagline {
   font-size: 1.5rem;
-  line-height: 1.9;
+  line-height: 1;
   color: var(--bbr-accent);
-  width: max-content;
-  width: 100%;
+  /* width: max-content; */
+  text-align: center;
+  /* width: 100%; */
   font-weight: 600;
   text-transform: uppercase;
   font-family: var(--bbr-font-display);

@@ -67,27 +67,6 @@
   margin-top: 28px;
 }
 
-.bbr-story-read-more {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--bbr-accent);
-  color: #fff;
-  font-family: var(--bbr-font-display);
-  font-weight: 700;
-  font-size: 0.92rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  border: none;
-  border-radius: 5px;
-  padding: 11px 22px;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-.bbr-story-read-more:hover {
-  background: var(--bbr-accent-lt);
-}
-
 .bbr-georgie-link {
   display: inline-flex;
   align-items: center;
@@ -107,6 +86,11 @@
 
 .bbr-story-list {
   margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  width: 100%;
+  text-align: center;
 }
 
 .bbr-story-list li {
@@ -117,6 +101,18 @@
   display: flex;
   align-items: flex-start;
   gap: 0.5rem;
+}
+
+.bbr-story-list-item {
+  font-size: 2rem;
+  font-family: var(--bbr-font-secondary);
+}
+.bbr-story-list-final {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: var(--bbr-accent);
+  font-family: var(--bbr-font-display);
 }
 
 .bbr-story-list li::before {

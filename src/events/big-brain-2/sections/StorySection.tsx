@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { FiArrowRight } from "react-icons/fi";
 import { ROUTES } from "../../../app/routes";
+import { BBRButton } from "../../../components/ui/campaign/samsBigBrainRun/BBRButton";
 import { BBR_MAIN_PAGE_STORY } from "../data/content";
 import "./StorySection.css";
 
@@ -27,9 +28,9 @@ export function StorySection({ onReadMore }: StorySectionProps) {
             <p key={i}>{para}</p>
           ))}
           <div className="bbr-story-actions">
-            <button className="bbr-story-read-more" onClick={onReadMore} type="button">
+            <BBRButton size="md" onClick={onReadMore}>
               Read the full story <FiArrowRight />
-            </button>
+            </BBRButton>
             <Link className="bbr-georgie-link" to={ROUTES.georgiesStory}>
               Read Georgie&apos;s Story <FiArrowRight />
             </Link>

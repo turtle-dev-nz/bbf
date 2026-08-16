@@ -82,7 +82,7 @@ export function DonationSection({ onOpenModal }: DonationSectionProps) {
 
         <div className="bbr-fund-widget">
           <div className="bbr-fund-top">
-            <p className="bbr-fund-widget-title">Help Build the Foundation</p>
+            <p className="bbr-fund-widget-title">Be at the starting line</p>
             <p className="bbr-fund-phase-name">
               <strong>
                 Phase {currentPhase.number} · {currentPhase.name}

@@ -54,7 +54,7 @@
 /* Section eyebrow label, reused across Story / Partners / Georgie's Story */
 .bbr-section-label {
   font-family: var(--bbr-font-display);
-  font-size: 0.75rem;
+  font-size: 1.2rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--bbr-accent);

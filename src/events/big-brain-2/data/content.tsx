@@ -26,7 +26,7 @@ export const BBR_CAMPAIGN: BbrCampaign = {
       <p>
         Supported by{" "}
         <a href="https://www.braintumoursupport.org.nz" target="_blank" rel="noopener noreferrer">
-          Brain Tumor Support
+          Brain Tumour Support
         </a>
         , every dollar donated goes directly to{" "}
         <a href="https://www.nanos.co.nz" target="_blank" rel="noopener noreferrer">
@@ -67,8 +67,13 @@ export const BBR_CURRENT_PHASE_INDEX = 0;
 
 export const BBR_DONATION_IMPACT = {
   points: ["Building New Zealand's first Brain Tumour Registry", "Supporting NANOS' brain cancer research"],
-  summary:
-    "Every donation helps create the national evidence researchers need to better understand brain cancer, compare New Zealand internationally, attract future research funding, and improve outcomes for future generations.",
+  summary: `Every dollar helps researchers build evidence on brain
+cancer and patients in Aotearoa New Zealand. This world
+leading database registry will attract international funding
+and accelerate medical research in Aotearoa, and make a
+unique contribution to the global fight against this
+horrendous disease.`,
+  // "Every donation helps create the national evidence researchers need to better understand brain cancer, compare New Zealand internationally, attract future research funding, and improve outcomes for future generations.",
 } as const;
 
 export const BBR_PRESET_AMOUNTS = [
@@ -88,22 +93,28 @@ export const BBR_IMPACT_MESSAGES: Record<number, string> = {
 export const BBR_MAIN_PAGE_STORY = {
   pullQuote: (
     <span>
-      "He couldn’t change her diagnosis. <br />
-      But he could help change what comes next.."
+      "I couldn’t change her diagnosis. <br />
+      But I could help change what comes next.."
     </span>
   ),
   paragraphs: [
     "After facing his own mental health struggles, Sam realised life was too short to stand still. He chose to change course by pushing himself beyond his limits, challenging both his mind and body, and dedicating that journey to making a difference for others.",
     "Then someone close to him was diagnosed with brain cancer.",
     "So he chose to run..",
-    <div className="bbr-story-list-section">
-      <ul className="bbr-story-list">
-        <li>Twenty-five ultramarathons</li>
-        <li>Twenty-five consecutive days</li>
-      </ul>
-      <span className="bbr-story-list-equals">=</span>
-      <strong className="bbr-story-list-result">The length of the North Island of New Zealand.</strong>
+
+    <div className="bbr-story-list">
+      <span className="bbr-story-list-item">25 Ultra Marathons</span>
+      <span className="bbr-story-list-item">25 Consecutive Days</span>
+      <span className="bbr-story-list-final">The length of the North Island</span>
     </div>,
+    // <div className="bbr-story-list-section">
+    //   <ul className="bbr-story-list">
+    //     <li>Twenty-five ultramarathons</li>
+    //     <li>Twenty-five consecutive days</li>
+    //   </ul>
+    //   <span className="bbr-story-list-equals">=</span>
+    //   <strong className="bbr-story-list-result">The length of the North Island of New Zealand.</strong>
+    // </div>,
 
     "Not because running will cure brain cancer. But because every kilometre can help build something that will outlast the run itself.",
     "Every donation helps fund New Zealand’s first Brain Tumour Registry and supports NANOS’ research into better diagnosis, treatment, and outcomes for future generations.",
@@ -174,9 +185,12 @@ export const BBR_PARTNERS = [
   },
   {
     initials: "NAN",
-    name: "NANOS",
-    description:
-      "The New Zealand Association of Neurologists - advancing neurology practice and patient care nationwide.",
+    name: "New Zealand Aotearoa Neuro-Oncology Society",
+    description: `NANOS is an incorporated national society comprising of over
+                  80 members, including clinicians, researchers, and patient
+                  support community groups. NANOS is an integrated member of
+                  the Asian Society of Neuro-Oncology, which provides access to
+                  international collaborations and resources.`,
     href: "https://www.nanos.co.nz",
     logo: nanosLogo,
   },

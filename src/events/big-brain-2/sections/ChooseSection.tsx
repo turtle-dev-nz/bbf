@@ -1,7 +1,10 @@
 import type { IconType } from "react-icons";
-import { FiCompass, FiBookOpen, FiHeart, FiActivity, FiGift, FiStar, FiUsers } from "react-icons/fi";
+import { FiDollarSign, FiBookOpen, FiHeart, FiActivity, FiGift, FiStar, FiUsers } from "react-icons/fi";
+
+import { FaRunning } from "react-icons/fa";
 import { BBR_CHOICES } from "../data/content";
 import "./ChooseSection.css";
+import { BBRButton } from "../../../components/ui/campaign/samsBigBrainRun/BBRButton";
 
 type ChoiceIcon = (typeof BBR_CHOICES)[number]["icon"];
 
@@ -44,18 +47,16 @@ export function ChooseSection({ onDonate }: ChooseSectionProps) {
         </div>
         <div className="bbr-choose-featured">
           <div className="bbr-choose-item bbr-choose-item-featured">
-            <FiCompass className="bbr-choose-icon" size={22} />
+            <FaRunning className="bbr-choose-icon" size={22} />
             <span className="bbr-choose-text">{featuredChoice.text}</span>
           </div>
         </div>
-      </div>
-      <div className="bbr-choose-banner">
-        <button className="bbr-choose-banner-action" type="button" onClick={onDonate}>
-          <FiHeart aria-hidden="true" /> Today, you can choose to donate.
-        </button>
-        <p className="bbr-choose-banner-text">
-          Together, we&apos;re building the future of brain cancer research in New Zealand.
-        </p>
+        <div className="bbr-choose-cta">
+          <span className="bbr-choose-text">Today, you can choose</span>
+          <BBRButton size="sm" onClick={onDonate}>
+            to donate
+          </BBRButton>
+        </div>
       </div>
     </section>
   );

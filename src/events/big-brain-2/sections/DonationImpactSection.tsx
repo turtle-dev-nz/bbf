@@ -13,8 +13,8 @@ export function DonationImpactSection() {
         </ul>
         <p className="bbr-donation-impact-copy">{BBR_DONATION_IMPACT.summary}</p>
         <p className="bbr-donation-impact-copy">
-          By collecting better data, researchers can better understand brain cancer, improve treatment, and create more
-          hope for the future patients and their families.
+          By collecting better data in a single register, researchers will collectively improve treatments and outcomes
+          for patients, their whānau (families), and future generations of New Zealanders.
         </p>
       </div>
     </section>

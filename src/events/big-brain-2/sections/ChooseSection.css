@@ -59,6 +59,21 @@
   border-bottom: 1px solid var(--bbr-border);
 }
 
+.bbr-choose-cta {
+  background: color-mix(in srgb, var(--bbr-bg-card) 50%, transparent);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  font-weight: 600;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-left: 1px solid var(--bbr-border);
+  border-right: 1px solid var(--bbr-border);
+  border-bottom: 1px solid var(--bbr-border);
+}
+
 .bbr-choose-item-featured {
   /* background: color-mix(in srgb, var(--bbr-bg-card) 50%, transparent); */
   background: transparent;

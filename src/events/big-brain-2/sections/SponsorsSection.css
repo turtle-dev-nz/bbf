@@ -1,6 +1,6 @@
 /* ── SPONSORS ── */
 .bbr-sponsors-section {
-  background: var(--bbr-bg-mid);
+  background: var(--bbr-bg-card);
   border-top: 1px solid var(--bbr-border);
   border-bottom: 1px solid var(--bbr-border);
   padding: 44px 0;
@@ -68,7 +68,7 @@
 }
 .bbr-sponsor-chip {
   background: var(--bbr-bg-card);
-  border: 1px solid var(--bbr-border);
+  /* border: 1px solid var(--bbr-border); */
   border-radius: 6px;
   text-decoration: none;
   color: inherit;
