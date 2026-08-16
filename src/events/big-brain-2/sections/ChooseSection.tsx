@@ -1,5 +1,5 @@
 import type { IconType } from "react-icons";
-import { FiDollarSign, FiBookOpen, FiHeart, FiActivity, FiGift, FiStar, FiUsers } from "react-icons/fi";
+import { FiBookOpen, FiHeart, FiActivity, FiGift, FiStar, FiUsers } from "react-icons/fi";
 
 import { FaRunning } from "react-icons/fa";
 import { BBR_CHOICES } from "../data/content";
