@@ -16,13 +16,8 @@ export function PartnersSection() {
         <div className="bbr-partners-grid">
           {BBR_PARTNERS.map((partner, i) => (
             <div key={partner.name}>
-              <p className="bbr-section-label">{i ? "Charity Donee" : "Charity Partner"}</p>
-              <a
-                className="bbr-partner-card"
-                href={partner.href}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <p className="bbr-section-label">{i ? "Research Donee" : "Charity Partner"}</p>
+              <a className="bbr-partner-card" href={partner.href} target="_blank" rel="noopener noreferrer">
                 <div className="bbr-partner-logo-wrap">
                   <img className="bbr-partner-logo" src={partner.logo} alt={partner.name} width={80} height={80} />
                   {/* <span className="bbr-partner-initials">{partner.initials}</span> */}
