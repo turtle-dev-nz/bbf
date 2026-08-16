@@ -15,7 +15,7 @@ export default function BigBrainRunCard() {
       <div className="campaign-body">
         <p>
           25 consecutive ultra-marathons down New Zealand's North Island to raise awareness and funding to build NZ's
-          first brain tumor registry.
+          first brain tumour registry.
         </p>
         <div className="cta-row">
           <Button href="/events/sams-big-brain-run">Learn More</Button>
