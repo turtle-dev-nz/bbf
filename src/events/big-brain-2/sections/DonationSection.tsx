@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { BBR_CAMPAIGN, BBR_CURRENT_PHASE_INDEX, BBR_PHASES } from "../data/content";
+import { useDonationTotal } from "../../../hooks/useDonationTotal";
 import "./DonationSection.css";
 
 interface DonationSectionProps {
@@ -13,8 +14,9 @@ export function DonationSection({ onOpenModal }: DonationSectionProps) {
   const rafId = useRef<number | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
+  const { total: raised, isLoading: raisedLoading } = useDonationTotal(BBR_CAMPAIGN.raised);
   const currentPhase = BBR_PHASES[BBR_CURRENT_PHASE_INDEX];
-  const phasePct = Math.min((BBR_CAMPAIGN.raised / currentPhase.goal) * 100, 100);
+  const phasePct = Math.min((raised / currentPhase.goal) * 100, 100);
 
   useEffect(() => {
     if (!phasesOpen) return;
@@ -31,6 +33,8 @@ export function DonationSection({ onOpenModal }: DonationSectionProps) {
   }, [phasesOpen]);
 
   useEffect(() => {
+    if (raisedLoading) return;
+
     let cancelled = false;
 
     setDisplayRaised(0);
@@ -42,7 +46,7 @@ export function DonationSection({ onOpenModal }: DonationSectionProps) {
 
       const start = performance.now();
       const duration = 1200;
-      const target = BBR_CAMPAIGN.raised;
+      const target = raised;
 
       const step = (now: number) => {
         if (cancelled) return;
@@ -67,7 +71,7 @@ export function DonationSection({ onOpenModal }: DonationSectionProps) {
         rafId.current = null;
       }
     };
-  }, [phasePct]);
+  }, [phasePct, raised, raisedLoading]);
 
   const fmt = (n: number) => "$" + n.toLocaleString("en-NZ");
 
@@ -95,7 +99,16 @@ export function DonationSection({ onOpenModal }: DonationSectionProps) {
             </div>
             <div className="bbr-fund-amounts">
               <span className="bbr-fund-raised">
-                {fmt(displayRaised)} <em>Raised</em>
+                {raisedLoading ? (
+                  <span className="bbr-fund-pulse" role="status" aria-label="Loading donation total">
+                    <span />
+                    <span />
+                    <span />
+                  </span>
+                ) : (
+                  fmt(displayRaised)
+                )}{" "}
+                <em>Raised</em>
               </span>
               <span className="bbr-fund-goal-label">{fmt(currentPhase.goal)}</span>
             </div>
