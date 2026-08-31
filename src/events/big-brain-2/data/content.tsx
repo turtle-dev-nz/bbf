@@ -31,10 +31,14 @@ export const BBR_CAMPAIGN: BbrCampaign = {
         to help fund New Zealand’s first national <strong>Brain Tumour Registry</strong>. Right now, we don’t have a
         complete picture of who is affected, what treatments they receive, or what outcomes they experience.{" "}
       </p>
+      <p className="bbr-story-list-final">"You can't improve what you can't see."</p>
       <p>
-        A national registry would change that - giving researchers and clinicians the data they need to improve care,
-        strengthen research, support clinical trials and advocate for better access to treatments. Every dollar donated
-        through Sam’s Big Brain Run goes directly to{" "}
+        A national registry would change that by giving doctors and researchers the information they need to improve
+        patient care, accelerate research, support clinical trials, and fight for better access to life-changing
+        treatments.{" "}
+      </p>
+      <p>
+        Every dollar donated through Sam’s Big Brain Run goes directly to{" "}
         <a href="https://www.nanos.co.nz" target="_blank" rel="noopener noreferrer">
           NANOS
         </a>{" "}
@@ -65,21 +69,18 @@ export const BBR_CAMPAIGN: BbrCampaign = {
 export const BBR_PHASES = [
   {
     number: 1,
-    name: "Registry Planning",
     goal: 25000,
-    description: "Establish the foundations and infrastructure for the Registry.",
+    deadline: "20 November",
   },
   {
     number: 2,
-    name: "National Data Collection",
     goal: 56000,
-    description: "Collect national data to better understand brain tumours across New Zealand.",
+    deadline: "26 December",
   },
   {
     number: 3,
-    name: "Research Growth",
     goal: 100000,
-    description: "Support research growth and drive future breakthroughs.",
+    deadline: "20 February",
   },
 ] as const;
 

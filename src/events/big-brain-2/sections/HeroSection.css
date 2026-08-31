@@ -78,7 +78,16 @@
 }
 
 .bbr-hero-desc p + p {
-  margin-top: 0.85rem;
+  margin-top: 0.4rem;
+}
+
+.bbr-hero-desc p {
+  margin-top: 0.5rem;
+}
+
+.bbr-story-list-final {
+  margin: 1rem !important;
+  text-align: center;
 }
 
 @media (max-width: 900px), (max-height: 820px) {

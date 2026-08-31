@@ -87,11 +87,10 @@ export function DonationSection({ onOpenModal }: DonationSectionProps) {
         <div className="bbr-fund-widget">
           <div className="bbr-fund-top">
             <p className="bbr-fund-widget-title">Be at the starting line</p>
-            <p className="bbr-fund-phase-name">
-              <strong>
-                Phase {currentPhase.number} · {currentPhase.name}
-              </strong>
-            </p>
+            <div className="bbr-fund-phase-row">
+              <p className="bbr-fund-phase-name">Phase {currentPhase.number}</p>
+              <span className="bbr-fund-phase-target">Target: {currentPhase.deadline}</span>
+            </div>
             <div className="bbr-fund-bar-wrap">
               <div className="bbr-progress-track">
                 <div className="bbr-progress-fill" style={{ width: `${progressWidth}%` }} />
@@ -139,13 +138,11 @@ export function DonationSection({ onOpenModal }: DonationSectionProps) {
                         <div className="bbr-phase-btn">
                           <span className="bbr-phase-num">{phase.number}</span>
                           <div className="bbr-phase-info">
-                            <span className="bbr-phase-tag">
-                              Phase {phase.number} · {phase.name}
-                            </span>
-                            <span className="bbr-phase-amount">{fmt(phase.goal)}</span>
+                            <span className="bbr-phase-tag">Phase {phase.number}</span>
+                            <span className="bbr-phase-target">Target {phase.deadline}</span>
                           </div>
+                          <span className="bbr-phase-amount">{fmt(phase.goal)}</span>
                         </div>
-                        <p className="bbr-phase-desc">{phase.description}</p>
                       </div>
                     );
                   })}
