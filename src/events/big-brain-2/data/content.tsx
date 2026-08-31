@@ -24,6 +24,26 @@ export const BBR_CAMPAIGN: BbrCampaign = {
   description: (
     <>
       <p>
+        We are partnering with{" "}
+        <a href="https://www.braintumoursupport.org.nz" target="_blank" rel="noopener noreferrer">
+          Brain Tumour Support NZ
+        </a>{" "}
+        to help fund New Zealand’s first national <strong>Brain Tumour Registry</strong>. Right now, we don’t have a
+        complete picture of who is affected, what treatments they receive, or what outcomes they experience.{" "}
+      </p>
+      <p>
+        A national registry would change that - giving researchers and clinicians the data they need to improve care,
+        strengthen research, support clinical trials and advocate for better access to treatments. Every dollar donated
+        through Sam’s Big Brain Run goes directly to{" "}
+        <a href="https://www.nanos.co.nz" target="_blank" rel="noopener noreferrer">
+          NANOS
+        </a>{" "}
+        to help make it happen.
+      </p>
+      <p>
+        <strong>Be part of something bigger.</strong>
+      </p>
+      {/* <p>
         Supported by{" "}
         <a href="https://www.braintumoursupport.org.nz" target="_blank" rel="noopener noreferrer">
           Brain Tumour Support
@@ -37,7 +57,7 @@ export const BBR_CAMPAIGN: BbrCampaign = {
       </p>
       <p>
         <strong>Be part of something bigger.</strong>
-      </p>
+      </p> */}
     </>
   ),
 };
@@ -100,7 +120,7 @@ export const BBR_MAIN_PAGE_STORY = {
   paragraphs: [
     "After facing his own mental health struggles, Sam realised life was too short to stand still. He chose to change course by pushing himself beyond his limits, challenging both his mind and body, and dedicating that journey to making a difference for others.",
     "Then someone close to him was diagnosed with brain cancer.",
-    "So he chose to run..",
+    "So he chose to run.",
 
     <div className="bbr-story-list">
       <span className="bbr-story-list-item">25 Ultra Marathons</span>

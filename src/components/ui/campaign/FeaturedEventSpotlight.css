@@ -1,15 +1,15 @@
 .featured-spotlight {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   border-radius: var(--radius-xl);
   overflow: hidden;
   background: white;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 20px 60px rgba(16, 24, 29, 0.14);
 }
 
 .featured-spotlight__media {
   position: relative;
-  min-height: 420px;
+  min-height: 200px;
 }
 
 .spotlight-image-wrapper {
@@ -36,18 +36,17 @@
 .spotlight-badge {
   position: absolute;
   z-index: 2;
-  top: 1.5rem;
-  left: 1.5rem;
-  width: 130px;
+  top: 1rem;
+  left: 1rem;
+  width: 90px;
   height: auto;
 }
 
 .featured-spotlight__content {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
-  padding: var(--space-10) var(--space-8);
-  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-6);
 }
 
 .spotlight-tag {
@@ -62,7 +61,7 @@
 .spotlight-title {
   margin: 0;
   font-family: var(--font-heading);
-  font-size: clamp(var(--fs-2xl), 3.5vw, var(--fs-4xl));
+  font-size: var(--fs-2xl);
   text-transform: uppercase;
   line-height: 1;
   letter-spacing: -0.02em;
@@ -72,15 +71,15 @@
 .spotlight-description {
   margin: 0;
   color: #405157;
-  font-size: var(--fs-base);
-  line-height: 1.6;
+  font-size: var(--fs-sm);
+  line-height: 1.5;
 }
 
 .featured-stats {
   display: flex;
-  gap: var(--space-6);
+  gap: var(--space-4);
   flex-wrap: wrap;
-  padding: var(--space-4) 0;
+  padding: var(--space-3) 0;
   border-top: 1px solid rgba(24, 35, 41, 0.1);
   border-bottom: 1px solid rgba(24, 35, 41, 0.1);
 }
@@ -93,7 +92,7 @@
 
 .featured-stat__value {
   font-family: var(--font-heading);
-  font-size: var(--fs-2xl);
+  font-size: var(--fs-lg);
   font-weight: 700;
   text-transform: uppercase;
   color: #182329;
@@ -112,18 +111,4 @@
   display: flex;
   gap: var(--space-3);
   margin-top: var(--space-2);
-}
-
-@media (max-width: 768px) {
-  .featured-spotlight {
-    grid-template-columns: 1fr;
-  }
-
-  .featured-spotlight__media {
-    min-height: 240px;
-  }
-
-  .featured-spotlight__content {
-    padding: var(--space-6);
-  }
 }

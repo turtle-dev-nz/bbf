@@ -21,6 +21,9 @@
 
 .home-hero,
 .home-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: var(--space-20) 0;
   padding-top: 0;
   scroll-margin-top: 104px;

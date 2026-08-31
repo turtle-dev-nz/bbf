@@ -9,18 +9,19 @@ h1 {
 }
 
 .home-hero {
-  height: calc(100svh - var(--section-nav-height));
+  /* min-height (not height) so stacked/tablet layouts can grow without clipping content */
+  min-height: min(680px, calc(100svh - var(--section-nav-height)));
 }
 
 @media (max-width: 768px) {
   .home-hero {
-    height: auto;
+    min-height: auto;
   }
 }
 
 .home-hero__support {
   display: grid;
-  gap: var(--space-4);
+  align-content: start;
+  gap: var(--space-3);
   font-size: var(--fs-lg);
-  /* color: var(--color-text-secondary); */
 }

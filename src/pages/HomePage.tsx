@@ -4,7 +4,6 @@ import { SiteFooter } from "../components/layout/SiteFooter";
 import "./HomePage.css";
 import Hero from "../sections/Hero";
 import Mission from "../sections/Mission";
-import Campaign from "../sections/Campaign";
 
 const homeNavLinks: NavbarLink[] = [
   { label: "Home", id: "home" },
@@ -27,7 +26,6 @@ export function HomePage() {
 
       <main className="home-page__main">
         <Hero />
-        <Campaign />
         <Mission />
         {/* <section className="home-section" id="campaigns">
           <div className="container home-section__inner">
