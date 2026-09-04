@@ -1,5 +1,5 @@
 import type { IconType } from "react-icons";
-import { FiInstagram, FiFacebook, FiGlobe } from "react-icons/fi";
+import { FiInstagram, FiFacebook } from "react-icons/fi";
 
 import { BBR_SOCIAL } from "../data/content";
 import "./FollowJourneySection.css";
@@ -9,16 +9,14 @@ type SocialPlatform = (typeof BBR_SOCIAL)[number]["platform"];
 const SOCIAL_ICONS: Record<SocialPlatform, IconType> = {
   instagram: FiInstagram,
   facebook: FiFacebook,
-  web: FiGlobe,
+  // web: FiGlobe,
 };
 
 export function FollowJourneySection() {
   return (
     <section className="bbr-follow-section">
       <div className="bbr-follow-inner">
-        <p className="bbr-follow-tagline">
-          Follow Sam and share the journey.
-        </p>
+        <p className="bbr-follow-tagline">Follow Sam and share the journey.</p>
         <div className="bbr-follow-links-col">
           <ul className="bbr-follow-links">
             {BBR_SOCIAL.map((s) => {
@@ -35,10 +33,7 @@ export function FollowJourneySection() {
           </ul>
         </div>
 
-        <p className="bbr-follow-tagline">
-          Every conversation
-          helps build the movement.
-        </p>
+        <p className="bbr-follow-tagline">Every conversation helps build the movement.</p>
       </div>
     </section>
   );

@@ -1,20 +1,39 @@
+import { Link } from "react-router-dom";
 import { FiArrowRight } from "react-icons/fi";
+import { ROUTES } from "../../../app/routes";
+import { BBRButton } from "../../../components/ui/campaign/samsBigBrainRun/BBRButton";
+import { BBR_MAIN_PAGE_STORY } from "../data/content";
+import "./StorySection.css";
 
-export function StorySection() {
+interface StorySectionProps {
+  onReadMore: () => void;
+}
+
+export function StorySection({ onReadMore }: StorySectionProps) {
   return (
-    <section id="story" className="run-section">
-      <div className="container run-section__inner">
-        <div className="run-story-grid">
-          <div className="run-story__media">Photo / video placeholder</div>
-          <div className="run-story__content">
-            <p className="run-eyebrow">The story</p>
-            <h2>Campaign story section</h2>
-            <p className="run-section__placeholder">
-              Short placeholder copy for the personal story, reason for the event, or charity context.
-            </p>
-            <a className="run-inline-link" href="#contact">
-              Read more placeholder <FiArrowRight aria-hidden="true" />
-            </a>
+    <section className="bbr-story-section">
+      <div className="bbr-story-inner">
+        <div className="bbr-story-meta">
+          <p className="bbr-section-label">The Story</p>
+          <h2>
+            Why Sam
+            <br />
+            Runs
+          </h2>
+          <blockquote className="bbr-pull-quote">{BBR_MAIN_PAGE_STORY.pullQuote}</blockquote>
+        </div>
+
+        <div className="bbr-story-body">
+          {BBR_MAIN_PAGE_STORY.paragraphs.map((para, i) => (
+            <p key={i}>{para}</p>
+          ))}
+          <div className="bbr-story-actions">
+            <BBRButton size="md" onClick={onReadMore}>
+              Read the full story <FiArrowRight />
+            </BBRButton>
+            <Link className="bbr-georgie-link" to={ROUTES.georgiesStory}>
+              Read Georgie&apos;s Story <FiArrowRight />
+            </Link>
           </div>
         </div>
       </div>

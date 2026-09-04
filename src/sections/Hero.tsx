@@ -21,7 +21,7 @@ const Hero = () => {
             Connecting people, research and communities to <span>improve brain health across New Zealand.</span>
           </h1>
           {/* <div className="home-actions">
-            <Link className="home-button home-button--primary" to={ROUTES.bigBrain2}>
+            <Link className="home-button home-button--primary" to={ROUTES.samsBigBrainRun}>
               View Sam&apos;s Big Brain Run
             </Link>
             <a className="home-button home-button--secondary" href="#campaigns">
@@ -35,7 +35,7 @@ const Hero = () => {
           <FeaturedEventSpotlight
             title="Sam's Big Brain Run"
             description="25 consecutive ultra-marathons down New Zealand's North Island to raise awareness and funding to build NZ's first brain tumour registry."
-            href={ROUTES.bigBrain2}
+            href={ROUTES.samsBigBrainRun}
             imageSrc={samRunningHero}
             imageAlt="Sam running through New Zealand's North Island"
             badgeSrc={samBigBrainBadge}
