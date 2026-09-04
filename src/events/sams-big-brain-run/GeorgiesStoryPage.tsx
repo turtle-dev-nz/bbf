@@ -22,7 +22,7 @@ export function GeorgiesStoryPage() {
       <main>
         <article className="bbr-georgie-page">
           <div className="bbr-georgie-page-inner">
-            <Link to={ROUTES.bigBrain2} className="bbr-georgie-back">
+            <Link to={ROUTES.samsBigBrainRun} className="bbr-georgie-back">
               <FiArrowLeft size={14} />
               Back to Sam&apos;s run
             </Link>

@@ -1,41 +1,58 @@
-import bigbrainLogo from "../../assets/bigbrain-logo-dk_bg-web.webp";
-import { Navbar } from "../../components/layout/Navbar";
-import { RunFooter } from "./components/RunFooter";
-import { ContactSection } from "./sections/ContactSection";
-import { EventStatsSection } from "./sections/EventStatsSection";
+import { useState } from "react";
+import { DonationNav } from "./components/DonationNav";
+import { DonationModal } from "./components/DonationModal";
+import { StoryModal } from "./components/StoryModal";
 import { HeroSection } from "./sections/HeroSection";
-import { PartnerSection } from "./sections/PartnerSection";
-import { PartnerStripSection } from "./sections/PartnerStripSection";
+import { DonationSection } from "./sections/DonationSection";
+import { DonationImpactSection } from "./sections/DonationImpactSection";
 import { StorySection } from "./sections/StorySection";
-import { TiersSection } from "./sections/TiersSection";
-import { runNavLinks } from "./data/content";
-import "./styles/runTheme.css";
+import { SponsorsSection } from "./sections/SponsorsSection";
+import { SamPreviewSection } from "./sections/SamPreviewSection";
+import { ChooseSection } from "./sections/ChooseSection";
+import { FollowJourneySection } from "./sections/FollowJourneySection";
+import { PartnersSection } from "./sections/PartnersSection";
+import "./styles/base.css";
 
 export function SamsBigBrainRunPage() {
-  return (
-    <div className="run-theme">
-      <Navbar
-        logoSrc={bigbrainLogo}
-        logoAlt="Big Brain Foundation logo"
-        homeHref="#about"
-        ariaLabel="Campaign navigation"
-        mobileMenuId="run-mobile-navigation"
-        navLinks={runNavLinks}
-        secondaryAction={{ label: "Partner", href: "#partner", variant: "ghost" }}
-        primaryAction={{ label: "Donate", href: "#contact" }}
-      />
+  const [modalOpen, setModalOpen] = useState(false);
+  const [storyOpen, setStoryOpen] = useState(false);
 
-      <main className="run-main">
+  const openModal = () => setModalOpen(true);
+  const closeModal = () => setModalOpen(false);
+
+  return (
+    <div className="bbr">
+      <DonationNav onOpenModal={openModal} />
+
+      <main>
         <HeroSection />
-        <PartnerStripSection />
-        <EventStatsSection />
-        <PartnerSection />
-        <TiersSection />
-        <StorySection />
-        <ContactSection />
+        <DonationSection onOpenModal={openModal} />
+        <DonationImpactSection />
+        <SponsorsSection />
+        <SamPreviewSection />
+        <StorySection onReadMore={() => setStoryOpen(true)} />
+        <ChooseSection onDonate={openModal} />
+        <FollowJourneySection />
+        <PartnersSection />
       </main>
 
-      <RunFooter />
+      <footer className="bbr-footer">
+        <p>
+          Powered by <a href="#">Raisley</a> · Funds managed by the Big Brain Foundation
+          <br />
+          Questions? <a href="mailto:hello@bigbrainfoundation.org">hello@bigbrainfoundation.org</a>
+        </p>
+      </footer>
+
+      <DonationModal isOpen={modalOpen} onClose={closeModal} />
+      <StoryModal
+        isOpen={storyOpen}
+        onClose={() => setStoryOpen(false)}
+        onDonate={() => {
+          setStoryOpen(false);
+          openModal();
+        }}
+      />
     </div>
   );
 }

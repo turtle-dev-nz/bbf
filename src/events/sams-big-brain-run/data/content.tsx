@@ -172,8 +172,8 @@ export const BBR_GEORGIE = {
 
 export const BBR_SOCIAL = [
   { platform: "instagram", handle: "@sams_bigbrainrun", href: "https://instagram.com/sams_bigbrainrun" },
-  { platform: "facebook", handle: "@samsbigbrainrun", href: "https://facebook.com/samsbigbrainrun" },
-  { platform: "web", handle: "bigbrainfoundation.org", href: "https://bigbrainfoundation.org" },
+  { platform: "facebook", handle: "@samsbigbrainrun", href: "https://www.facebook.com/profile.php?id=61574269924245" },
+  // { platform: "web", handle: "bigbrainfoundation.org", href: "https://bigbrainfoundation.org" },
 ] as const;
 
 export const BBR_CHOICES = [
