@@ -38,7 +38,7 @@ export function SamsBigBrainRunPage() {
 
       <footer className="bbr-footer">
         <p>
-          Powered by <a href="#">Raisley</a> · Funds managed by the Big Brain Foundation
+          Powered by <a href="#">Raisley</a> · Funds managed by Brain Tumour Support NZ
           <br />
           Questions? <a href="mailto:hello@bigbrainfoundation.org">hello@bigbrainfoundation.org</a>
         </p>
