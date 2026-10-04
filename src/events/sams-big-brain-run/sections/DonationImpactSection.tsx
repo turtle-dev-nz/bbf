@@ -12,6 +12,10 @@ export function DonationImpactSection() {
           ))}
         </ul>
         <p className="bbr-donation-impact-copy">{BBR_DONATION_IMPACT.summary}</p>
+        <p><br /></p>
+        <p className="bbr-pull-quote">
+      "In Aotearoa, brain cancer causes 42% of childhood cancer deaths, almost twice those of leukaemia."
+      </p>
         <p className="bbr-donation-impact-copy">
           By collecting better data in a single register, researchers will collectively improve treatments and outcomes
           for patients, their whānau (families), and future generations of New Zealanders.
