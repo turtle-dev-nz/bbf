@@ -38,7 +38,7 @@ export const BBR_CAMPAIGN: BbrCampaign = {
         treatments.{" "}
       </p>
       <p className="bbr-pull-quote">
-      "Brain cancer is the biggest cancer killer in adults and children under the age of forty"
+      "Brain cancer is the biggest cancer killer in adults and children under the age of forty."
       </p>
       <p>
         New research is critical to improve survival rates for brain cancer patients. Every dollar donated through Sam’s Big Brain Run goes directly to{" "}
