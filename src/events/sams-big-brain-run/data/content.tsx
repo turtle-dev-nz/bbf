@@ -37,12 +37,15 @@ export const BBR_CAMPAIGN: BbrCampaign = {
         patient care, accelerate research, support clinical trials, and fight for better access to life-changing
         treatments.{" "}
       </p>
+      <p className="bbr-pull-quote">
+      "Brain cancer is the biggest cancer killer in adults and children under the age of forty"
+      </p>
       <p>
-        Every dollar donated through Sam’s Big Brain Run goes directly to{" "}
+        New research is critical to improve survival rates for brain cancer patients. Every dollar donated through Sam’s Big Brain Run goes directly to{" "}
         <a href="https://www.nanos.co.nz" target="_blank" rel="noopener noreferrer">
           NANOS
         </a>{" "}
-        to help make it happen.
+        to help make this happen.
       </p>
       <p>
         <strong>Be part of something bigger.</strong>
@@ -90,8 +93,7 @@ export const BBR_DONATION_IMPACT = {
   points: ["Building New Zealand's first Brain Tumour Registry", "Supporting NANOS' brain cancer research"],
   summary: `Every dollar helps researchers build evidence on brain
 cancer and patients in Aotearoa New Zealand. This world
-leading database registry will attract international funding
-and accelerate medical research in Aotearoa, and make a
+leading database registry will attract international funding, support clinical trials, accelerate medical research in Aotearoa, and make a
 unique contribution to the global fight against this
 horrendous disease.`,
   // "Every donation helps create the national evidence researchers need to better understand brain cancer, compare New Zealand internationally, attract future research funding, and improve outcomes for future generations.",

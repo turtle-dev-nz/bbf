@@ -28,10 +28,10 @@ export function SamsBigBrainRunPage() {
         <HeroSection />
         <DonationSection onOpenModal={openModal} />
         <DonationImpactSection />
-        <SponsorsSection />
         <SamPreviewSection />
         <StorySection onReadMore={() => setStoryOpen(true)} />
         <ChooseSection onDonate={openModal} />
+        <SponsorsSection />
         <FollowJourneySection />
         <PartnersSection />
       </main>
