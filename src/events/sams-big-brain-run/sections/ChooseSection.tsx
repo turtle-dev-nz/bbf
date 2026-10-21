@@ -52,9 +52,9 @@ export function ChooseSection({ onDonate }: ChooseSectionProps) {
           </div>
         </div>
         <div className="bbr-choose-cta">
-          <span className="bbr-choose-text">Today, you can choose</span>
+          <span className="bbr-choose-text">Today, you can choose to</span>
           <BBRButton size="sm" onClick={onDonate}>
-            to donate
+            donate now
           </BBRButton>
         </div>
       </div>

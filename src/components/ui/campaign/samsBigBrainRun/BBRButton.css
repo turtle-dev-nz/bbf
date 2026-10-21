@@ -21,10 +21,10 @@
 }
 
 .bbr-button--sm {
-  font-size: 0.95rem;
+  font-size: 1.3rem;
   letter-spacing: 0.06em;
   border-radius: 4px;
-  padding: 9px 22px;
+  padding: 11px 22px;
 }
 
 .bbr-button--md {
