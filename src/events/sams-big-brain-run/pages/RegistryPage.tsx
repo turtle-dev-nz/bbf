@@ -93,7 +93,7 @@ function RegistryContent() {
               Georgie, Sam's cousin, lives with glioblastoma in the UK. Her story is why the family asked what they could
               do here at home.{" "}
               <Link className="bbr-text-link" to={ROUTES.georgiesStory}>
-                Read her story →
+                Read her story <span className="bbr-arrow" aria-hidden="true">→</span>
               </Link>
             </figcaption>
           </figure>

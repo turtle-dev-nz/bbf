@@ -23,8 +23,17 @@ type StatsResponse = {
 
 const EMPTY: CampaignStats = { total: 0, supporterCount: null, recent: [] };
 
+/** How often to re-check for new supporters while the tab is visible. The script caches for 5 min anyway. */
+const POLL_MS = 60_000;
+
+/** Stable key for a supporter row (the feed has no IDs, by design). */
+export function supporterKey(s: Supporter): string {
+  return `${s.createdAt}|${s.name}`;
+}
+
 /**
- * Fetches live campaign stats from the donation webhook's Apps Script.
+ * Live campaign stats from the donation webhook's Apps Script, refreshed every minute while the
+ * page is visible so new supporters appear without a reload.
  * Older deployments only return `total`; supporterCount/recent stay empty until the new script is live.
  */
 export function useCampaignStats(): CampaignStats & { isLoading: boolean; failed: boolean } {
@@ -33,31 +42,60 @@ export function useCampaignStats(): CampaignStats & { isLoading: boolean; failed
   const [failed, setFailed] = useState(false);
 
   useEffect(() => {
-    const controller = new AbortController();
+    let controller: AbortController | null = null;
+    let timer: number | undefined;
+    let disposed = false;
 
-    fetch(CAMPAIGN_STATS_URL, { signal: controller.signal })
-      .then((res) => {
-        if (!res.ok) throw new Error(`Stats request failed: ${res.status}`);
-        return res.json() as Promise<StatsResponse>;
-      })
-      .then((data) => {
-        if (!data.success) throw new Error("Stats response not successful");
-        setStats({
-          total: typeof data.total === "number" ? data.total : 0,
-          supporterCount: typeof data.supporterCount === "number" ? data.supporterCount : null,
-          recent: Array.isArray(data.recent) ? data.recent : [],
+    const load = () => {
+      controller?.abort();
+      controller = new AbortController();
+      const { signal } = controller;
+
+      fetch(CAMPAIGN_STATS_URL, { signal })
+        .then((res) => {
+          if (!res.ok) throw new Error(`Stats request failed: ${res.status}`);
+          return res.json() as Promise<StatsResponse>;
+        })
+        .then((data) => {
+          if (!data.success) throw new Error("Stats response not successful");
+          setFailed(false);
+          setStats({
+            total: typeof data.total === "number" ? data.total : 0,
+            supporterCount: typeof data.supporterCount === "number" ? data.supporterCount : null,
+            recent: Array.isArray(data.recent) ? data.recent : [],
+          });
+        })
+        .catch((err: unknown) => {
+          if (signal.aborted) return;
+          console.error("Failed to fetch campaign stats", err);
+          setFailed(true);
+        })
+        .finally(() => {
+          if (!signal.aborted) setIsLoading(false);
         });
-      })
-      .catch((err: unknown) => {
-        if (controller.signal.aborted) return;
-        console.error("Failed to fetch campaign stats", err);
-        setFailed(true);
-      })
-      .finally(() => {
-        if (!controller.signal.aborted) setIsLoading(false);
-      });
+    };
 
-    return () => controller.abort();
+    const schedule = () => {
+      window.clearInterval(timer);
+      if (document.visibilityState === "visible") timer = window.setInterval(load, POLL_MS);
+    };
+
+    const onVisibility = () => {
+      if (disposed) return;
+      if (document.visibilityState === "visible") load();
+      schedule();
+    };
+
+    load();
+    schedule();
+    document.addEventListener("visibilitychange", onVisibility);
+
+    return () => {
+      disposed = true;
+      controller?.abort();
+      window.clearInterval(timer);
+      document.removeEventListener("visibilitychange", onVisibility);
+    };
   }, []);
 
   return { ...stats, isLoading, failed };

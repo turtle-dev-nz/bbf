@@ -28,3 +28,14 @@
 .bbr-nobrainer--dark {
   color: var(--bbr-text);
 }
+
+/* Written out left to right, like a signature. The padding stops script swashes being clipped. */
+.bbr-nobrainer-ink {
+  display: inline-block;
+  padding-inline: 0.15em;
+  clip-path: inset(-0.2em 100% -0.2em 0);
+  transition: clip-path 1.3s cubic-bezier(0.55, 0.1, 0.35, 1) 0.15s;
+}
+.bbr-nobrainer--reveal.is-written .bbr-nobrainer-ink {
+  clip-path: inset(-0.2em -0.2em -0.2em 0);
+}

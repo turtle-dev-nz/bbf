@@ -56,3 +56,42 @@
 .bbr-faq-ask .bbr-body {
   color: #d9d2cb;
 }
+
+/* Smooth open/close where supported (Chromium today); other browsers open instantly, as before. */
+@supports selector(::details-content) {
+  .bbr-faq details::details-content {
+    block-size: 0;
+    overflow: clip;
+    transition:
+      block-size 0.35s cubic-bezier(0.2, 0.9, 0.25, 1),
+      content-visibility 0.35s allow-discrete;
+  }
+  .bbr-faq details[open]::details-content {
+    block-size: auto;
+  }
+}
+@supports (interpolate-size: allow-keywords) {
+  .bbr-faq {
+    interpolate-size: allow-keywords;
+  }
+}
+
+.bbr-faq details[open] p {
+  animation: bbr-faq-in 0.35s ease 0.05s both;
+}
+@keyframes bbr-faq-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bbr-faq details::details-content,
+  .bbr-faq summary::after {
+    transition: none;
+  }
+  .bbr-faq details[open] p {
+    animation: none;
+  }
+}

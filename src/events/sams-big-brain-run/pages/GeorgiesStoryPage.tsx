@@ -55,7 +55,7 @@ function GeorgieContent() {
             brain tumour registry here in New Zealand.
           </p>
           <button className="bbr-btn" type="button" onClick={openDonate}>
-            Back Sam →
+            Back Sam <span className="bbr-arrow" aria-hidden="true">→</span>
           </button>
         </div>
       </div>

@@ -73,7 +73,14 @@ export const BBR_GEORGIE = {
    Why it matters: sourced, non-critical facts
 ───────────────────────────────────────── */
 
-export type SourcedStat = { value: string; label: string; source: string; href: string };
+export type SourcedStat = {
+  value: string;
+  label: string;
+  source: string;
+  href: string;
+  /** Roll the number in. Kept off for death statistics on purpose. */
+  animate?: boolean;
+};
 
 export const BBR_STATS: SourcedStat[] = [
   {
@@ -91,6 +98,7 @@ export const BBR_STATS: SourcedStat[] = [
   {
     value: "2,400+",
     label: "New Zealanders diagnosed with a brain tumour every year",
+    animate: true,
     source: "Health Research Council",
     href: "https://hrc.govt.nz/node/46443",
   },

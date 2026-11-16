@@ -97,14 +97,14 @@ function FollowContent() {
               <h3>Help the crew</h3>
               <p>A bed, a meal, a physio session or a washing machine along the route.</p>
               <button className="bbr-text-link bbr-follow-way-btn" type="button" onClick={() => openContact("host")}>
-                Offer help →
+                Offer help <span className="bbr-arrow" aria-hidden="true">→</span>
               </button>
             </div>
             <div className="bbr-card bbr-follow-way">
               <h3>Join Sam for a stretch</h3>
               <p>For safety, only a small number of people will run with Sam, by arrangement.</p>
               <button className="bbr-text-link bbr-follow-way-btn" type="button" onClick={() => openContact("join")}>
-                Ask to join →
+                Ask to join <span className="bbr-arrow" aria-hidden="true">→</span>
               </button>
             </div>
           </div>

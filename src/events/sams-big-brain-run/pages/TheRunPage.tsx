@@ -99,7 +99,7 @@ function TheRunContent() {
         <div className="bbr-wrap bbr-run-band">
           <p className="bbr-h3">Not a business? You can still back Sam.</p>
           <button className="bbr-btn bbr-btn--white" type="button" onClick={openDonate}>
-            Donate →
+            Donate <span className="bbr-arrow" aria-hidden="true">→</span>
           </button>
         </div>
       </section>

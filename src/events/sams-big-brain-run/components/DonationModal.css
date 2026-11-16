@@ -21,6 +21,16 @@
   height: 100%;
   border: 0;
   background: #ffffff;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.bbr-donate-frame.is-loaded {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bbr-donate-frame {
+    transition: none;
+  }
 }
 
 .bbr-donate-loading {

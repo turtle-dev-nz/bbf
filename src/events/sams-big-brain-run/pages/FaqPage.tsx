@@ -24,7 +24,7 @@ function FaqContent() {
 
         <div className="bbr-faq">
           {BBR_FAQS.map((f) => (
-            <details key={f.q}>
+            <details key={f.q} name="bbr-faq">
               <summary>{f.q}</summary>
               <p>{f.a}</p>
             </details>

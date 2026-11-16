@@ -344,3 +344,26 @@
 .bbr-page-hero .bbr-lead {
   color: #d9d2cb;
 }
+
+/* ── Arrow nudge on links and buttons ── */
+.bbr-arrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+a:hover > .bbr-arrow,
+button:hover > .bbr-arrow,
+a:focus-visible > .bbr-arrow,
+button:focus-visible > .bbr-arrow {
+  transform: translateX(3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bbr-arrow,
+  .bbr-btn {
+    transition: none;
+  }
+  a:hover > .bbr-arrow,
+  button:hover > .bbr-arrow {
+    transform: none;
+  }
+}

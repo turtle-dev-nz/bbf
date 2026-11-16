@@ -12,6 +12,14 @@
 }
 .bbr-route-map-slot {
   min-height: 560px;
+  flex-direction: column;
+  gap: 12px;
+}
+.bbr-route-map-active {
+  font-family: var(--bbr-font-display);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--bbr-accent-strong);
 }
 
 .bbr-route-list {
@@ -22,19 +30,83 @@
   align-self: flex-start;
 }
 
+/* ── Stage list with a trail that fills as you read ── */
 .bbr-stages {
+  --rail-x: 7px;
+  position: relative;
   margin: 0;
   padding: 0;
   list-style: none;
   border-top: 1px solid var(--bbr-border);
 }
+
+/* Rail (full length) and trail (filled to the active day). */
+.bbr-stages::before,
+.bbr-stages::after {
+  content: "";
+  position: absolute;
+  left: var(--rail-x);
+  top: 0;
+  width: 2px;
+  border-radius: 2px;
+  pointer-events: none;
+}
+.bbr-stages::before {
+  bottom: 0;
+  background: rgba(31, 42, 51, 0.12);
+}
+.bbr-stages::after {
+  height: var(--trail, 0px);
+  background: var(--bbr-accent-strong);
+  transition: height 0.45s cubic-bezier(0.2, 0.9, 0.25, 1);
+}
+
 .bbr-stages li {
+  position: relative;
   display: flex;
   gap: 16px;
   align-items: baseline;
-  padding: 14px 0;
+  padding: 14px 0 14px 32px;
   border-bottom: 1px solid var(--bbr-border);
+  transition: background-color 0.3s;
 }
+
+.bbr-stage-dot {
+  position: absolute;
+  left: calc(var(--rail-x) - 5px);
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  margin-top: -6px;
+  border-radius: 50%;
+  background: var(--bbr-bg);
+  border: 2px solid rgba(31, 42, 51, 0.3);
+  z-index: 1;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s,
+    transform 0.3s;
+}
+.bbr-stages li.is-passed .bbr-stage-dot {
+  background: var(--bbr-accent-strong);
+  border-color: var(--bbr-accent-strong);
+}
+.bbr-stages li.is-active .bbr-stage-dot {
+  background: #ffffff;
+  border-color: var(--bbr-accent-strong);
+  transform: scale(1.35);
+  box-shadow: 0 0 0 4px rgba(176, 78, 36, 0.18);
+}
+.bbr-stages li.is-active {
+  background: rgba(176, 78, 36, 0.06);
+}
+
+.bbr-stages--static::after,
+.bbr-stages--static li,
+.bbr-stages--static .bbr-stage-dot {
+  transition: none;
+}
+
 .bbr-stage-day {
   flex: none;
   width: 64px;

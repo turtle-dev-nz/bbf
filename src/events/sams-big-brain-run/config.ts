@@ -24,6 +24,12 @@ export const LIVE_DATA_URL: string = env.VITE_LIVE_DATA_URL ?? "";
  */
 export const RAISELY_EMBED_URL: string = env.VITE_RAISELY_EMBED_URL ?? "https://sams-big-brain-run.raisely.com/embed";
 
+/**
+ * Optional muted hero loop (MP4/WebM, ideally < 2 MB, ~6-10 s). Empty = still photo.
+ * Visitors with "reduce motion" always get the photo.
+ */
+export const HERO_VIDEO_URL: string = env.VITE_HERO_VIDEO_URL ?? "";
+
 export const CONTACT_EMAIL = "hello@bigbrainfoundation.org";
 
 export const PEOPLE_WITH_IDEAS_URL = "https://peoplewithideas.co.nz";

@@ -1,0 +1,42 @@
+.bbr-odo {
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+}
+
+.bbr-odo-visual {
+  display: inline-flex;
+  align-items: flex-end;
+}
+
+.bbr-odo-digit {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  line-height: 1;
+}
+
+/* Invisible "0" gives the digit box its width and line height. */
+.bbr-odo-sizer {
+  visibility: hidden;
+}
+
+.bbr-odo-strip {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  height: 1000%;
+  transition: transform 1.1s cubic-bezier(0.2, 0.9, 0.25, 1);
+}
+.bbr-odo-strip > span {
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bbr-odo--static .bbr-odo-strip {
+  transition: none;
+}

@@ -40,7 +40,8 @@
   background: transparent;
   color: var(--bbr-text);
   min-height: 100svh;
-  overflow-x: hidden;
+  /* clip, not hidden: hidden makes .bbr a scroll container and breaks position: sticky */
+  overflow-x: clip;
   /* Override global body font inherited from coreVariables */
   -webkit-font-smoothing: antialiased;
 }

@@ -33,7 +33,7 @@ export function DocumentarySection({ showRunLink = true }: DocumentarySectionPro
             </p>
             {showRunLink && (
               <Link className="bbr-text-link" to={ROUTES.theRun}>
-                The run and the crew →
+                The run and the crew <span className="bbr-arrow" aria-hidden="true">→</span>
               </Link>
             )}
             <a className="bbr-doc-pwi" href={PEOPLE_WITH_IDEAS_URL} target="_blank" rel="noopener noreferrer">

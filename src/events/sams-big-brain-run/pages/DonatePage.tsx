@@ -4,12 +4,16 @@ import { CampaignLayout } from "../components/CampaignLayout";
 import { SupporterCard } from "../components/SupporterCard";
 import { MessagesWall } from "../components/MessagesWall";
 import { NoBrainer } from "../components/NoBrainer";
+import { Odometer } from "../components/Odometer";
 import { DocumentarySection } from "../sections/DocumentarySection";
 import { StatsGrid } from "../sections/StatsGrid";
 import { useCampaignModals } from "../context/campaignModals";
 import { useCampaignStats } from "../hooks/useCampaignStats";
+import { usePrefersReducedMotion } from "../hooks/motion";
+import { HERO_VIDEO_URL } from "../config";
 import { BBR_FACTS, BBR_REGISTRY_POINTS, BBR_WHY_SAM_RUNS } from "../data/content";
 import samPortrait from "../../../assets/campaigns/bigBrainRun/sam-hero.jpeg";
+import samRunning from "../../../assets/campaigns/bigBrainRun/sam-running-hero.webp";
 import "./DonatePage.css";
 
 export function DonatePage() {
@@ -24,11 +28,20 @@ function DonateContent() {
   const stats = useCampaignStats();
   const { openDonate, openStory } = useCampaignModals();
   const km = BBR_FACTS.distanceKm.toLocaleString("en-NZ");
+  const reduced = usePrefersReducedMotion();
+  const showVideo = Boolean(HERO_VIDEO_URL) && !reduced;
 
   return (
     <>
       {/* HERO */}
       <section className="bbr-donate-hero">
+        <div className="bbr-donate-hero-media" aria-hidden="true">
+          {showVideo ? (
+            <video src={HERO_VIDEO_URL} poster={samRunning} autoPlay muted loop playsInline preload="metadata" />
+          ) : (
+            <img src={samRunning} alt="" fetchPriority="high" />
+          )}
+        </div>
         <div className="bbr-wrap bbr-donate-hero-inner">
           <div className="bbr-donate-hero-copy bbr-stack">
             <p className="bbr-donate-hero-eyebrow">
@@ -67,10 +80,10 @@ function DonateContent() {
             ))}
             <div className="bbr-actions">
               <button className="bbr-btn bbr-btn--dark" type="button" onClick={openStory}>
-                Sam's story →
+                Sam's story <span className="bbr-arrow" aria-hidden="true">→</span>
               </button>
               <Link className="bbr-btn bbr-btn--ghost" to={ROUTES.georgiesStory}>
-                Georgie's story →
+                Georgie's story <span className="bbr-arrow" aria-hidden="true">→</span>
               </Link>
             </div>
           </div>
@@ -81,19 +94,19 @@ function DonateContent() {
       <section className="bbr-section--tight bbr-section--rule">
         <div className="bbr-wrap bbr-numbers">
           <div className="bbr-stat">
-            <span className="bbr-stat-value">{BBR_FACTS.ultras}</span>
+            <Odometer className="bbr-stat-value" value={String(BBR_FACTS.ultras)} />
             <p className="bbr-stat-label">ultramarathons</p>
           </div>
           <div className="bbr-stat">
-            <span className="bbr-stat-value">{BBR_FACTS.days}</span>
+            <Odometer className="bbr-stat-value" value={String(BBR_FACTS.days)} />
             <p className="bbr-stat-label">days in a row</p>
           </div>
           <div className="bbr-stat">
-            <span className="bbr-stat-value">~{km}</span>
+            <Odometer className="bbr-stat-value" value={`~${km}`} />
             <p className="bbr-stat-label">kilometres</p>
           </div>
           <div className="bbr-stat">
-            <span className="bbr-stat-value">1</span>
+            <Odometer className="bbr-stat-value" value="1" />
             <p className="bbr-stat-label">family behind him</p>
           </div>
         </div>
@@ -120,7 +133,7 @@ function DonateContent() {
                 registry: better information about people diagnosed here, brought together in one place.
               </p>
               <Link className="bbr-text-link" to={ROUTES.registry}>
-                More about the registry →
+                More about the registry <span className="bbr-arrow" aria-hidden="true">→</span>
               </Link>
             </div>
             <ul className="bbr-registry-points">
@@ -139,7 +152,7 @@ function DonateContent() {
       {/* TAGLINE BAND + FINAL ASK */}
       <section className="bbr-tagline-band" aria-labelledby="bbr-final-title">
         <div className="bbr-wrap bbr-stack bbr-center">
-          <NoBrainer size="xl" as="h2" />
+          <NoBrainer size="xl" as="h2" reveal />
           <p id="bbr-final-title">
             Sam's running about {km} km. All you have to do is back him. Every donation goes to NANOS to help get the
             registry moving.

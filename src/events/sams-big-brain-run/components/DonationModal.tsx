@@ -38,7 +38,7 @@ export function DonationModal({ isOpen, onClose }: DonationModalProps) {
           </div>
         )}
         <iframe
-          className="bbr-donate-frame"
+          className={`bbr-donate-frame${loaded ? " is-loaded" : ""}`}
           src={RAISELY_EMBED_URL}
           title="Donation form"
           onLoad={() => setLoaded(true)}

@@ -1,5 +1,8 @@
 import { useCampaignModals } from "../context/campaignModals";
-import { timeAgo, type CampaignStats } from "../hooks/useCampaignStats";
+import { supporterKey, timeAgo, type CampaignStats } from "../hooks/useCampaignStats";
+import { usePrefersReducedMotion } from "../hooks/motion";
+import { useFlipList } from "../hooks/useFlipList";
+import { Odometer } from "./Odometer";
 import { BBR_MONEY_LINE } from "../data/content";
 import "./SupporterCard.css";
 
@@ -19,6 +22,8 @@ export function SupporterCard({ stats }: SupporterCardProps) {
   const { openDonate } = useCampaignModals();
   const latest = stats.recent.slice(0, 3);
   const hasCount = stats.supporterCount !== null;
+  const reduced = usePrefersReducedMotion();
+  const { listRef, itemRef } = useFlipList<HTMLUListElement, HTMLLIElement>(latest.map(supporterKey), reduced);
 
   return (
     <aside className="bbr-supporters" aria-label="Campaign progress">
@@ -29,7 +34,7 @@ export function SupporterCard({ stats }: SupporterCardProps) {
         </div>
       ) : hasCount ? (
         <div className="bbr-supporters-count">
-          <span className="bbr-supporters-number">{stats.supporterCount!.toLocaleString("en-NZ")}</span>
+          <Odometer className="bbr-supporters-number" value={stats.supporterCount!.toLocaleString("en-NZ")} />
           <span className="bbr-supporters-label">
             {stats.supporterCount === 1 ? "person is backing Sam" : "people are backing Sam"}
           </span>
@@ -41,9 +46,9 @@ export function SupporterCard({ stats }: SupporterCardProps) {
       )}
 
       {latest.length > 0 && (
-        <ul className="bbr-supporters-list" aria-label="Latest supporters">
-          {latest.map((s, i) => (
-            <li key={`${s.createdAt}-${i}`}>
+        <ul ref={listRef} className="bbr-supporters-list" aria-label="Latest supporters" aria-live="polite">
+          {latest.map((s) => (
+            <li key={supporterKey(s)} ref={itemRef(supporterKey(s))}>
               <span className="bbr-supporters-avatar" aria-hidden="true">
                 {initialOf(s.name)}
               </span>
