@@ -6,17 +6,31 @@
 npm start
 ```
 
-## Deploying
+## Builds
 
-1. Push your changes to `main`.
-2. Run:
+| Command                 | Use for    | Indexable? |
+| ----------------------- | ---------- | ---------- |
+| `npm run build`         | Production | Yes        |
+| `npm run build:staging` | Staging    | No         |
 
-   ```
-   npm run deploy
-   ```
+The staging build adds `<meta name="robots" content="noindex, nofollow">`, swaps `robots.txt` to
+`Disallow: /`, adds a Cloudflare `_headers` file with `X-Robots-Tag: noindex`, and drops `sitemap.xml`.
 
-## Publishing to cPanel
+## Deploying to staging (Cloudflare Worker)
 
-1. Take the contents of the generated `dist` folder and upload them into `public_html`.
-2. Upload the `assets` files into the `assets` folder — easiest to just upload and replace all.
-3. Reset the cache in cPanel so visitors get the latest version (setting location TBD — update this note once found).
+Run **Actions → Deploy to staging → Run workflow** on GitHub and pick the branch to test (or type
+any branch, tag or commit into `ref`). It builds in staging mode and deploys to
+<https://bbf.owennicholson.com>. Only one branch is on staging at a time — the latest deploy wins.
+`main` is untouched until you deploy to production.
+
+Worker config is in [`wrangler.jsonc`](wrangler.jsonc); setup steps (secrets, environment) are at the
+top of [`.github/workflows/deploy-staging.yml`](.github/workflows/deploy-staging.yml).
+
+## Deploying to production (cPanel)
+
+Run **Actions → Deploy to cPanel → Run workflow** on GitHub. It builds in production mode and uploads
+`dist/` to `public_html` over FTPS. Setup steps (secrets, environment) are at the top of
+[`.github/workflows/deploy-cpanel.yml`](.github/workflows/deploy-cpanel.yml).
+
+After a deploy, reset the cache in cPanel so visitors get the latest version (setting location TBD —
+update this note once found).

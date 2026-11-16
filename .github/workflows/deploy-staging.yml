@@ -1,0 +1,87 @@
+# Builds the STAGING (noindex) site from any branch and deploys it to the
+# Cloudflare Worker serving https://bbf.owennicholson.com.
+#
+# Usage: Actions → Deploy to staging → Run workflow, then either
+#   - pick the branch in "Use workflow from", or
+#   - type a branch / tag / commit in "ref" (needed for branches created
+#     before this workflow existed, which don't appear in the picker).
+#
+# One-time setup (Settings → Environments → New environment "bbf-staging"):
+#   Secrets:
+#     CLOUDFLARE_API_TOKEN   token from the "Edit Cloudflare Workers" template, scoped to
+#                            your account and the owennicholson.com zone
+#     CLOUDFLARE_ACCOUNT_ID  shown on the Cloudflare dashboard (Workers & Pages overview)
+#
+# Only one branch can be on staging at a time - the latest deploy wins.
+
+name: Deploy to staging
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: "Branch, tag or commit to deploy (leave blank to use the branch selected above)"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+# A newer staging deploy supersedes an older one still in progress.
+concurrency:
+  group: deploy-staging
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: bbf-staging
+      url: https://bbf.owennicholson.com
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ inputs.ref || github.ref }}
+
+      - name: Record what is being deployed
+        id: source
+        env:
+          REQUESTED_REF: ${{ inputs.ref || github.ref_name }}
+        run: |
+          echo "sha=$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
+          {
+            echo "### Deploying to staging"
+            echo "- **Ref:** \`$REQUESTED_REF\`"
+            echo "- **Commit:** \`$(git rev-parse --short HEAD)\` $(git log -1 --format=%s)"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Set up Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build (staging, noindex)
+        run: npm run build:staging
+
+      - name: Sanity-check build
+        run: |
+          test -f dist/index.html
+          test -f dist/_headers
+          if ! grep -q 'name="robots" content="noindex' dist/index.html; then
+            echo "::error::Staging build is missing noindex - refusing to deploy"
+            exit 1
+          fi
+
+      - name: Deploy to Cloudflare
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: "4"
+          command: deploy --message "staging ${{ steps.source.outputs.sha }}"
