@@ -34,7 +34,7 @@ const Hero = () => {
           <p className="home-eyebrow">Featured event</p>
           <FeaturedEventSpotlight
             title="Sam's Big Brain Run"
-            description="25 consecutive ultra-marathons down New Zealand's North Island to raise awareness and funding to build NZ's first brain tumour registry."
+            description="25 consecutive ultramarathons down New Zealand's North Island to help give NZ's brain tumour registry a running start."
             href={ROUTES.samsBigBrainRun}
             imageSrc={samRunningHero}
             imageAlt="Sam running through New Zealand's North Island"

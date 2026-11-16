@@ -1,0 +1,145 @@
+/* Shared modal shell. Not scoped under .bbr because it portals to <body>. */
+.bbr-modal-backdrop {
+  --modal-bg: #ffffff;
+  --modal-text: #1f2a33;
+  --modal-muted: #5f5650;
+  --modal-accent: #b04e24;
+
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(10, 16, 20, 0.62);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: bbr-modal-fade 0.2s ease;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+.bbr-modal-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: var(--modal-bg);
+  color: var(--modal-text);
+  border-radius: 18px;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.4);
+  outline: none;
+  overflow: hidden;
+  animation: bbr-modal-rise 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bbr-modal-panel--dialog {
+  max-width: 520px;
+  max-height: calc(100dvh - 48px);
+}
+
+/* Sheet: tall panel on desktop, edge-to-edge on phones. */
+.bbr-modal-panel--sheet {
+  max-width: 560px;
+  height: min(860px, calc(100dvh - 48px));
+}
+
+.bbr-modal-head {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px 14px 22px;
+  border-bottom: 1px solid rgba(31, 42, 51, 0.1);
+}
+
+.bbr-modal-heading {
+  margin: 0;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 800;
+  font-size: 1.6rem;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.bbr-modal-x {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(31, 42, 51, 0.06);
+  color: inherit;
+  cursor: pointer;
+}
+.bbr-modal-x:hover {
+  background: rgba(31, 42, 51, 0.12);
+}
+.bbr-modal-x:focus-visible {
+  outline: 3px solid var(--modal-accent);
+  outline-offset: 2px;
+}
+
+.bbr-modal-content {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 22px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.bbr-modal-content--flush {
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 640px) {
+  .bbr-modal-backdrop--sheet {
+    padding: 0;
+    align-items: stretch;
+  }
+  .bbr-modal-panel--sheet {
+    max-width: none;
+    height: 100dvh;
+    border-radius: 0;
+    animation-name: bbr-modal-slide;
+  }
+  .bbr-modal-backdrop--dialog {
+    padding: 12px;
+    align-items: flex-end;
+  }
+  .bbr-modal-panel--dialog {
+    max-height: calc(100dvh - 24px);
+  }
+}
+
+@keyframes bbr-modal-fade {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes bbr-modal-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+}
+@keyframes bbr-modal-slide {
+  from {
+    transform: translateY(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bbr-modal-backdrop,
+  .bbr-modal-panel {
+    animation: none;
+  }
+}

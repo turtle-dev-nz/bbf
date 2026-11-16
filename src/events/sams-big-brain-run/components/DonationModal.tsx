@@ -1,4 +1,7 @@
-import { useEffect } from "react";
+import { useState } from "react";
+import { Modal } from "./Modal";
+import { BBR_MONEY_LINE } from "../data/content";
+import { RAISELY_EMBED_URL } from "../config";
 import "./DonationModal.css";
 
 interface DonationModalProps {
@@ -6,89 +9,48 @@ interface DonationModalProps {
   onClose: () => void;
 }
 
-declare global {
-  interface Window {
-    RaiselyEmbed?: {
-      render?: () => void;
-    };
-  }
-}
-
+/**
+ * Raisely form in a full-screen sheet.
+ *
+ * Uses a plain iframe rather than Raisely's embed.js: the embed script sizes its iframe from a fixed
+ * data-height, which is what made it fight the modal. A plain iframe can simply fill the sheet, and the
+ * form scrolls inside it at any viewport height.
+ */
 export function DonationModal({ isOpen, onClose }: DonationModalProps) {
-  // Lock body scroll
-  useEffect(() => {
-    document.body.style.overflow = isOpen ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isOpen]);
-
-  // Keyboard close
-  useEffect(() => {
-    if (!isOpen) return;
-    const handler = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    };
-    document.addEventListener("keydown", handler);
-    return () => document.removeEventListener("keydown", handler);
-  }, [isOpen, onClose]);
-
-  // Load Raisely embed script once, then let it hydrate the container below.
-  useEffect(() => {
-    if (!isOpen) return;
-
-    const hydrateEmbed = () => {
-      window.RaiselyEmbed?.render?.();
-    };
-
-    const existing = document.querySelector('script[src="https://cdn.raisely.com/v3/public/embed.js"]');
-    if (existing) {
-      hydrateEmbed();
-      return;
-    }
-
-    const script = document.createElement("script");
-    script.src = "https://cdn.raisely.com/v3/public/embed.js";
-    script.async = true;
-    script.onload = hydrateEmbed;
-    document.body.appendChild(script);
-  }, [isOpen]);
+  const [loaded, setLoaded] = useState(false);
 
   return (
-    <div
-      className={`bbr-modal-overlay${isOpen ? " open" : ""}`}
-      onClick={(e) => {
-        if (e.target === e.currentTarget) onClose();
+    <Modal
+      isOpen={isOpen}
+      onClose={() => {
+        setLoaded(false);
+        onClose();
       }}
-      aria-hidden={!isOpen}
+      title="Back Sam"
+      variant="sheet"
+      flush
     >
-      <div className="bbr-modal" role="dialog" aria-modal="true" aria-label="Donate to Sam's Big Brain Run">
-        <div className="bbr-modal-header">
-          <span className="bbr-modal-title">Make a donation</span>
-          <button className="bbr-modal-close" onClick={onClose} aria-label="Close donation modal" type="button">
-            ✕
-          </button>
-        </div>
-
-        <div className="bbr-modal-body">
-          {/* <p className="bbr-modal-step-label">Secure payment powered by Raisely</p> */}
-
-          <div
-            className="raisely-donate"
-            data-campaign-path="sams-big-brain-run"
-            data-profile=""
-            data-width="100%"
-            data-height="560"
-            data-max-height="600px"
-          />
-
-          {/* <div className="bbr-impact-hint">
-            Every gift helps unlock the next milestone. Thank you for backing Sam's Big Brain Run.
+      <p className="bbr-donate-note">{BBR_MONEY_LINE} · Secure payment via Raisely</p>
+      <div className="bbr-donate-frame-wrap">
+        {!loaded && (
+          <div className="bbr-donate-loading" role="status">
+            Loading donation form…
           </div>
-
-          <p className="bbr-modal-secure-note">Secure payment via Raisely</p> */}
-        </div>
+        )}
+        <iframe
+          className="bbr-donate-frame"
+          src={RAISELY_EMBED_URL}
+          title="Donation form"
+          onLoad={() => setLoaded(true)}
+          allow="payment"
+        />
       </div>
-    </div>
+      <p className="bbr-donate-fallback">
+        Form not loading?{" "}
+        <a href={RAISELY_EMBED_URL.replace(/\/embed$/, "")} target="_blank" rel="noopener noreferrer">
+          Donate on Raisely instead
+        </a>
+      </p>
+    </Modal>
   );
 }

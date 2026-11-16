@@ -1,0 +1,116 @@
+.bbr-follow-live {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.bbr-follow-map {
+  flex: 999 1 520px;
+  min-height: 360px;
+}
+.bbr-follow-stats {
+  flex: 1 1 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.bbr-follow-stats .bbr-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 20px;
+}
+.bbr-follow-stat-label {
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #a89e96;
+}
+.bbr-follow-stat-value {
+  font-family: var(--bbr-font-display);
+  font-weight: 800;
+  font-size: 2rem;
+  line-height: 1.05;
+}
+
+.bbr-follow-socials {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.bbr-follow-social {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  border-radius: 14px;
+  background: #ffffff;
+  border: 1px solid rgba(31, 42, 51, 0.08);
+  color: var(--bbr-text);
+  text-decoration: none;
+}
+.bbr-follow-social:hover {
+  border-color: var(--bbr-accent-strong);
+}
+.bbr-follow-social > span {
+  display: flex;
+  flex-direction: column;
+}
+.bbr-follow-social-platform {
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--bbr-muted-strong);
+}
+.bbr-follow-social-handle {
+  font-weight: 600;
+  font-size: 1.08rem;
+}
+
+.bbr-follow-way {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.bbr-follow-way h3 {
+  margin: 0;
+  font-family: var(--bbr-font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+.bbr-follow-way p {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: #4a423d;
+}
+.bbr-follow-way-btn {
+  margin-top: auto;
+  padding: 8px 0 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.bbr-follow-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.bbr-follow-cta > .bbr-stack {
+  flex: 1 1 360px;
+}
+.bbr-follow-donate {
+  flex: 1 1 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 28px;
+  border-radius: 18px;
+  background: var(--bbr-ink);
+  color: #f5f0eb;
+}

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { ROUTES } from "../../app/routes";
 
 const SITE_URL = "https://www.bigbrainfoundation.org";
 const SHARE_IMAGE = `${SITE_URL}/social/sams-big-brain-run.webp`;
@@ -9,6 +10,7 @@ type Metadata = {
   path: string;
   type: "website" | "article";
   schema: Record<string, unknown>;
+  noindex?: boolean;
 };
 
 function setMeta(attribute: "name" | "property", key: string, content: string) {
@@ -48,6 +50,9 @@ function setStructuredData(schema: Record<string, unknown>) {
   element.textContent = JSON.stringify(schema);
 }
 
+const RUN_DESCRIPTION =
+  "Sam is running 25 ultramarathons in 25 days, Cape Reinga to Wellington, to help give New Zealand's brain tumour registry a running start. 100% of donations go to NANOS.";
+
 function metadataForPath(pathname: string): Metadata {
   const organization = {
     "@type": "Organization",
@@ -55,51 +60,67 @@ function metadataForPath(pathname: string): Metadata {
     url: SITE_URL,
   };
 
-  if (pathname === "/sams-big-brain-run/georgies-story") {
-    return {
-      title: "Georgie's Story | Sam's Big Brain Run",
-      description:
-        "Read Georgie's story and support Sam's Big Brain Run to fund New Zealand's first national brain tumour registry.",
-      path: pathname,
-      type: "article",
-      schema: {
-        "@context": "https://schema.org",
-        "@type": "Article",
-        headline: "Georgie's Story",
-        description:
-          "Georgie's story is part of Sam's Big Brain Run, raising funds for New Zealand's first national brain tumour registry.",
-        author: organization,
-        publisher: organization,
-        mainEntityOfPage: `${SITE_URL}${pathname}`,
-      },
-    };
-  }
+  const page = (title: string, description: string, type: Metadata["type"] = "website", extra = {}): Metadata => ({
+    title: `${title} | Sam's Big Brain Run`,
+    description,
+    path: pathname,
+    type,
+    schema: {
+      "@context": "https://schema.org",
+      "@type": type === "article" ? "Article" : "WebPage",
+      name: title,
+      description,
+      url: `${SITE_URL}${pathname}`,
+      publisher: organization,
+      ...extra,
+    },
+  });
 
-  if (pathname === "/sams-big-brain-run") {
-    return {
-      title: "Sam's Big Brain Run | Fund NZ's First Brain Tumour Registry",
-      description:
-        "In January 2027, Sam will run 25 ultramarathons in 25 days to fund New Zealand's first national brain tumour registry.",
-      path: pathname,
-      type: "website",
-      schema: {
-        "@context": "https://schema.org",
-        "@type": "Event",
-        name: "Sam's Big Brain Run",
-        description:
-          "Sam Saunt-Lord will run 25 consecutive ultramarathons down New Zealand's North Island to fund New Zealand's first national brain tumour registry.",
-        startDate: "2027-01",
-        eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-        eventStatus: "https://schema.org/EventScheduled",
-        location: {
-          "@type": "Place",
-          name: "New Zealand's North Island",
-          address: { "@type": "PostalAddress", addressCountry: "NZ" },
+  switch (pathname) {
+    case ROUTES.samsBigBrainRun:
+      return {
+        title: "Sam's Big Brain Run | Back Sam. It's a no-brainer.",
+        description: RUN_DESCRIPTION,
+        path: pathname,
+        type: "website",
+        schema: {
+          "@context": "https://schema.org",
+          "@type": "Event",
+          name: "Sam's Big Brain Run",
+          description: RUN_DESCRIPTION,
+          startDate: "2027-01",
+          eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+          eventStatus: "https://schema.org/EventScheduled",
+          location: {
+            "@type": "Place",
+            name: "Cape Reinga to Wellington, New Zealand",
+            address: { "@type": "PostalAddress", addressCountry: "NZ" },
+          },
+          organizer: organization,
+          url: `${SITE_URL}${pathname}`,
         },
-        organizer: organization,
-        url: `${SITE_URL}${pathname}`,
-      },
-    };
+      };
+    case ROUTES.theRun:
+      return page(
+        "The Run",
+        "The route, the documentary and the crew: 25 ultramarathons in 25 days, Cape Reinga to Wellington.",
+      );
+    case ROUTES.follow:
+      return page("Follow Sam", "Follow Sam's run down the North Island, and find ways to get involved.");
+    case ROUTES.registry:
+      return page(
+        "The Registry",
+        "Why NANOS is developing a national brain tumour registry for New Zealand, and how your donation helps.",
+      );
+    case ROUTES.faq:
+      return page("FAQ", "Where your donation goes, who NANOS are, and other questions about Sam's Big Brain Run.");
+    case ROUTES.georgiesStory:
+      return page("Georgie's Story", "Georgie's story, in her own words: why Sam's family started the Big Brain Run.", "article", {
+        headline: "Georgie's Story",
+        author: organization,
+      });
+    case ROUTES.liveDashboard:
+      return { ...page("Live dashboard", "Internal."), noindex: true };
   }
 
   return {
@@ -125,12 +146,13 @@ export function PageMetadata({ pathname }: { pathname: string }) {
     setMeta("property", "og:url", url);
     setMeta("property", "og:type", metadata.type);
     setMeta("property", "og:image", SHARE_IMAGE);
-    setMeta("property", "og:image:alt", "Sam running for New Zealand's first national brain tumour registry");
+    setMeta("property", "og:image:alt", "Sam running down New Zealand's North Island");
     setMeta("name", "twitter:card", "summary_large_image");
     setMeta("name", "twitter:title", metadata.title);
     setMeta("name", "twitter:description", metadata.description);
     setMeta("name", "twitter:image", SHARE_IMAGE);
     setStructuredData(metadata.schema);
+    setMeta("name", "robots", metadata.noindex ? "noindex, nofollow" : "index, follow");
   }, [pathname]);
 
   return null;

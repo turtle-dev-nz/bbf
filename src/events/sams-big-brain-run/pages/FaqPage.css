@@ -1,0 +1,58 @@
+.bbr-faq {
+  border-top: 1px solid rgba(31, 42, 51, 0.15);
+}
+
+.bbr-faq details {
+  border-bottom: 1px solid rgba(31, 42, 51, 0.15);
+}
+
+.bbr-faq summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 0;
+  cursor: pointer;
+  font-family: var(--bbr-font-display);
+  font-weight: 700;
+  font-size: clamp(1.4rem, 2.6vw, 1.7rem);
+  line-height: 1.15;
+}
+.bbr-faq summary::-webkit-details-marker {
+  display: none;
+}
+.bbr-faq summary::after {
+  content: "+";
+  flex: none;
+  font-size: 1.8rem;
+  line-height: 1;
+  color: var(--bbr-accent-strong);
+  transition: transform 0.2s;
+}
+.bbr-faq details[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.bbr-faq details p {
+  margin: 0 0 22px;
+  max-width: 64ch;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: #3a332f;
+}
+
+.bbr-faq-ask {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 32px;
+  border-radius: 18px;
+  background: var(--bbr-ink);
+  color: #f5f0eb;
+}
+.bbr-faq-ask .bbr-body {
+  color: #d9d2cb;
+}

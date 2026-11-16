@@ -1,4 +1,3 @@
-import type { ReactNode } from "react";
 import cactusLogo from "../../../assets/campaigns/bigBrainRun/sponsors/cactus-logo-horz.avif";
 import drymaxLogo from "../../../assets/campaigns/bigBrainRun/sponsors/drymax_logo_hi-res-scaled.webp";
 import garminLogo from "../../../assets/campaigns/bigBrainRun/sponsors/garmin-logo-black.png";
@@ -8,160 +7,57 @@ import shoeClinicLogo from "../../../assets/campaigns/bigBrainRun/sponsors/shoe-
 import vwLogo from "../../../assets/campaigns/bigBrainRun/sponsors/vw-logo.png";
 import neversecondLogo from "../../../assets/campaigns/bigBrainRun/sponsors/nvr2nd_02_Black.png";
 import southlandLogo from "../../../assets/campaigns/bigBrainRun/sponsors/sourthland-logo.jpg";
-import btsLogo from "../../../assets/campaigns/bigBrainRun/sponsors/brain-tumour-support-logo.png";
-import nanosLogo from "../../../assets/campaigns/bigBrainRun/sponsors/nano-logo.png";
+import { ROUTE_TOTAL_KM_ROUNDED } from "./route";
 
-type BbrCampaign = {
-  raised: number;
-  goal: number;
-  eyebrow: string;
-  description: ReactNode;
-};
+/* ─────────────────────────────────────────
+   Core facts and lines used across pages
+───────────────────────────────────────── */
 
-export const BBR_CAMPAIGN: BbrCampaign = {
-  raised: 353,
-  goal: 100000,
-  eyebrow: "Sam's Big Brain Run · 2025",
-  description: (
-    <>
-      <p>
-        We are partnering with{" "}
-        <a href="https://www.braintumoursupport.org.nz" target="_blank" rel="noopener noreferrer">
-          Brain Tumour Support NZ
-        </a>{" "}
-        to help fund New Zealand’s first national <strong>Brain Tumour Registry</strong>. Right now, we don’t have a
-        complete picture of who is affected, what treatments they receive, or what outcomes they experience.{" "}
-      </p>
-      <p className="bbr-story-list-final">"You can't improve what you can't see."</p>
-      <p>
-        A national registry would change that by giving doctors and researchers the information they need to improve
-        patient care, accelerate research, support clinical trials, and fight for better access to life-changing
-        treatments.{" "}
-      </p>
-      <p className="bbr-pull-quote">
-      "Brain cancer is the biggest cancer killer in adults and children under the age of forty."
-      </p>
-      <p>
-        New research is critical to improve survival rates for brain cancer patients. Every dollar donated through Sam’s Big Brain Run goes directly to{" "}
-        <a href="https://www.nanos.co.nz" target="_blank" rel="noopener noreferrer">
-          NANOS
-        </a>{" "}
-        to help make this happen.
-      </p>
-      <p>
-        <strong>Be part of something bigger.</strong>
-      </p>
-      {/* <p>
-        Supported by{" "}
-        <a href="https://www.braintumoursupport.org.nz" target="_blank" rel="noopener noreferrer">
-          Brain Tumour Support
-        </a>
-        , every dollar donated goes directly to{" "}
-        <a href="https://www.nanos.co.nz" target="_blank" rel="noopener noreferrer">
-          NANOS
-        </a>
-        , the leading neuro-oncology society in NZ, to help build New Zealand's first national Brain Tumour Registry and
-        advance brain cancer research.
-      </p>
-      <p>
-        <strong>Be part of something bigger.</strong>
-      </p> */}
-    </>
-  ),
-};
+export const BBR_TAGLINE = "It's a no-brainer.";
 
-export const BBR_PHASES = [
-  {
-    number: 1,
-    goal: 25000,
-    deadline: "20 November",
-  },
-  {
-    number: 2,
-    goal: 56000,
-    deadline: "26 December",
-  },
-  {
-    number: 3,
-    goal: 100000,
-    deadline: "20 February",
-  },
-] as const;
-
-export const BBR_CURRENT_PHASE_INDEX = 0;
-
-export const BBR_DONATION_IMPACT = {
-  points: ["Building New Zealand's first Brain Tumour Registry", "Supporting NANOS' brain cancer research"],
-  summary: `Every dollar helps researchers build evidence on brain
-cancer and patients in Aotearoa New Zealand. This world
-leading database registry will attract international funding, support clinical trials, accelerate medical research in Aotearoa, and make a
-unique contribution to the global fight against this
-horrendous disease.`,
-  // "Every donation helps create the national evidence researchers need to better understand brain cancer, compare New Zealand internationally, attract future research funding, and improve outcomes for future generations.",
+export const BBR_FACTS = {
+  days: 25,
+  ultras: 25,
+  distanceKm: ROUTE_TOTAL_KM_ROUNDED,
+  start: "Cape Reinga",
+  finish: "Wellington",
+  when: "January 2027",
 } as const;
 
-export const BBR_PRESET_AMOUNTS = [
-  { amount: 5, label: "Supporter" },
-  { amount: 15, label: "Contributor" },
-  { amount: 30, label: "Champion" },
-  { amount: 50, label: "Hero" },
-] as const;
+export const BBR_MONEY_LINE = "100% of donations go to NANOS";
 
-export const BBR_IMPACT_MESSAGES: Record<number, string> = {
-  5: "$5 helps cover awareness materials shared with local schools.",
-  15: "$15 contributes to funding a community support session.",
-  30: "$30 funds a neurological research resource for a week.",
-  50: "$50 sponsors a family attending a Big Brain Foundation event.",
-};
+/* ─────────────────────────────────────────
+   Why Sam runs (approved wording from the live site, lightly reframed)
+───────────────────────────────────────── */
 
-export const BBR_MAIN_PAGE_STORY = {
-  pullQuote: (
-    <span>
-      "I couldn’t change her diagnosis. <br />
-      But I could help change what comes next.."
-    </span>
-  ),
+export const BBR_WHY_SAM_RUNS = {
+  heading: "He started running for himself. Now he's running for all of us.",
   paragraphs: [
-    "After facing his own mental health struggles, Sam realised life was too short to stand still. He chose to change course by pushing himself beyond his limits, challenging both his mind and body, and dedicating that journey to making a difference for others.",
-    "Then someone close to him was diagnosed with brain cancer.",
-    "So he chose to run.",
-
-    <div className="bbr-story-list">
-      <span className="bbr-story-list-item">25 Ultra Marathons</span>
-      <span className="bbr-story-list-item">25 Consecutive Days</span>
-      <span className="bbr-story-list-final">The length of the North Island</span>
-    </div>,
-    // <div className="bbr-story-list-section">
-    //   <ul className="bbr-story-list">
-    //     <li>Twenty-five ultramarathons</li>
-    //     <li>Twenty-five consecutive days</li>
-    //   </ul>
-    //   <span className="bbr-story-list-equals">=</span>
-    //   <strong className="bbr-story-list-result">The length of the North Island of New Zealand.</strong>
-    // </div>,
-
-    "Not because running will cure brain cancer. But because every kilometre can help build something that will outlast the run itself.",
-    "Every donation helps fund New Zealand’s first Brain Tumour Registry and supports NANOS’ research into better diagnosis, treatment, and outcomes for future generations.",
-    "This isn’t just about one person running. It’s about thousands of New Zealanders choosing to do something that matters.",
+    "After facing his own mental health struggles, Sam realised life was too short to stand still. He chose to push himself beyond his limits, challenging both his mind and body, and to dedicate that journey to making a difference for others.",
+    "Then his cousin Georgie, in the UK, was diagnosed with brain cancer. The family asked what they could do to help people affected by brain cancer here in New Zealand.",
+    "So Sam chose to run, with the whole family behind him.",
   ],
-};
+} as const;
 
+/** Sam's full story, in his own words (StoryModal). */
 export const BBR_STORY = {
   pullQuote: '"This is about far more than running. This is a story about people."',
   paragraphs: [
-    "I'm Sam Saunt-Lord, 20 years old from Wellington. In January 2027, I will run 25 consecutive ultra-marathons down New Zealand's North Island to raise awareness and funding for brain cancer research.",
-    "Inspired by my cousin Georgie's diagnosis of Glioblastoma - the most aggressive and incurable brain cancer, with a prognosis of 12–18 months - I am running to raise money for the first National Brain Tumour Registry here in Aotearoa.",
-    "Along the way, I'll be sharing kōrero with patients, whānau, caregivers, researchers, and advocates whose lives have been impacted by this devastating disease.",
-    "A documentary is being made and filming has started. It will follow my journey and capture the intensely physical challenge of running more than 1,300 kilometres in 25 days, whilst exploring deeply human stories of resilience, determination, hope, and courage that define the brain cancer community of Aotearoa every single day.",
-    "This run will push me to the edge of my physical and emotional limits. Battling fatigue, injury, weather, and the relentless demands of consecutive ultra-marathons.",
-    "But this is about far more than running. This is a story about people. It is a story about the kiwi community coming together, about bravery and resilience in the face of adversity, and about finding hope when the odds seem overwhelming.",
-    "It is a story that celebrates the extraordinary resilience of ordinary New Zealanders and shines a light on an aggressive disease that urgently needs greater awareness, support, and research funding.",
+    "I'm Sam Saunt-Lord, 20 years old from Wellington. In January 2027, I will run 25 consecutive ultra-marathons down New Zealand's North Island to raise awareness and support for brain cancer research.",
+    "I'm inspired by my cousin Georgie, who lives in the UK and was diagnosed with glioblastoma, the most aggressive form of brain cancer. I'm running to support NANOS's work to develop a national brain tumour registry here in Aotearoa.",
+    "Along the way, I'll be sharing kōrero with patients, whānau, caregivers, clinicians and researchers whose lives have been touched by this disease.",
+    "A documentary is being made and filming has started. It will follow the physical challenge of running around 1,200 kilometres in 25 days, and the human stories of resilience, determination, hope and courage in the brain cancer community of Aotearoa.",
+    "This run will push me to the edge of my physical and emotional limits: fatigue, injury, weather and the relentless demands of consecutive ultra-marathons.",
+    "But this is about far more than running. It is a story about Kiwis coming together, about bravery in the face of adversity, and about finding hope when the odds seem overwhelming.",
   ],
 } as const;
 
+/** Georgie's story, in her own words. She lives in the UK. */
 export const BBR_GEORGIE = {
   pullQuote:
     '"I will fight for as long as I possibly can but want to ensure that the best is being done for the whole brain cancer community."',
+  context:
+    "Georgie lives in the UK and is not being treated in New Zealand. Her story is why the family asked what they could do here at home.",
   paragraphs: [
     "I have had multiple migraines every month for over 20 years, but on this occasion, it was different. It got worse quickly. I came in from outside, sat on the sofa and it exploded in my head. My last thought was, that's it, I'm gone.",
     "The date of the seizure was 20th May 2023. That was the start of my journey. A few days later I was informed about the brain tumour.",
@@ -173,19 +69,107 @@ export const BBR_GEORGIE = {
   secondQuote: '"Now I knew I was going to die earlier than scheduled, but now I could make plans!"',
 } as const;
 
+/* ─────────────────────────────────────────
+   Why it matters: sourced, non-critical facts
+───────────────────────────────────────── */
+
+export type SourcedStat = { value: string; label: string; source: string; href: string };
+
+export const BBR_STATS: SourcedStat[] = [
+  {
+    value: "#1",
+    label: "cancer killer of people under 40",
+    source: "Brain Tumour Support NZ",
+    href: "https://www.braintumoursupport.org.nz/ten-facts",
+  },
+  {
+    value: "42%",
+    label: "of cancer deaths in New Zealand children aged 14 and under",
+    source: "Brain Tumour Support NZ",
+    href: "https://www.braintumoursupport.org.nz/ten-facts",
+  },
+  {
+    value: "2,400+",
+    label: "New Zealanders diagnosed with a brain tumour every year",
+    source: "Health Research Council",
+    href: "https://hrc.govt.nz/node/46443",
+  },
+];
+
+export const BBR_REGISTRY_POINTS = [
+  {
+    title: "Data that reflects New Zealand.",
+    body: "Our own people and our own services, including Māori and Pasifika communities.",
+  },
+  {
+    title: "Patients and families at the centre.",
+    body: "Over time, lived experience alongside clinical information.",
+  },
+  {
+    title: "A stronger case for research and trials.",
+    body: "Better evidence to pursue clinical trials and better care here.",
+  },
+] as const;
+
+export const BBR_REGISTRY_WHAT_IF = [
+  "What if we could understand how symptoms change, not just the diagnosis?",
+  "What if we knew what support patients, carers and families actually need?",
+  "What if that helped bring more clinical trials to New Zealand?",
+  "What if what we learn here helped people around the world?",
+] as const;
+
+export const BBR_REGISTRY_CARE = [
+  { title: "Privacy first", body: "Public reports protect identities. No individual records are ever made public." },
+  {
+    title: "Informed consent",
+    body: "Clear choices for patients about taking part in research and sharing their experience.",
+  },
+  { title: "Māori data sovereignty", body: "Respecting the interests and authority Māori have over Māori data." },
+] as const;
+
+/* ─────────────────────────────────────────
+   FAQ (public). Bracketed answers still need confirming.
+───────────────────────────────────────── */
+
+export const BBR_FAQS = [
+  {
+    q: "Where does my donation go?",
+    a: "100% of donations made through this site go to NANOS, the New Zealand Aotearoa Neuro-Oncology Society, to support its work developing a national brain tumour registry. [Confirm: Raisely fees and who issues receipts.]",
+  },
+  {
+    q: "Does Sam have brain cancer?",
+    a: "No. Sam's cousin Georgie, who lives in the UK, has brain cancer. Her experience inspired the family to ask what they could do to help people affected by brain cancer here in New Zealand.",
+  },
+  {
+    q: "Who are NANOS?",
+    a: "A national society that brings together brain tumour clinicians, researchers, patients and patient support groups. It was launched in 2023 to improve brain tumour care and research in Aotearoa.",
+  },
+  {
+    q: "What is a brain tumour registry?",
+    a: "An organised collection of information that builds a clearer picture of a condition and the people affected by it. NANOS's registry aims to bring together information about brain tumours in New Zealand so it can be used for research and for understanding care.",
+  },
+  {
+    q: "Doesn't New Zealand already collect cancer data?",
+    a: "Yes. The registry builds on that foundation with more detailed information specific to brain tumours: tumour type, treatment, progress and, over time, people's experience.",
+  },
+  {
+    q: "Will people's information be protected?",
+    a: "Yes. The registry is being designed around privacy, informed consent and Māori data sovereignty. Anything shared publicly would be reports and summaries that protect people's identities, never individual records.",
+  },
+  { q: "Is my donation tax-deductible?", a: "[Confirm with NANOS.]" },
+  {
+    q: "Can I run with Sam?",
+    a: "To keep everyone safe on the road, only a small number of people will join Sam on the run, by arrangement. If you'd like to be considered, get in touch. You can always cheer from the roadside.",
+  },
+] as const;
+
+/* ─────────────────────────────────────────
+   Socials and sponsors
+───────────────────────────────────────── */
+
 export const BBR_SOCIAL = [
   { platform: "instagram", handle: "@sams_bigbrainrun", href: "https://instagram.com/sams_bigbrainrun" },
   { platform: "facebook", handle: "@samsbigbrainrun", href: "https://www.facebook.com/profile.php?id=61574269924245" },
-  // { platform: "web", handle: "bigbrainfoundation.org", href: "https://bigbrainfoundation.org" },
-] as const;
-
-export const BBR_CHOICES = [
-  { icon: "book", text: "Researchers choose to learn." },
-  { icon: "heart", text: "Families choose to love." },
-  { icon: "activity", text: "Doctors choose to care." },
-  { icon: "gift", text: "Volunteers choose to give." },
-  { icon: "award", text: "Sponsors choose to contribute." },
-  { icon: "people", text: "Supporters choose to take action." },
 ] as const;
 
 export const BBR_SPONSORS = [
@@ -200,23 +184,10 @@ export const BBR_SPONSORS = [
   { name: "Southland", logoSrc: southlandLogo, link: "https://www.locatorbeacons.co.nz/" },
 ] as const;
 
-export const BBR_PARTNERS = [
-  {
-    initials: "BTS",
-    name: "Brain Tumour Support NZ",
-    description: "Informing, supporting, and advocating for brain tumour patients and their whānau across New Zealand.",
-    href: "https://www.braintumoursupport.org.nz",
-    logo: btsLogo,
-  },
-  {
-    initials: "NAN",
-    name: "New Zealand Aotearoa Neuro-Oncology Society",
-    description: `NANOS is an incorporated national society comprising of over
-                  80 members, including clinicians, researchers, and patient
-                  support community groups. NANOS is an integrated member of
-                  the Asian Society of Neuro-Oncology, which provides access to
-                  international collaborations and resources.`,
-    href: "https://www.nanos.co.nz",
-    logo: nanosLogo,
-  },
+/** Crew placeholders until names and photos are confirmed. */
+export const BBR_CREW = [
+  { name: "[Name]", role: "Director", bio: "[One line on who they are]" },
+  { name: "[Name]", role: "Camera", bio: "[One line]" },
+  { name: "[Name]", role: "Support driver", bio: "[One line]" },
+  { name: "[Name]", role: "Physio", bio: "[One line]" },
 ] as const;

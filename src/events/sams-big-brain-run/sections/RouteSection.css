@@ -1,0 +1,68 @@
+.bbr-route {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.bbr-route-map {
+  flex: 1 1 380px;
+  position: sticky;
+  top: 96px;
+}
+.bbr-route-map-slot {
+  min-height: 560px;
+}
+
+.bbr-route-list {
+  flex: 999 1 440px;
+  min-width: 0;
+}
+.bbr-route-list .bbr-btn {
+  align-self: flex-start;
+}
+
+.bbr-stages {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--bbr-border);
+}
+.bbr-stages li {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--bbr-border);
+}
+.bbr-stage-day {
+  flex: none;
+  width: 64px;
+  font-family: var(--bbr-font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--bbr-accent-strong);
+}
+.bbr-stage-leg {
+  flex: 1;
+  min-width: 0;
+  font-size: 1.02rem;
+}
+.bbr-stage-note {
+  font-size: 0.85rem;
+  color: var(--bbr-muted-strong);
+}
+.bbr-stage-km {
+  flex: none;
+  font-size: 0.9rem;
+  color: var(--bbr-muted-strong);
+}
+
+@media (max-width: 860px) {
+  .bbr-route-map {
+    position: static;
+  }
+  .bbr-route-map-slot {
+    min-height: 360px;
+  }
+}

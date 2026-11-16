@@ -22,6 +22,12 @@
   --bbr-muted: #8a7e77;
   --bbr-accent: #c75a2c;
   --bbr-accent-lt: #e0733e;
+  /* AA-contrast accent for text and button fills (white on this is 5.2:1) */
+  --bbr-accent-strong: #b04e24;
+  --bbr-accent-strong-hover: #8a3c1b;
+  --bbr-ink: #1a242c;
+  --bbr-ink-2: #233039;
+  --bbr-muted-strong: #5f5650;
   --bbr-border: rgba(31, 42, 51, 0.1);
   --bbr-modal-bg: #1a242c;
   --bbr-modal-text: #f5f0eb;

@@ -1,6 +1,6 @@
 /* ── GEORGIE'S STORY PAGE ── */
 .bbr-georgie-page {
-  padding: 100px 24px 80px;
+  padding: 64px 24px 80px;
 }
 
 .bbr-georgie-page-inner {
@@ -17,7 +17,7 @@
   font-size: 0.75rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--bbr-muted);
+  color: var(--bbr-muted-strong);
   margin-bottom: 32px;
   transition: color 0.2s;
 }
@@ -53,7 +53,7 @@
 .bbr-georgie-body {
   font-size: 1rem;
   line-height: 1.82;
-  color: var(--bbr-muted);
+  color: var(--bbr-muted-strong);
   margin: 32px 0;
 }
 .bbr-georgie-body p + p {
@@ -72,7 +72,7 @@
 .bbr-georgie-cta-block p {
   font-size: 0.95rem;
   line-height: 1.7;
-  color: var(--bbr-muted);
+  color: var(--bbr-muted-strong);
   max-width: 480px;
   margin-bottom: 24px;
 }
@@ -81,4 +81,14 @@
   .bbr-georgie-figure {
     max-height: 300px;
   }
+}
+
+.bbr-georgie-context {
+  margin: 0 0 28px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: var(--bbr-bg-mid);
+  font-size: 1rem;
+  line-height: 1.55;
+  color: #3a332f;
 }

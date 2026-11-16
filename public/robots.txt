@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /sams-big-brain-run/live-dashboard
 
 Sitemap: https://www.bigbrainfoundation.org/sitemap.xml

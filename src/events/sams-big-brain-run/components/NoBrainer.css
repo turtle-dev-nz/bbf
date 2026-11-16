@@ -1,0 +1,30 @@
+.bbr-nobrainer {
+  margin: 0;
+  font-family: var(--bbr-font-secondary);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.01em;
+}
+
+.bbr-nobrainer--sm {
+  font-size: 1.6rem;
+}
+.bbr-nobrainer--md {
+  font-size: clamp(2rem, 3.4vw, 2.6rem);
+}
+.bbr-nobrainer--lg {
+  font-size: clamp(2.6rem, 5vw, 3.8rem);
+}
+.bbr-nobrainer--xl {
+  font-size: clamp(3.4rem, 9vw, 7rem);
+}
+
+.bbr-nobrainer--accent {
+  color: var(--bbr-accent-strong);
+}
+.bbr-nobrainer--light {
+  color: #f3a57c;
+}
+.bbr-nobrainer--dark {
+  color: var(--bbr-text);
+}

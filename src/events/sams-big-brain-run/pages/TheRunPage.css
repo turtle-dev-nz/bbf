@@ -1,0 +1,78 @@
+.bbr-run-facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.bbr-run-facts .bbr-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 20px;
+}
+.bbr-run-fact-value {
+  font-family: var(--bbr-font-display);
+  font-weight: 800;
+  font-size: clamp(2.2rem, 4vw, 2.8rem);
+  line-height: 1;
+}
+.bbr-run-fact-label {
+  font-size: 0.92rem;
+  color: #c9c1b9;
+}
+
+.bbr-crew-card {
+  background: var(--bbr-ink-2);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.bbr-crew-photo {
+  height: 180px;
+  border-radius: 0;
+  border: 0;
+}
+.bbr-crew-body {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.bbr-crew-name {
+  font-family: var(--bbr-font-display);
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+.bbr-crew-role {
+  color: #f3a57c;
+  font-size: 0.92rem;
+}
+.bbr-crew-bio {
+  color: #c9c1b9;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.bbr-run-support {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: clamp(24px, 4vw, 36px);
+  border-radius: 20px;
+  background: var(--bbr-bg-mid);
+}
+.bbr-run-support > .bbr-stack {
+  flex: 999 1 420px;
+  gap: 8px;
+}
+
+.bbr-run-band {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.bbr-run-band .bbr-h3 {
+  color: #ffffff;
+}

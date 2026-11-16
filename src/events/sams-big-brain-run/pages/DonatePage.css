@@ -1,0 +1,123 @@
+/* ── Hero ── */
+.bbr-donate-hero {
+  color: #ffffff;
+  background-image:
+    linear-gradient(180deg, rgba(20, 28, 34, 0.35) 0%, rgba(20, 28, 34, 0.85) 72%),
+    url("../../../assets/campaigns/bigBrainRun/sam-running-hero.webp");
+  background-size: cover;
+  background-position: center 30%;
+}
+
+.bbr-donate-hero-inner {
+  padding-block: clamp(72px, 12vw, 120px) clamp(48px, 7vw, 72px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px 48px;
+  align-items: flex-end;
+}
+
+.bbr-donate-hero-copy {
+  flex: 999 1 480px;
+  min-width: 0;
+  gap: 14px;
+}
+
+.bbr-donate-hero-card {
+  flex: 1 1 340px;
+}
+
+.bbr-donate-hero-eyebrow {
+  margin: 0;
+  font-family: var(--bbr-font-display);
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #f3c3a6;
+}
+
+.bbr-donate-hero-title {
+  margin: 0;
+  font-family: var(--bbr-font-display);
+  font-weight: 800;
+  font-size: clamp(4.2rem, 11vw, 8rem);
+  line-height: 0.85;
+  text-transform: uppercase;
+}
+
+.bbr-donate-hero-sub {
+  margin: 6px 0 0;
+  font-family: var(--bbr-font-display);
+  font-weight: 600;
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  line-height: 1.1;
+}
+
+.bbr-donate-hero-body {
+  margin: 0;
+  max-width: 34rem;
+  font-size: 1.12rem;
+  line-height: 1.55;
+  color: #ece5de;
+}
+
+/* ── Why Sam runs ── */
+.bbr-why-photo {
+  flex: 1 1 300px !important;
+  max-width: 440px;
+  width: 100%;
+  height: clamp(380px, 50vw, 540px);
+  object-fit: cover;
+  border-radius: 18px;
+}
+
+/* ── Registry panel ── */
+.bbr-registry-panel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  padding: clamp(28px, 4vw, 40px);
+  border-radius: 20px;
+  background: var(--bbr-ink);
+  color: #f5f0eb;
+}
+.bbr-registry-panel > .bbr-stack {
+  flex: 1 1 340px;
+}
+.bbr-registry-panel .bbr-body {
+  color: #d9d2cb;
+}
+.bbr-registry-panel .bbr-text-link {
+  color: #f3a57c;
+}
+
+.bbr-registry-points {
+  flex: 1 1 380px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.bbr-registry-points li {
+  padding: 18px 20px;
+  border-radius: 14px;
+  background: var(--bbr-ink-2);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #d9d2cb;
+}
+.bbr-registry-points strong {
+  color: #ffffff;
+}
+
+/* ── Final ask ── */
+.bbr-final-faq {
+  color: #fbe9df;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+.bbr-final-faq:hover {
+  color: #ffffff;
+}
