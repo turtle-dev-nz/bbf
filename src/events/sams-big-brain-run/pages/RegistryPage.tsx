@@ -3,6 +3,7 @@ import { ROUTES } from "../../../app/routes";
 import { CampaignLayout } from "../components/CampaignLayout";
 import { NoBrainer } from "../components/NoBrainer";
 import { StatsGrid } from "../sections/StatsGrid";
+import { DonationFlow } from "../sections/DonationFlow";
 import { useCampaignModals } from "../context/campaignModals";
 import { BBR_GEORGIE, BBR_REGISTRY_CARE, BBR_REGISTRY_WHAT_IF } from "../data/content";
 import georgieFamily from "../../../assets/campaigns/bigBrainRun/georgie-family.webp";
@@ -97,6 +98,18 @@ function RegistryContent() {
               </Link>
             </figcaption>
           </figure>
+        </div>
+      </section>
+
+      <section className="bbr-section bbr-section--mid" aria-labelledby="bbr-reg-flow">
+        <div className="bbr-wrap bbr-stack bbr-stack--lg">
+          <div className="bbr-stack">
+            <p className="bbr-eyebrow">Where your money goes</p>
+            <h2 id="bbr-reg-flow" className="bbr-h3">
+              From your donation to the registry
+            </h2>
+          </div>
+          <DonationFlow />
         </div>
       </section>
 

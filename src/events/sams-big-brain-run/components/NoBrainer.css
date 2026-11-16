@@ -1,9 +1,11 @@
 .bbr-nobrainer {
   margin: 0;
-  font-family: var(--bbr-font-secondary);
-  font-weight: 400;
+  font-family: var(--bbr-font-display);
+  font-weight: 800;
+  font-style: italic;
   line-height: 1;
   letter-spacing: 0.01em;
+  text-transform: uppercase;
 }
 
 .bbr-nobrainer--sm {
@@ -29,7 +31,7 @@
   color: var(--bbr-text);
 }
 
-/* Written out left to right, like a signature. The padding stops script swashes being clipped. */
+/* Wiped in left to right, once. The padding stops the italic overhang being clipped. */
 .bbr-nobrainer-ink {
   display: inline-block;
   padding-inline: 0.15em;

@@ -7,6 +7,7 @@ import { NoBrainer } from "../components/NoBrainer";
 import { Odometer } from "../components/Odometer";
 import { DocumentarySection } from "../sections/DocumentarySection";
 import { StatsGrid } from "../sections/StatsGrid";
+import { DonationFlow } from "../sections/DonationFlow";
 import { useCampaignModals } from "../context/campaignModals";
 import { useCampaignStats } from "../hooks/useCampaignStats";
 import { usePrefersReducedMotion } from "../hooks/motion";
@@ -48,7 +49,6 @@ function DonateContent() {
               {BBR_FACTS.when} · {BBR_FACTS.start} to {BBR_FACTS.finish}
             </p>
             <h1 className="bbr-donate-hero-title">Back Sam.</h1>
-            <NoBrainer size="lg" tone="light" />
             <p className="bbr-donate-hero-sub">
               {BBR_FACTS.ultras} ultramarathons in {BBR_FACTS.days} days.
               <br />
@@ -144,6 +144,8 @@ function DonateContent() {
               ))}
             </ul>
           </div>
+
+          <DonationFlow title="How your donation gets there" />
         </div>
       </section>
 

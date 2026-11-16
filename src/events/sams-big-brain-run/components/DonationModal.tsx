@@ -30,7 +30,9 @@ export function DonationModal({ isOpen, onClose }: DonationModalProps) {
       variant="sheet"
       flush
     >
-      <p className="bbr-donate-note">{BBR_MONEY_LINE} · Secure payment via Raisely</p>
+      <p className="bbr-donate-note">
+        {BBR_MONEY_LINE}, via Brain Tumour Support NZ · Secure payment by Raisely
+      </p>
       <div className="bbr-donate-frame-wrap">
         {!loaded && (
           <div className="bbr-donate-loading" role="status">

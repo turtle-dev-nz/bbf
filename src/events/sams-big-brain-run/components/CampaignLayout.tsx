@@ -125,6 +125,9 @@ export function CampaignLayout({ children }: { children: ReactNode }) {
               <a href="https://www.nanos.co.nz" target="_blank" rel="noopener noreferrer">
                 NANOS: NZ Aotearoa Neuro-Oncology Society
               </a>
+              <a href="https://www.braintumoursupport.org.nz" target="_blank" rel="noopener noreferrer">
+                Funds managed by Brain Tumour Support NZ
+              </a>
               <Link to={ROUTES.faq}>FAQ</Link>
             </div>
             <div>
