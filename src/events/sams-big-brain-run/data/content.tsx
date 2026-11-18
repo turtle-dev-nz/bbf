@@ -26,6 +26,18 @@ export const BBR_FACTS = {
 
 export const BBR_MONEY_LINE = "100% of donations go to NANOS";
 
+/** How a donation travels. Shown wherever donors might ask "who handles my money?". */
+export const BBR_DONATION_FLOW = [
+  { id: "raisely", name: "Raisely", role: "Secure online payment", href: undefined },
+  {
+    id: "bts",
+    name: "Brain Tumour Support NZ",
+    role: "Receives and manages the funds",
+    href: "https://www.braintumoursupport.org.nz",
+  },
+  { id: "nanos", name: "NANOS", role: "Receives every dollar for the registry", href: "https://www.nanos.co.nz" },
+] as const;
+
 /* ─────────────────────────────────────────
    Why Sam runs (approved wording from the live site, lightly reframed)
 ───────────────────────────────────────── */
@@ -142,11 +154,15 @@ export const BBR_REGISTRY_CARE = [
 export const BBR_FAQS = [
   {
     q: "Where does my donation go?",
-    a: "100% of donations made through this site go to NANOS, the New Zealand Aotearoa Neuro-Oncology Society, to support its work developing a national brain tumour registry. [Confirm: Raisely fees and who issues receipts.]",
+    a: "100% of donations made through this site go to NANOS, the New Zealand Aotearoa Neuro-Oncology Society, to support its work developing a national brain tumour registry. Payments are processed securely by Raisely and received by Brain Tumour Support NZ, which manages the funds and passes them on to NANOS. [Confirm: Raisely fees and who issues receipts.]",
   },
   {
     q: "Does Sam have brain cancer?",
     a: "No. Sam's cousin Georgie, who lives in the UK, has brain cancer. Her experience inspired the family to ask what they could do to help people affected by brain cancer here in New Zealand.",
+  },
+  {
+    q: "Where does Brain Tumour Support NZ fit in?",
+    a: "Brain Tumour Support NZ is a New Zealand charity that supports people with brain tumours and their whānau. For Sam's run it receives and manages the donations, then passes them to NANOS for the registry work.",
   },
   {
     q: "Who are NANOS?",

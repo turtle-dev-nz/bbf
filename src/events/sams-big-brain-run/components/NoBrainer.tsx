@@ -6,11 +6,11 @@ interface NoBrainerProps {
   size?: "sm" | "md" | "lg" | "xl";
   tone?: "accent" | "light" | "dark";
   as?: "p" | "h2";
-  /** Write the line out left to right the first time it scrolls into view. Use in one place only. */
+  /** Wipe the line in left to right the first time it scrolls into view. Use in one place only. */
   reveal?: boolean;
 }
 
-/** The campaign tagline, set in the script face so it reads as a sign-off wherever it appears. */
+/** The campaign tagline, as a consistent sign-off: condensed italic caps in the display face. */
 export function NoBrainer({ size = "md", tone = "accent", as: Tag = "p", reveal = false }: NoBrainerProps) {
   const reduced = usePrefersReducedMotion();
   const { ref, inView } = useInViewOnce<HTMLParagraphElement & HTMLHeadingElement>(0.6);

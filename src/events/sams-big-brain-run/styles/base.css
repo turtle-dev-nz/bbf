@@ -5,14 +5,6 @@
    .bbr to avoid bleeding into other pages.
 ───────────────────────────────────────── */
 
-@font-face {
-  font-family: "Avallon Alt";
-  src: url("../../../assets/fonts/avallon-alt.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
 /* ── Variables ── */
 .bbr {
   --bbr-bg: #f7f3ee;
@@ -33,7 +25,8 @@
   --bbr-modal-text: #f5f0eb;
   --bbr-modal-muted: rgba(245, 240, 235, 0.45);
   --bbr-font-display: "Barlow Condensed", sans-serif;
-  --bbr-font-secondary: "Avallon Alt", "Barlow Condensed", sans-serif;
+  /* Was the Avallon Alt script face; removed (licence unknown). Kept as an alias so old rules still resolve. */
+  --bbr-font-secondary: var(--bbr-font-display);
   --bbr-font-body: "Inter", system-ui, sans-serif;
 
   font-family: var(--bbr-font-body);
