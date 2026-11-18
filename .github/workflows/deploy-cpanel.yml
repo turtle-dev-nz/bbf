@@ -1,0 +1,73 @@
+# Builds the production site and uploads it to cPanel (public_html) over FTPS.
+#
+# One-time setup (Settings → Environments → New environment "bbf-production"):
+#   Secrets:
+#     CPANEL_FTP_SERVER    e.g. ftp.bigbrainfoundation.org (or the server hostname cPanel shows)
+#     CPANEL_FTP_USERNAME  a dedicated FTP account scoped to public_html, not the main cPanel login
+#     CPANEL_FTP_PASSWORD
+#   Optionally add "Required reviewers" so every production deploy needs a click to approve.
+#
+# Runs manually for now (Actions → Deploy to cPanel → Run workflow).
+# Once it's proven, uncomment the push trigger to deploy every merge to main.
+
+name: Deploy to cPanel
+
+on:
+  workflow_dispatch:
+  # push:
+  #   branches: [main]
+
+permissions:
+  contents: read
+
+# Never run two deploys at once; let an in-progress upload finish.
+concurrency:
+  group: deploy-cpanel
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: bbf-production
+      url: https://www.bigbrainfoundation.org
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # `npm run build` runs `tsc -b` first, so type errors still block the deploy.
+      - name: Build (production, indexable)
+        run: npm run build
+
+      - name: Sanity-check build
+        run: |
+          test -f dist/index.html
+          test -f dist/.htaccess
+          if grep -q 'name="robots" content="noindex' dist/index.html; then
+            echo "::error::Production build contains noindex - refusing to deploy"
+            exit 1
+          fi
+
+      - name: Upload to public_html
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.CPANEL_FTP_SERVER }}
+          username: ${{ secrets.CPANEL_FTP_USERNAME }}
+          password: ${{ secrets.CPANEL_FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: ./dist/
+          # Path relative to the FTP account's home directory. The deploy FTP
+          # account is created with public_html as its home, so this is ./
+          # If you're given the main cPanel login instead, change to ./public_html/
+          server-dir: ./
